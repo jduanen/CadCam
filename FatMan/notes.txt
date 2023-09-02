@@ -1,0 +1,186 @@
+* Links
+  - https://nuclearweaponarchive.org/Nwfaq/Nfaq8.html
+  - https://www.bulletpicker.com/nose_-impact_-an-mk-219.html
+  - https://www.printables.com/model/14560-fat-man-atomic-bomb-display-model/files
+  - https://alexwellerstein.com/writing/books/restricted-data/photos/
+  - https://en.m.wikipedia.org/wiki/File:Gadget-schematic-crosssection.png
+  -
+
+* Assembly
+  - Nose cap
+  - AN 219 destruct fuse (4x)
+  - Forward two-piece homogeneous armor ellipsoid
+  - Archie radar antenna (4x)
+  - Primacord-filled tube (4x)
+  - A-Plate with batteries
+  - X-unit (firing set) mounted on B-Plate
+  - Forward cone
+  - Cork-lined Duralumin equatorial segment (5x)
+  - Front cork-lined Duralumin polar cap
+  - Composition-B HE (fast-burning) charge (64x)
+  - Baratol HE (slow-burning ellipse in fast-burning CompB) (64x)
+  - Detonator (32x)
+  - Plutonium hemisphere
+  - Uranium (Tuballoy) tamper
+  - Trap-door tamper plug
+  - Suspension lug
+  - Sphere attachment lug (8x)
+  - Cork-lined Duralumin rear polar cap
+  - Aft cone
+  - C-Plate with Archie radars, timers, and baroswitches
+  - Barotube manifold
+  - Rear two-piece homogeneous armor ellipsoid
+  - D-Plate
+  - California Parachute Aluminium tail assembly
+  - E-Plate
+
+* detonators
+  - 8x per equitorial segment (5x)
+  - 10x per front polar cap
+  - 14x rear polar cap
+  - 64x total
+
+
+* Gadget (Trinity) Test: Y-1561 device
+
+* Archie Radar
+  - AN/APS-13 (1939-1945), aka RT-34, "Monica" Mk.7, SCR718
+  - +/- 45deg vertical, 30 deg horizontal
+  - Tx and Rx in single unit
+  - 415MHz, 30MHz IF
+  - 200-800 yards
+  - 27.5V @ 3.5A
+  - 300-450 pps, 400nsec Pulse Width
+  - 200W peak pulse power
+  - four redundant units
+    * required two to agree below critical altitude
+  - mechanical fuze system as backup
+
+* Construction (inside-out):
+  - Neutron Initiator ("Urchin")
+    * "Urchin" (Polonium-Beryllium) initiator
+      - inside two hemispheres of the Plutonium core/pit
+    * 9cm, 6.2kg
+    * Beryllium and Polonium 210
+    * initiator, neutron source
+  - Air Gap
+    * between Urchin and Core
+    * filled with gold foil?
+  - Plutonium Core
+    * two hemispheres
+    * Plutonium-239 96%, Plutonium-240 1%, and Gallium 3%
+    * "Pit"?
+    * sphere? diameter?
+  - Uranium Tamper Plug ("Slug")
+    * core/pit inside cylindrical Uranium tamper plug ("slug").
+    * plug was held together with Uranium washers and screws that fit smoothly into the domed ends of the plug.
+    * cylinder cut through Tamper (& Pusher?)
+    * size? where do the screws and washers go (flush with Tamper sphere)
+  - Uranium Tamper
+    * sphere of Uranium that contains the Slug, which contains the Pu pit/core
+      - natural, unenriched Uranium -- Tuballoy (code name/jargon)
+    * hold core and resist explosion, and reflect neutrons back into the core for more efficiency, reduces amount of Pu needed
+    * size?
+  - Boron-10 Plastic Shell
+    * between Tamper and Pusher
+    * size?
+  - Aluminum Pusher
+    * Aluminum-Boron alloy
+    * absorbs stray neutrons and widens/smooths the implosion pulse
+    * two hemispheres? size?
+  - Felt Pad
+    * between Aluminum Pusher and Comp-B Booster Block
+    * size?
+  - Fast Explosive Booster Block
+    * Composition-B
+    * dimensions?
+  - Felt Pad
+    * between Comp B Booster Block and Baratol Explosive Lens Element
+    * size?
+  - Slow Explosive Lens Element
+    * Baratol
+    * possibly cast together with Fast Explosive Lens Element
+    * 32x
+    * dimensions?
+  - Fast Explosive Lens Element
+    * possibly cast together with Slow Explosive Lens Element
+    * Composition B: 60% RDX, 39% TNT, 1% wax
+    * 10cm between EBW and 
+    * 32x
+    * dimensions?
+  - Explosive Bridge Wire (EBW) Detonators
+    * two in each Fast Explosive Lens Element
+    * dimensions?
+  - Cork Liner
+    * around all Explosive Lens Elements
+  - Dural Shell
+    * around Cork liner
+    * ~140cm inner diameter
+    * dimensions?
+  - Air Space
+    * between Dural Shell and Steel Ballistic Case
+    * dimensions?
+  - Steel Ballistic Case
+    * dimensions?
+
+  - air gaps between Urchin and Core
+    * filled with 0.013mm gold foil (dimpled or flat?)
+  - was a Tamper Plug ("Slug") used in the  Nagasaki or just in Trinity device?
+    * yes, looks like it opened towards the tail
+    * the Plug layed horizontally
+  - the Pusher Hemisphere's were oriented front and back
+    * there was a raised rib on the front hemisphere that fit into a groove on the back one
+    * there are four cups inset around the seam of the hemispheres to keep them together
+      - the name suggests that they were shallow cups-shaped that conformed to the outer dimensions of the sphere
+      - they are flush and span the seam
+  - the Aluminum Pusher had a screw-in trap-door plug on the tail side hemisphere
+    * the Slug slid into the Tuballoy (U-238) Tamper Sphere
+  - there are seven Duraluminum segments that make up the outer casing sphere
+    * the top and bottom (polar) caps bolted onto flanges on the equatorial segments
+  - the top of the physics package is oriented towards the tail
+    * imagine the entire unit facing nose down
+  - it is unclear how the physics package was fastened to the outer casing
+  - lens based on 78:47 detonation-speed ratio and 10cm between EBW and Slow Explosive Lens (Baratol)
+  - half of the bolts were left out of one of the Trinity casing's flange
+  - needed to ensure that the device didn't rotate when dropped
+    * avoid damaging fragile equipment
+
+* Exploding-Bridgewire Detonator (EBW)
+  - charge up a capacitor with a battery and then discharge it through the wires
+  - cylindrical housing with high explosion at the top end
+    * Cambrick tubing
+  - two wires (radially) connected through the bottom end
+  - 1773 EBW detonators used in Fat Man device
+    * two "horns" attached to single booster charge
+      - detonated 32 explosive lens units
+  - fine wire in contact with explosive
+  - high-voltage, high-current, low-impedance electrical source (capacitor)
+  - need switch to reliably and consistently generate start pulse
+    * used thyristors?
+  - wire is vaporized in a few microseconds
+    * vaporizes in a few microseconds, stddev O(10)nsec
+    * blasting caps just heat the wire, this vaporizes the wires
+      - function of how quickly the wire heats up
+      - subject to change based on minor electrical variations in the wiring
+      - takes O(1-10)msec to detonate
+  - generates a shock and heat that detonates the high-explosive
+  - required heavy cables to supply high-voltage and high-current
+    * low impedance/voltage drop
+
+
+* Materials
+  - Polonium-Beryllium (Urchin)
+  - Plutonium (Core)
+  - Uranium (Slug, Tamper)
+  - Gold foil (between ? & ?)
+  - Boron 10 plastic (between Tamper and Pusher)
+  - Aluminum (Pusher)
+  - Felt (between Pusher and Booster Blocks)
+  - Baratol Slow Explosive
+  - Baratol Fast Explosive
+  - Brass Detonator Chimney Sleeves
+  - Cork (around all Explosive Lenses)
+  - Dural (around cork liner)
+  - Steel (around entire assembly)
+
+
