@@ -19,10 +19,10 @@
   - Front cork-lined Duralumin polar cap
   - Composition-B HE (fast-burning) charge (64x)
   - Baratol HE (slow-burning ellipse in fast-burning CompB) (64x)
-  - Detonator (32x)
+  - EBW Detonator (32x)
   - Plutonium hemisphere
-  - Uranium (Tuballoy) tamper
-  - Trap-door tamper plug
+  - Uranium ("Tuballoy") Tamper
+  - Trap-door Tamper Plug
   - Suspension lug
   - Sphere attachment lug (8x)
   - Cork-lined Duralumin rear polar cap
@@ -54,7 +54,7 @@
   - 200W peak pulse power
   - four redundant units
     * required two to agree below critical altitude
-  - mechanical fuze system as backup
+  - mechanical  system as backup
 
 * Construction (inside-out):
   - Neutron Initiator ("Urchin")
@@ -121,8 +121,72 @@
     * between Dural Shell and Steel Ballistic Case
     * dimensions?
   - Steel Ballistic Case
+    * Pumpkin Bombs (mock-ups) shells were 9.5mm steel plates
+    * dimensions?
+  - Tail Assembly (California Parachute)
+    * tail assembly, slow, stable drop, no rotation
+    * Pumpkin Bombs (mock-ups) tail assemblies made of 5.1mm Aluminum plate
     * dimensions?
 
+* Exploding-Bridgewire Detonator (EBW)
+  - charge up a capacitor with a battery and then discharge it through the wires
+  - cylindrical housing with high explosion at the top end
+    * Cambrick tubing
+  - two wires (radially) connected through the bottom end
+  - 1773 EBW detonators used in Fat Man device
+    * two "horns" attached to single booster charge
+      - detonated 32 explosive lens units
+  - fine wire in contact with explosive
+  - high-voltage, high-current, low-impedance electrical source (capacitor)
+    * oil-filled, mylar-foil, or ceramic
+    * low-inductance, high-capacitance, high-voltage
+    * 1uF @ ~5KV, peak currents between 500-1000A
+  - can generate high-voltage with Marx generator
+  - need switch to reliably and consistently generate start pulse
+    * can use: thyristors, spark gap, krytron, etc. as switch
+  - wire is vaporized in a few microseconds
+    * vaporizes in a few microseconds, stddev O(10)nsec
+    * heating rate is so fast that liquid metal can't flow away and so it vaporizes
+      - causes resistance to rise as it gets hotter
+      - creates an arc in the metal vapor
+        * leads to drop in resistance and sharp spike in current
+        * creats a shock wave
+      - needs >=100A/usec
+    * blasting caps just heat the wire, this vaporizes the wires
+      - function of how quickly the wire heats up
+      - subject to change based on minor electrical variations in the wiring
+      - takes O(1-10)msec to detonate
+  - only high-current, fast pulse can trigger EBWs
+  - generates a shock and heat that detonates the high-explosive
+  - required heavy cables to supply high-voltage and high-current
+    * low impedance/voltage drop
+    * coax
+  - typical explosives detonate at 7-8 Km/sec, 7-8 m/msec
+    * <=100ns EBW, at most 1mm difference in detonation wave
+  - EBWs are highly regulated
+  - normal blasting caps are subject to being triggered by stray currents (from RF?)
+  - EBW detonators don't use primary explosives
+    * e.g., lead azide, which is sensitive to static discharge
+  - bridgewire is typically gold or platinum (or an alloy of both)
+    * 0.038mm in diameter and typically 1mm long (can be from 0.25mm to 2.5mm)
+  - commonly uses PETN with RDX/PBX/tetryl pellet as booster
+
+* Materials
+  - Polonium-Beryllium (Urchin)
+  - Plutonium (Core)
+  - Uranium (Slug, Tamper)
+  - Gold foil (between ? & ?)
+  - Boron 10 plastic (between Tamper and Pusher)
+  - Aluminum (Pusher)
+  - Felt (between Pusher and Booster Blocks)
+  - Baratol Slow Explosive
+  - Baratol Fast Explosive
+  - Brass Detonator Chimney Sleeves
+  - Cork (around all Explosive Lenses)
+  - Dural (around cork liner)
+  - Steel (around entire assembly)
+
+* Misc
   - air gaps between Urchin and Core
     * filled with 0.013mm gold foil (dimpled or flat?)
   - was a Tamper Plug ("Slug") used in the  Nagasaki or just in Trinity device?
@@ -144,43 +208,14 @@
   - half of the bolts were left out of one of the Trinity casing's flange
   - needed to ensure that the device didn't rotate when dropped
     * avoid damaging fragile equipment
-
-* Exploding-Bridgewire Detonator (EBW)
-  - charge up a capacitor with a battery and then discharge it through the wires
-  - cylindrical housing with high explosion at the top end
-    * Cambrick tubing
-  - two wires (radially) connected through the bottom end
-  - 1773 EBW detonators used in Fat Man device
-    * two "horns" attached to single booster charge
-      - detonated 32 explosive lens units
-  - fine wire in contact with explosive
-  - high-voltage, high-current, low-impedance electrical source (capacitor)
-  - need switch to reliably and consistently generate start pulse
-    * used thyristors?
-  - wire is vaporized in a few microseconds
-    * vaporizes in a few microseconds, stddev O(10)nsec
-    * blasting caps just heat the wire, this vaporizes the wires
-      - function of how quickly the wire heats up
-      - subject to change based on minor electrical variations in the wiring
-      - takes O(1-10)msec to detonate
-  - generates a shock and heat that detonates the high-explosive
-  - required heavy cables to supply high-voltage and high-current
-    * low impedance/voltage drop
-
-
-* Materials
-  - Polonium-Beryllium (Urchin)
-  - Plutonium (Core)
-  - Uranium (Slug, Tamper)
-  - Gold foil (between ? & ?)
-  - Boron 10 plastic (between Tamper and Pusher)
-  - Aluminum (Pusher)
-  - Felt (between Pusher and Booster Blocks)
-  - Baratol Slow Explosive
-  - Baratol Fast Explosive
-  - Brass Detonator Chimney Sleeves
-  - Cork (around all Explosive Lenses)
-  - Dural (around cork liner)
-  - Steel (around entire assembly)
+  - FatMan had detcord triggered by contact fuses in nose
+  - FatMan was painted with yellow Zinc Chromate primer paint
+    * joints were sealed with spray-on black liquid asphalt
+  - top front of FatMan had 3x rods and 2x plugs at 12 o'clock above the nose cone
+    * rods were ?
+    * the two plugs were first Green Safing Plugs
+      - then replaced in flight with Red Arming Plugs
+  - FatMan has JANCFU (Joint Army/Navy/Civilian Fuck Up) stenciled in black on the nose cone
+    * and a bomb outline with FM-1 (FatMan-1) below it
 
 
