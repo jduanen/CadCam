@@ -12,20 +12,22 @@
   - Baroswitch: 
   - Barotube: 
   - California Parachute: 
+  - Christy Gadget: solid core implosion design used in Trinity and FatMan
   - Composition-B: 
   - Duralumin (aka Dural):
   - EBW Detonator: 
-  - FatMan: used on Nagasaki, first of ? built as weapons
-  - Gadget (Trinity) Test: Y-1561 device
+  - FatMan: Y-1561 device, used on Nagasaki, first of ? built as weapons
   - Pusher: 
   - Slug: 
   - Tamper:
   - Tamper Plug: 
+  - Trinity Test: Christy Gadget test
   - Tuballoy: 
   - Urchin: 
+  - Y-1561: 
   - X-Unit: 
 
-* FatMan Main Components
+* FatMan Main Components (from bottom (nose) to top (tail))
   - Nose cap
   - Forward two-piece homogeneous armor ellipsoid
   - A-Plate
@@ -147,21 +149,23 @@
   - Air Space
     * between Dural Shell and Steel Ballistic Case
     * dimensions?
-  - Steel Ballistic Case
-    * Pumpkin Bombs (mock-ups) shells were 9.5mm steel plates
-    * seven Duraluminum segments that make up the outer casing sphere
-    * top and bottom (polar) caps bolted onto flanges on the equatorial segments
-    * lots of holes for sensors and detonators
-    * many things affixed to the casings
-    * lift points and mounting flanges are also part of the casings
-    * dimensions of casings and flanges?
-    * locations and dimensions of add-ons?
-  - Tail Assembly (California Parachute)
-    * tail assembly, slow, stable drop, no rotation
-    * needed to ensure that the device didn't rotate when dropped
-      - avoid damaging fragile equipment
-    * Pumpkin Bombs (mock-ups) tail assemblies made of 5.1mm Aluminum plate
-    * dimensions?
+
+* Steel Ballistic Case
+  - Pumpkin Bombs (mock-ups) shells were 9.5mm steel plates
+  - seven Duraluminum segments that make up the outer casing sphere
+  - top and bottom (polar) caps bolted onto flanges on the equatorial segments
+  - lots of holes for sensors and detonators
+  - many things affixed to the casings
+  - lift points and mounting flanges are also part of the casings
+  - dimensions of casings and flanges?
+  - locations and dimensions of add-ons?
+
+* Tail Assembly (California Parachute)
+  - tail assembly, slow, stable drop, no rotation
+  - needed to ensure that the device didn't rotate when dropped
+    * avoid damaging fragile equipment
+  - Pumpkin Bombs (mock-ups) tail assemblies made of 5.1mm Aluminum plate
+  - dimensions?
 
 * FatMan External Features
   - 4x Antennae arrays
