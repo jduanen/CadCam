@@ -6,7 +6,41 @@
   - https://en.m.wikipedia.org/wiki/File:Gadget-schematic-crosssection.png
   -
 
-* Assembly
+* Glossary
+  - Archie: 
+  - Baratol: 
+  - Baroswitch: 
+  - Barotube: 
+  - California Parachute: 
+  - Composition-B: 
+  - Duralumin (aka Dural):
+  - EBW Detonator: 
+  - FatMan: used on Nagasaki, first of ? built as weapons
+  - Gadget (Trinity) Test: Y-1561 device
+  - Pusher: 
+  - Slug: 
+  - Tamper:
+  - Tamper Plug: 
+  - Tuballoy: 
+  - Urchin: 
+  - X-Unit: 
+
+* FatMan Main Components
+  - Nose cap
+  - Forward two-piece homogeneous armor ellipsoid
+  - A-Plate
+  - X-Unit (Firing Set)
+  - Forward Cone
+  - Physics Package (enclosed within casing)
+  - Aft Cone
+  - C-Plate
+  - Barotube Manifold
+  - Rear two-piece homogeneous armor ellipsoid
+  - D-Plate
+  - California Parachute
+  - E-Plate
+
+* FatMan Assembly (from diagram of the same name)
   - Nose cap
   - AN 219 destruct fuse (4x)
   - Forward two-piece homogeneous armor ellipsoid
@@ -34,48 +68,33 @@
   - California Parachute Aluminium tail assembly
   - E-Plate
 
-* detonators
-  - 8x per equitorial segment (5x)
-  - 10x per front polar cap
-  - 14x rear polar cap
-  - 64x total
-
-
-* Gadget (Trinity) Test: Y-1561 device
-
-* Archie Radar
-  - AN/APS-13 (1939-1945), aka RT-34, "Monica" Mk.7, SCR718
-  - +/- 45deg vertical, 30 deg horizontal
-  - Tx and Rx in single unit
-  - 415MHz, 30MHz IF
-  - 200-800 yards
-  - 27.5V @ 3.5A
-  - 300-450 pps, 400nsec Pulse Width
-  - 200W peak pulse power
-  - four redundant units
-    * required two to agree below critical altitude
-  - mechanical  system as backup
-
-* Construction (inside-out):
+* Physics Package Components (from inside out):
   - Neutron Initiator ("Urchin")
     * "Urchin" (Polonium-Beryllium) initiator
       - inside two hemispheres of the Plutonium core/pit
     * 9cm, 6.2kg
     * Beryllium and Polonium 210
     * initiator, neutron source
-  - Air Gap
-    * between Urchin and Core
-    * filled with gold foil?
+  - Air Gap (between Urchin and Core)
+    * filled with 0.013mm gold foil (dimpled or flat?)
   - Plutonium Core
     * two hemispheres
     * Plutonium-239 96%, Plutonium-240 1%, and Gallium 3%
     * "Pit"?
     * sphere? diameter?
   - Uranium Tamper Plug ("Slug")
-    * core/pit inside cylindrical Uranium tamper plug ("slug").
-    * plug was held together with Uranium washers and screws that fit smoothly into the domed ends of the plug.
-    * cylinder cut through Tamper (& Pusher?)
-    * size? where do the screws and washers go (flush with Tamper sphere)
+    * the Slug slides into the Tuballoy (U-238) Tamper Sphere
+    * core/pit inside cylindrical (with rounded ends) Uranium tamper plug ("slug").
+      - same material as the Tamper -- i.e., natural Uranium (Tuballoy)
+    * plug was held together with Uranium washers and screws that fit smoothly into the domed ends of the plug
+    * cylinder cut through Tamper, and trap-door in Pusher
+    * installed via trap-door that opened towards the tail (i.e., top polar cap)
+    * the Plug lay in line with the bomb
+      - the top polar cap is closest to the tail
+    * size of the Slug?
+    * dimensions and locations of screws and washers
+      - made of Tuballoy
+      - flush with Slug and Tamper
   - Uranium Tamper
     * sphere of Uranium that contains the Slug, which contains the Pu pit/core
       - natural, unenriched Uranium -- Tuballoy (code name/jargon)
@@ -87,7 +106,15 @@
   - Aluminum Pusher
     * Aluminum-Boron alloy
     * absorbs stray neutrons and widens/smooths the implosion pulse
-    * two hemispheres? size?
+    * the Pusher's two hemisphere's were oriented top and bottom (wrt the polar caps)
+    * raised rib on the bottom hemisphere that fit into a groove on the top one
+    * four cups inset around the seam of the hemispheres to keep them together
+      - the name suggests that they were shallow-cup-shaped
+        * the cups conformed to the outer dimensions of the Pusher sphere
+        * they are flush and span the seam
+    * a trap-door plug on the top hemisphere
+      - looks like it might have been threaded and screwed in place
+    * size?
   - Felt Pad
     * between Aluminum Pusher and Comp-B Booster Block
     * size?
@@ -122,20 +149,55 @@
     * dimensions?
   - Steel Ballistic Case
     * Pumpkin Bombs (mock-ups) shells were 9.5mm steel plates
-    * dimensions?
+    * seven Duraluminum segments that make up the outer casing sphere
+    * top and bottom (polar) caps bolted onto flanges on the equatorial segments
+    * lots of holes for sensors and detonators
+    * many things affixed to the casings
+    * lift points and mounting flanges are also part of the casings
+    * dimensions of casings and flanges?
+    * locations and dimensions of add-ons?
   - Tail Assembly (California Parachute)
     * tail assembly, slow, stable drop, no rotation
+    * needed to ensure that the device didn't rotate when dropped
+      - avoid damaging fragile equipment
     * Pumpkin Bombs (mock-ups) tail assemblies made of 5.1mm Aluminum plate
     * dimensions?
+
+* FatMan External Features
+  - 4x Antennae arrays
+  - 2x Safing/Arming Plugs
+  - 4x AN219 Contact Detonators
+  - ?
+  - ?
+
+* AN219 Contact Detonators
+  - <fires detcord only, or also triggers physics package?>
+  - 5.5" from base to top of fins, ~.5" to top of cone
+  - dimensions?
+
+* Archie Radar
+  - AN/APS-13 (1939-1945), aka RT-34, "Monica" Mk.7, SCR718
+  - +/- 45deg vertical, 30 deg horizontal
+  - Tx and Rx in single unit
+  - 415MHz, 30MHz IF
+  - 200-800 yards
+  - 27.5V @ 3.5A
+  - 300-450 pps, 400nsec Pulse Width
+  - 200W peak pulse power
+  - four redundant units
+    * required two to agree below critical altitude
+  - mechanical  system as backup
 
 * Exploding-Bridgewire Detonator (EBW)
   - charge up a capacitor with a battery and then discharge it through the wires
   - cylindrical housing with high explosion at the top end
     * Cambrick tubing
   - two wires (radially) connected through the bottom end
+  - single detonator per outer lens
   - 1773 EBW detonators used in Fat Man device
     * two "horns" attached to single booster charge
       - detonated 32 explosive lens units
+      - wanted redundancy due to high failure rates in tests
   - fine wire in contact with explosive
   - high-voltage, high-current, low-impedance electrical source (capacitor)
     * oil-filled, mylar-foil, or ceramic
@@ -170,6 +232,19 @@
   - bridgewire is typically gold or platinum (or an alloy of both)
     * 0.038mm in diameter and typically 1mm long (can be from 0.25mm to 2.5mm)
   - commonly uses PETN with RDX/PBX/tetryl pellet as booster
+  - distribution of detonators
+    * 8x per equatorial segment (5x)
+    * 10x per front polar cap
+    * 14x rear polar cap
+    * 64x total
+
+* X-Unit (Firing Set)
+  - <see patent>
+  - <names of components? X-unit?>
+  - <looks like two wires (one dark and one light) go to each detonator
+    * <two banks of 32 on each side -- alternating rows of 8 dark and 8 light coax>
+  - <trigger logic takes inputs from four (redundant) radars, sends to spark units>
+  - <where were the capacitor banks?>
 
 * Materials
   - Polonium-Beryllium (Urchin)
@@ -187,35 +262,22 @@
   - Steel (around entire assembly)
 
 * Misc
-  - air gaps between Urchin and Core
-    * filled with 0.013mm gold foil (dimpled or flat?)
-  - was a Tamper Plug ("Slug") used in the  Nagasaki or just in Trinity device?
-    * yes, looks like it opened towards the tail
-    * the Plug layed horizontally
-  - the Pusher Hemisphere's were oriented front and back
-    * there was a raised rib on the front hemisphere that fit into a groove on the back one
-    * there are four cups inset around the seam of the hemispheres to keep them together
-      - the name suggests that they were shallow cups-shaped that conformed to the outer dimensions of the sphere
-      - they are flush and span the seam
-  - the Aluminum Pusher had a screw-in trap-door plug on the tail side hemisphere
-    * the Slug slid into the Tuballoy (U-238) Tamper Sphere
-  - there are seven Duraluminum segments that make up the outer casing sphere
-    * the top and bottom (polar) caps bolted onto flanges on the equatorial segments
   - the top of the physics package is oriented towards the tail
-    * imagine the entire unit facing nose down
+    * imagine the entire unit facing nose down, the polar top cap is up
   - it is unclear how the physics package was fastened to the outer casing
+    * seems like there are mounting flanges on bomb versions
   - lens based on 78:47 detonation-speed ratio and 10cm between EBW and Slow Explosive Lens (Baratol)
   - half of the bolts were left out of one of the Trinity casing's flange
-  - needed to ensure that the device didn't rotate when dropped
-    * avoid damaging fragile equipment
-  - FatMan had detcord triggered by contact fuses in nose
+  - FatMan had detcord triggered by contact fuses surrounding the Nose Cap
   - FatMan was painted with yellow Zinc Chromate primer paint
     * joints were sealed with spray-on black liquid asphalt
-  - top front of FatMan had 3x rods and 2x plugs at 12 o'clock above the nose cone
+  - top front of FatMan had 3x rods and 2x plugs at 12 o'clock above the Nose Cap
     * rods were ?
     * the two plugs were first Green Safing Plugs
       - then replaced in flight with Red Arming Plugs
-  - FatMan has JANCFU (Joint Army/Navy/Civilian Fuck Up) stenciled in black on the nose cone
+  - FatMan has JANCFU (Joint Army/Navy/Civilian Fuck Up) stenciled in black on the Nose Cap
     * and a bomb outline with FM-1 (FatMan-1) below it
-
+  - Pumpkin Bombs first used as concrete-filled inert training bombs
+    * later used over Japan filled with HE
+    * used to train bomber crews
 
