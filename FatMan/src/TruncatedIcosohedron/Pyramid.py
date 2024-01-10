@@ -14,15 +14,12 @@ from math import sqrt
 class Pyramid():
     '''
     '''
-    def __init__(self, radius, rotation=None, translation=None):
+    def __init__(self, radius):
         self.radius = radius
-        self.rotation = rotation
-        self.translation = translation
 
-        # Edge Size: a(r) = r / sqrt(58 + 18 * sqrt(5))
-        self.edgeSize = self.radius / sqrt(58 + 18 * sqrt(5))
-        self.vertices = []  # Point3D????
-        self.faces = []     # Face????
+        self.edgeSize = self.radius / (sqrt(58 + 18 * sqrt(5)) / 4)
+        self.vertices = []
+        self.faces = []
 
     def __str__(self):
         return self._getString()
