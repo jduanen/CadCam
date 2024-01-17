@@ -177,8 +177,7 @@
       - attached with four large bolts
       - screwed into raised circular parts cast into two of the zone plates
       - removed prior to attaching ballistic case halves
-    * lift lug
-      - same as on Little Boy
+    * lift lug      - same as on Little Boy
       - 
     * two polar caps
       - ? diameter: 53.3" (1,353.82mm)
@@ -527,6 +526,37 @@ Nuclear weapons use arrays of explosive lenses to change several nearly spherica
 
 [I think that the USSR guys used a cast Be sphere with grooves and the US used a BE sphere that used different sized/depth end mills.]
 
+[
+Photogrametry
+  * Images: Code No. 4021 and Code No. 4024
+  * Bolts and Nuts
+    - 1/2" threaded bolts
+    - 1" x 1/2" bolt heads
+    - 1" x 1" nuts
+  * Polar Caps
+    - top cap flange looks >1" (1 1/4"?) -- might be temp cap, not real thing
+  * Equatorial Segments
+    - 1" top/bottom flanges
+      * large filet from almost edge of flange to 1 1/2" below flange lip
+    - 2" side flanges
+      * cut down to 7/8" at top/bottom flange
+      * some have Mounting Blocks attached
+    - 8x bolts, four pairs at edges of segments
+      * 2 1/2" between bolts in a pair
+      * 4 3/4" between pairs of bolts
+    - top Equatorial Segment (with Lift Handle)
+      * has raised fore/aft and left/right ribs
+      * has two Mounting Blocks
+    - side Equatorial Segments
+      * one pivot post (on the Y axis) 
+      * one Mounting block (in the middle)
+    - Mounting Blocks
+      * 3 1/2" by 3 1/2" and 2" high
+      * 3/4" hole center top, bottom of hole at 1" midline
+
+The dihedral angle between two hexagonal faces is 138o 11' and the angle between a hexagonal face and pentagonal face is 142o 32'. The angle between the arms that make up the hexagonal faces is 120o and the angle between arms of pentagonal faces is 108o.
+]
+
 * Links
   - https://nuclearweaponarchive.org/Nwfaq/Nfaq8.html
   - https://www.bulletpicker.com/nose_-impact_-an-mk-219.html
@@ -543,4 +573,11 @@ Nuclear weapons use arrays of explosive lenses to change several nearly spherica
   - https://www.printables.com/model/14560-fat-man-atomic-bomb-display-model/files
   - https://www.newyorker.com/magazine/2008/12/15/atomic-john
   - https://nuclearweaponarchive.org/News/Voprosy2.html
+  - http://www.kilroywashere.org/004-Pages/Trinity/Trinity.html
+  - https://medium.com/@salilssharma/fat-man-and-nagasaki-cc491bc93fee
+  - https://blogs.loc.gov/loc/2023/07/oppenheimer-the-librarys-collection-chronicles-his-life/
+  - https://www.youtube.com/watch?v=sjB7iiwxVlM
+  - https://www.youtube.com/watch?v=nN5q8i-kQj0
+  - https://www.history.navy.mil/content/history/museums/nmusn/explore/photography/wwii/wwii-pacific/bombardment-japan/bombs-atomic/fat-man-nagasaki.html
+  - https://nukecompendium.com/weapons/mk3/
   - 
