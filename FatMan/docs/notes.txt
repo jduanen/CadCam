@@ -1,0 +1,980 @@
+* FatMan Main Components (from bottom (nose) to top (tail))
+  - Nose cap
+  - Forward Case (two-piece homogeneous armor ellipsoid)
+  - A-Plate
+  - X-Unit (Firing Set)
+  - Forward Cone
+  - Physics Package (enclosed within casing)
+  - Aft Cone
+  - C-Plate
+  - Barotube Manifold
+  - Rear Case (two-piece homogeneous armor ellipsoid)
+  - D-Plate
+  - California Parachute
+  - E-Plate
+
+* FatMan Assembly (from diagram of the same name)
+  - Nose cap
+  - AN 219 destruct fuse (4x)
+  - Forward two-piece homogeneous armor ellipsoid
+  - Archie radar antenna (4x)
+  - Primacord-filled tube (4x)
+  - A-Plate with batteries
+  - X-unit (firing set) mounted on B-Plate
+  - Forward cone
+  - Cork-lined Duralumin equatorial segment (5x)
+  - Front cork-lined Duralumin polar cap
+  - Composition-B HE (fast-burning) charge (64x)
+  - Baratol HE (slow-burning ellipse in fast-burning CompB) (64x)
+  - EBW Detonator (32x)
+  - Plutonium hemisphere
+  - Uranium ("Tuballoy") Tamper
+  - Trap-door Tamper Plug
+  - Suspension lug
+  - Sphere attachment lug (8x)
+  - Cork-lined Duralumin rear polar cap
+  - Aft cone
+  - C-Plate with Archie radars, timers, and baroswitches
+  - Barotube manifold
+  - Rear two-piece homogeneous armor ellipsoid
+  - D-Plate
+  - California Parachute Aluminium tail assembly
+  - E-Plate
+
+* Physics Package Components (from inside out):
+  - Neutron Initiator ("Urchin")
+    * "Urchin" (Polonium-Beryllium) initiator
+      - inside two hemispheres of the Plutonium core/pit
+    * Beryllium and Polonium 210
+    * initiator, neutron source
+    * smooth, hollow, two-piece, nickel-plated
+    * 15 parallel, wedge-like groves on inner surface
+      - plated with 4-mil layer of gold, followed by 30-curie layer of Polonium
+    * inside this was a sphere of solid beryllium
+      - covered in gold and 20-curies of Polonium
+      - plated with nickel
+    * Po: half life of 138.39 days
+      - had to be replaced frequently
+  - Air Gap (between Urchin and Core)
+    * filled with 0.013mm gold foil (dimpled or flat?)
+  - Plutonium Core
+    * two hemispheres, faces machined to fit without gap
+    * Plutonium-239 96%, Plutonium-240 1%, and Gallium 3%
+    * "Pit"
+    * held together by ? cups
+      - cup dimensions?
+    * outer diameter: 3.62" (91.948mm)
+    * 6.2kg
+  - Air Gap between Core and Tamper Plug
+    * filled with 0.0005" (0.0127mm) gold foil for tight fit
+  - Uranium Tamper Plug (aka "Slug", aka "Capsule")
+    * the Slug slides into the Tuballoy (U-238) Tamper Sphere
+    * core/pit inside cylindrical (with rounded ends) Uranium tamper plug ("slug")
+      - same material as the Tamper -- i.e., natural Uranium (Tuballoy)
+    * apple-core-like cylinder with rounded ends
+    * split along the long axis
+    * sides held together with Uranium washers and screws that fit smoothly into the domed ends of the plug
+    * cylinder cut through Tamper, and trap-door in Pusher
+    * installed via trap-door that opened towards the tail (i.e., top polar cap)
+    * the Plug lay in line with the bomb
+      - the top polar cap is closest to the tail
+    * size of the Slug?
+    * dimensions and locations of screws and washers/cups?
+      - made of Tuballoy
+      - flush with Slug and Tamper
+    * two cups, one at each end
+      - threaded for extraction tool
+    * height: 8.75" (222.25mm) -- measured at apex of curved ends
+    * diameter: 5" (127mm)
+    * ~105lbs
+    * insertion/removal features
+      - one account has a threaded hole for screwing in an eye-bolt
+        * replaced with solid threaded aluminum plug
+      - a picture shows Slug being lowered with a pair of tongs
+        * inserted into slots? on the top of the Slug
+          - filled with something later?
+  - Uranium Tamper
+    * sphere of Uranium that contains the Slug, which contains the Pu pit/core
+      - natural, unenriched Uranium -- Tuballoy (code name/jargon)
+      - 158lbs
+    * hold core and resist explosion, and reflect neutrons back into the core for more efficiency, reduces amount of Pu needed
+    * diameter: 8.75" (222.25mm)
+  - Boron-10 Plastic Shell
+    * between Tamper and Pusher
+    * two hemispheres glued to Pusher prior to assembly
+    * hole for Slug: ~5" (127mm)
+    * inner diameter: 8.75" (222.25mm)
+    * thickness: 0.125" (3.175mm)
+    * outer diameter: 8.875" (225.425mm)
+  - Aluminum Pusher
+    * absorbs stray neutrons and widens/smooths the implosion pulse
+    * Aluminum-Boron alloy, 293lbs
+    * two hemispheres (horizontal joint)
+    * faces of hemispheres have an annular alignment groove
+      - top hemisphere: square bottom groove, 1" wide and 0.5" deep
+      - bottom hemisphere: raised ring, 1" wide and 0.5" deep
+      - just a few thous of clearance
+    * the Pusher's two hemisphere's were oriented top and bottom (wrt the gadget's polar caps)
+    * raised rib on the bottom hemisphere that fit into a groove on the top one
+    * four cups inset around the seam of the hemispheres to keep them together
+      - the name suggests that they were shallow-cup-shaped
+        * the cups conformed to the outer dimensions of the Pusher sphere
+        * they are flush and span the seam
+      - 2"-3" diameter aluminium Cups, match curvature of sphere
+      - pushed into groves and fastened with screws
+      - tap both halves (through split)
+      - Cups have larger hole than screw head that is tapped
+        * for disassembly -- screw in extraction tool
+        * screws are not interchangeable
+    * a trap-door plug on the top hemisphere
+      - threaded and screwed in place
+      - two untapped holes for spanner to insert/remove
+        * holes are filled with aluminum and held in place with scotch tape
+    * inner diameter: 8.875" (225.425mm)
+    * outer diameter: 18.5" (459.9mm)
+    * 5" (127mm) hole cored out vertically (perpendicular to split)
+  - Felt Pad
+    * between Aluminum Pusher and Comp-B Booster Block
+    * size? -- assume 0.0625" (1.5875mm), same as the other
+  - Fast Explosive Booster Block
+    * Composition-B
+    * dimensions?
+  - Felt Pad
+    * between Comp B Booster Block and Baratol Explosive Lens Element
+    * 0.0625" (1.5875mm)
+  - Slow Explosive Lens Element
+    * Baratol
+    * possibly cast together with Fast Explosive Lens Element
+    * 32x
+    * height: 8.875" (225.425mm)
+  - Blotter Paper
+    * glued with rubber cement to create gasket between HE parts
+    * air gaps > 0.03" (0.762mm) could create issues
+    * different thicknesses of blotter paper were used as shim stock
+    * used 3M tape for covering the edges
+  - Fast Explosive Lens Element
+    * possibly cast together with Slow Explosive Lens Element
+    * Composition B: 60% RDX, 39% TNT, 1% wax
+    * 10cm between EBW and slow explosive
+    * 32x prisms
+    * height: 9.0" (228.6mm)
+    * outer edge length: 11.25" (285.75mm)
+    * outer diameter (when fully compressed by Cork Liner): 54.375" (1381.125mm)
+  - Explosive Bridge Wire (EBW) Detonators
+    * two in each Fast Explosive Lens Element
+    * dimensions?
+  - Cork Liner
+    * around all Explosive Lens Elements
+    * uncompressed thickness: 0.5" (12.7mm)
+  - Dural Shell
+    * Al-2024, aka Duralumin
+    * seven pieces, all 1" (25.4mm) thick1
+      - two polar caps, and five zone plates
+    * total weigth ~1,146lbs
+    * eight 3.0" (76.2mm) cubes cast into the five zone plates
+      - holes drilled through them to mount the forward/aft ballistic case ellipsoids
+    * two removable plates bolted 180deg apart on the sphere
+      - attached with four large bolts
+      - screwed into raised circular parts cast into two of the zone plates
+      - removed prior to attaching ballistic case halves
+    * lift lug      - same as on Little Boy
+      - 
+    * two polar caps
+      - ? diameter: 53.3" (1,353.82mm)
+      - 30 high-strength bolts
+      - six detonator holes in Polar Caps
+      - four added holes in Forward Polar Cap for Primacord attached to AN219-2 contact fuses (aka daisy cutters)
+        * AN219 fuses had pull-away wires
+          - air spins off aluminum propeller, exposing contact plunger
+      - fuses attached to 5" (127mm) long, 3.3" (83.82mm) fuse pocket tubes
+        * welded to Forward Case
+        * installed in-flight
+    * Cork liner
+      - uncompressed: .5" (12.7mm)
+    * inner diameter: 55.25" (1,403.35mm)
+  - Air Space between Dural Shell and Steel Ballistic Case
+    * ?
+    * dimensions?
+
+* Steel Ballistic Case
+  - two parts -- Forward Case and Rear Case
+  - Pumpkin Bombs (mock-ups) shells were 9.5mm steel plates
+  - seven Duraluminum segments that make up the outer casing sphere
+  - top and bottom (polar) caps bolted onto flanges on the equatorial segments
+  - lots of holes for sensors (for Trinity) and detonators
+  - many things affixed to the casings
+  - lift points and mounting flanges are also part of the casings
+  - dimensions of casings and flanges?
+  - locations and dimensions of add-ons?
+  - ???? 3" (76.2mm) cubes around center of gadget
+    * used to mount Forward and Rear Case
+
+* Plates
+  - A Plate
+    * <batteries>
+    * <mounts on X-Unit>
+    * ?
+  - B Plate
+    * <X-Unit>
+    * <mounts on Forward Cone>
+    * ?
+  - C Plate
+    * <radars, timers, baroswitches>
+    * <mounts to Aft Cone>
+    * ?
+  - D Plate
+    * <mounts to end of Rear Case>
+    * ?
+  - E Plate
+    * <mounts to end of Tail Assembly>
+    * <holes for ?>
+    * ?
+
+* Barotube Manifold
+  - ?
+
+* Cones
+  - Forward Cone
+    * ?
+  - Aft Cone
+    * ?
+
+* Tail Assembly (California Parachute)
+  - tail assembly, slow, stable drop, no rotation
+  - needed to ensure that the device didn't rotate when dropped
+    * avoid damaging fragile equipment
+  - Pumpkin Bombs (mock-ups) tail assemblies made of 0.2" (5.1mm) Aluminum plate
+  - dimensions?
+
+* FatMan External Features
+  - 4x Antennae arrays
+  - 2x Arming Plugs (Red)
+  - 3x Safing Plugs (Green)
+  - 4x AN219 Contact Detonators
+  - ?
+  - ?
+
+* AN219 Contact Detonators
+  - fires detcord on impact, triggers shaped charges (just chemical explosion)
+  - 5.5" from base to top of fins, ~.5" to top of cone
+  - dimensions
+    * total height (base to top screw): 5 1/2" (139.7mm)
+    * base width: 1.630" (41.402mm)
+    * base height (base to second shoulder): 2.612" (66.3448mm)
+  - base threads: 1.75"-14-NS (44.45mm)
+  - propeller width: 4 3/4" (120.65mm)
+
+* Archie Radar
+  - AN/APS-13 (1939-1945), aka RT-34, "Monica" Mk.7, SCR718
+  - +/- 45deg vertical, 30 deg horizontal
+  - Tx and Rx in single unit
+  - 415MHz, 30MHz IF
+  - 200-800 yards
+  - 27.5V @ 3.5A
+  - 300-450 pps, 400nsec Pulse Width
+  - 200W peak pulse power
+  - four redundant units
+    * required two to agree below critical altitude
+  - mechanical system as backup
+
+* Exploding-Bridgewire Detonator (EBW)
+  - charge up a capacitor with a battery and then discharge it through the wires
+  - cylindrical housing with high explosion at the top end
+    * Cambrick tubing
+  - two wires (radially) connected through the bottom end
+  - single detonator per outer lens
+  - 1773 EBW detonators used in Fat Man device
+    * two "horns" attached to single booster charge
+      - detonated 32 explosive lens units
+      - wanted redundancy due to high failure rates in tests
+  - fine wire in contact with explosive
+  - high-voltage, high-current, low-impedance electrical source (capacitor)
+    * oil-filled, mylar-foil, or ceramic
+    * low-inductance, high-capacitance, high-voltage
+    * 1uF @ ~5KV, peak currents between 500-1000A
+  - can generate high-voltage with Marx generator
+  - need switch to reliably and consistently generate start pulse
+    * can use: thyristors, spark gap, krytron, etc. as switch
+  - wire is vaporized in a few microseconds
+    * vaporizes in a few microseconds, stddev O(10)nsec
+    * heating rate is so fast that liquid metal can't flow away and so it vaporizes
+      - causes resistance to rise as it gets hotter
+      - creates an arc in the metal vapor
+        * leads to drop in resistance and sharp spike in current
+        * creats a shock wave
+      - needs >=100A/usec
+    * blasting caps just heat the wire, this vaporizes the wires
+      - function of how quickly the wire heats up
+      - subject to change based on minor electrical variations in the wiring
+      - takes O(1-10)msec to detonate
+  - only high-current, fast pulse can trigger EBWs
+  - generates a shock and heat that detonates the high-explosive
+  - required heavy cables to supply high-voltage and high-current
+    * low impedance/voltage drop
+    * coax
+  - typical explosives detonate at 7-8 Km/sec, 7-8 m/msec
+    * <=100ns EBW, at most 1mm difference in detonation wave
+  - EBWs are highly regulated
+  - normal blasting caps are subject to being triggered by stray currents (from RF?)
+  - EBW detonators don't use primary explosives
+    * e.g., lead azide, which is sensitive to static discharge
+  - bridgewire is typically gold or platinum (or an alloy of both)
+    * 0.038mm in diameter and typically 1mm long (can be from 0.25mm to 2.5mm)
+  - commonly uses PETN with RDX/PBX/tetryl pellet as booster
+  - distribution of detonators
+    * 8x per equatorial segment (5x)
+    * 10x per front polar cap
+    * 14x rear polar cap
+    * 64x total
+  - Aluminum-6064
+  - length: 2.5" (63.5mm)
+  - diameter: 1.125" (28.575mm)
+  - Chimney Sleeves
+    * brass inserted into 2" (50.8mm) hole in Dural Sphere
+  - small square-cut circular hole in apex of outer HE lens block
+    * thin cork pads under each Chimney glued to each lens block with cement
+  - small flat metal leaf spring holds detonator in place
+  - 10" (25.4mm) diameter rubber pads surrounding each detonator
+    * needed to make sure the detonator position doesn't shift
+      - due to temperature changes, vibration, or oscillation
+    * pads press down on both detonator Chimney and lens itself
+    * pads glued in place on the interior surface of the Dural Sphere
+    * pads are slightly thicker than the adjacent cork lining
+
+* X-Unit (Firing Set)
+  - contents
+    * capacitors
+    * four [two?] low-inductance triggered spark-gap Switches
+  - effectively duplexed
+    * two sub-units, each with 32 caps and two spark-gap switches
+    * two coax cables go to each EBW detonator -- one from each sub-unit
+  - one-piece Dural tub bolted to B Plate
+  - B Plate mounted on cone that is attached to the forward/top polar cap
+    * 10 bolts to connect cone to polar cap
+  - diameter: 32" (812.8mm)
+  - depth: 8" (203.2mm)
+  - backplate (B Plate): 0.5" (12.7mm)
+  - sealed with large O-ring, evacuated air (reduce arcing of HV)
+  - Cone
+    * several pieces of aluminum sheet riveted together
+    * later models used 0.20" one-piece stamped aluminum sheet
+  - Power Supply
+    * Bendix MkII phase inverters and step-up transformers
+    * charged 64 Sprague 1uF capacitors
+      - in four boxes inside the X-Unit
+    * use inverter on plane until right before dropping
+      - then four banks of Willard NT-6 6V lead-acid batteries took over
+        * 4" (101.6mm) x 2" (50.8mm) x 3" (76.2mm)
+  - inverters, transformers, and batteries mounted to the A Plate
+    * attached to the inside of the nose cap opening
+      - diameter (nose cap opening): 29.9" (759.46mm)
+  - Triggered Spark-Gap
+    * ~2" (50.8mm) long tube, 1" (25.4mm) in diameter
+    * thick glass, electrodes at each end and trigger in the middle
+    * 2atm of Nitrogen
+    * spontaneous breakdown: ~15kV
+    * send 5.6kV pulse to detonators
+  - <see patent>
+
+* Trigger Circuit
+  - <pull-out wire timer>
+  - <baro>
+  - <4x archie radars>
+  - <trigger logic takes inputs from four (redundant) radars, sends to spark units>
+  - <where were the capacitor banks?>
+
+* Trinity Test Instrumentation
+  - two top-hats next to each detonator
+  - Serial and Parallel switches connected to each top-hat
+    * Serial coax is ?, Parallel coax is ? [dark/light]
+  - mux boxes, two on either side of the bottom polar cap
+    * 32 coax connections on each box
+    * each box has four alternating rows of 8 dark and 8 light coax
+
+* Components
+  - Beryllium (Urchin Initiator)
+    * solid sphere of Be-9 [8mm]
+    * Nickle plated, then Gold plated, then Polonium-210 deposited
+  - Beryllium (Urchin Shell)
+    * two hemispheres [21.59mm]
+      - with steps cut inside -- Visgin or milled
+    * Visgin document
+      - 15 parallel, wedge-like groves on inner surface
+      - radius of the hollow beryllium sphere [1.0?cm (0.39")]
+      - radius of the base of the wedge-shaped groove [0.40?cm (0.157")]
+      - radius of the top of the wedge-shaped groove [0.609cm (0.24")]
+      - radius of the solid beryllium ball [0.40?cm (0.156")]
+    * milled (from personal description to JCM)
+      - "inside hollowed out by boring steps of decreasing radius using a series of end-mills"
+      - "result looks like a 'theater in the round,' with circular steps cut in each hemisphere"
+      - "Beryllium is then flash-coated with Po-210 on the steps"
+      - solid Beryllium ball [12mm?]
+      - <likely to have choosen Imperial dimensioned end mills>
+    * Nickle plated, then plated with [4-mil] layer of Gold
+      - stepped inside has 30-curie layer of Polonium-210 deposited
+  - Plutonium (Core/Pit)
+    * two hemispheres of Plutonium [91.95mm]
+      - cavity inside hemispheres for the Urchin [.85" (21.59mm)]
+      - angled groove inside hemispheres [?dims?]
+    * triangular Plutonium ring
+      - fits inside the hemispheres' goove, aligns hemispheres
+      - [?dims?]
+    * Nickel plated Plutonium [0.0005" (0.0127mm) Ni layer]
+      - Gadget was plated in Silver (Ag)
+    * Gold gasket between the hemispheres [~0.1mm]
+      - to prevent pentration of shock wave jets that could prematurely activate the initiator
+      - Gold Foil (dimpled or flat?)
+        * [0.1-0.125 micrometers (0.0001-0.000125mm)]
+
+  - Uranium [aka Tubealloy, U-238] (Slug, Tamper)
+    * 
+  - Gold foil (between ? & ?)
+  - Boron 10 Plastic (between Tamper and Pusher)
+    * [1/8" 3.2mm] layer of neutron-absorbing enriched boron-10 bonded with acrylic thermoplastic
+      - applied to the outside surface of the tamper
+  - Aluminum (Pusher)
+  - Felt (between Pusher and Booster Blocks)
+  - Baratol Slow Explosive (Explosive Lenses)
+  - Baratol Fast Explosive (Explosive Lenses and Boosters)
+  - Brass Detonator Chimney Sleeves
+  - Cork (around all Explosive Lenses)
+  - Dural (around cork liner)
+  - Steel (around entire assembly)
+  - Mild Steel (nose cap attachment ring)
+  - Aluminum (Tail Assembly)
+  - Micarta (rubbing blocks on upper forward side edges of the Tail Assembly)
+
+* Materials
+  - Gold-plated Beryllium-9 (Be-9)
+  - Polonium-210 (Po-210) deposited on Beryllium and Gold-plated
+  - Gold (Au) foil
+  - Silver-/Nickel-plated Delta-Phase Plutonium-240 (Pu-240)
+  - Uranium-238 (U-238) sphere with a central plug
+  - Boron-10 (B-10) bonded with acrylic plastic, applied to the outside of the tamper
+  - Aluminum (Al) ????
+
+* Color of Material
+  - Beryllium
+    * silver-white or steel-gray metallic element
+    * appears as a light-colored metal with a silvery sheen
+    * described variously as white-gray or steel gray in different sources
+  - Polonium
+    * silvery-gray metal
+    * when freshly prepared, it can appear as a gray-black powder
+    * when vacuum-sublimed, it has a bright, silvery appearance
+  - Gold
+  - Plutonium
+    * silvery-white with a slight golden hint
+    * lustrous and metallic
+  - Uranium
+    * silvery-white or silvery-gray metallic element
+    * when pure and freshly prepared, it has a bright, silvery appearance
+    * when exposed to air, uranium metal quickly develops a dark layer of uranium oxide on its surface
+      - this oxidation process can cause the metal to appear as a spalling black oxide coat
+  - Boron 
+    * brown plastic
+  - Aluminum
+    * ???
+
+* Misc
+  - the top of the physics package is oriented towards the tail
+    * imagine the entire unit facing nose down, the polar top cap is up
+  - it is unclear how the physics package was fastened to the outer casing
+    * seems like there are mounting flanges on bomb versions
+  - lens based on 78:47 detonation-speed ratio and 10cm between EBW and Slow Explosive Lens (Baratol)
+  - half of the bolts were left out of one of the Trinity casing's flange
+  - FatMan had detcord triggered by contact fuses surrounding the Nose Cap
+  - FatMan was painted with yellow Zinc Chromate primer paint
+    * joints were sealed with spray-on black liquid asphalt
+  - top front of FatMan had 3x rods and 2x plugs at 12 o'clock above the Nose Cap
+    * rods were ?
+    * the two plugs were first Green Safing Plugs
+      - then replaced in flight with Red Arming Plugs
+  - FatMan has JANCFU (Joint Army/Navy/Civilian Fuck Up) stenciled in black on the Nose Cap
+    * and a bomb outline with FM-1 (FatMan-1) below it
+  - Pumpkin Bombs first used as concrete-filled inert training bombs
+    * later used over Japan filled with HE
+    * used to train bomber crews
+  - Mark-5
+    * smaller, lighter, implosion weapon, successor to FatMan
+    * high efficiency (3x yield of FatMan)
+    * fission material inserted through doors in the casing before dropping
+      - In-Flight Insertion (IFI)
+    * open-pit weapon
+    * eight MC-300 impact fuses and two Horn Antennae
+    * core: 99.1cm diameter, 193cm length
+    * entire munition: 111.8cm and 335.3cm, ~1090-1200kg
+    * 6-120kt yield.
+    * 140 were produced
+
+* Glossary
+  - Archie: 
+  - Baratol: 
+  - Baroswitch: 
+  - Barotube: 
+  - California Parachute: 
+  - Christy Gadget: solid core implosion design used in Trinity and FatMan
+  - Composition-B: 
+  - Duralumin (aka Dural):
+  - Explosive Bridge Wire (EBW) Detonator: 
+  - FatMan: Y-1561 device, used on Nagasaki, first of ? built as weapons
+  - Pusher: 
+  - Slug: 
+  - Spark Gap ?:
+  - Tamper:
+  - Tamper Plug: 
+  - Trinity Test: Christy Gadget test
+  - Tuballoy: 
+  - Urchin: 
+  - Y-1561: drawing number for device used in Trinity Test and Nagasaki
+  - X-Unit: 
+
+* Comments:
+  - The brass-colored objects represent the detonators, with silver-colored cones representing strain gauges used to measure the expansion of the aluminum sphere to determine deficiencies should the device not work as planned.
+  - John Coster-Mullen (Amazon Book Review)
+1.0 out of 5 stars Critical Mass: Absolute Nonsense!
+Reviewed in the United States on September 26, 2005
+After reading Carter Hydrick's highly inaccurate account of how the plutonium bomb functioned, and after reading the outstanding critique by Robert Norris, I feel compelled to make some comments of my own. Using the oft-quoted premise that extraordinary claims require extraordinary evidence, Mr. Hydrick's extraordinary claims are not backed up by a similar degree of evidence. In fact, I had more than a good laugh or two while I was reading his book. Since the comments made by Norris, as General Grove's biographer, more than effectively refuted Hydrick's claims about the use of the German uranium from U-234, I will confine my comments to his claims about the bombs. He makes sweeping conclusions about the bomb's mechanisms based on his faulty analysis of numerous historical documents along with citing excepts from the Harlow Russ book Project Alberta. I knew Russ and conducted both telephone and in-person interviews in addition to receiving numerous long and detailed correspondences from him.
+
+The linchpin of Hydrick's convoluted theories about the bombs involves his claim that the infra-red detonators that came from the U-234 German submarine were used in the implosion device. He describes the "detonator chimneys" that Russ mentioned in his book along with the use of "hypodermics" to vent radiation from the plutonium core and that somehow these were used to "allow the free flow of light waves throughout the device." He continues, "...the new system allowed waves-including infrared waves-to race at the speed of light through the "detonator chimneys" and "hypodermics" to the other infrared fuses to "simultaneously" ignite them all" and these all "...were used to compress the plutonium core at the speed of light and thus creating a very powerful explosion."
+
+This is absolute nonsense and shows a complete lack of even the most basic knowledge of how these weapons functioned, or for that matter, even a rudimentary knowledge of physics itself!
+
+The "detonator chimneys" as Russ described them, were actually nothing other than small lengths of brass tubing that were glued to the outer surface of each explosive lens in the implosion device. Each of the 32 Model 1773 Exploding Bridge Wire (EBW) detonators was then inserted into a chimney since the sole purpose of these were simply to properly align each EBW in the exact center of the outer surface of each lens. The "hypodermics" mentioned by Hydrick had a completely different, and equally benign, purpose. The stainless steel hypodermic tube was carefully inserted through a hole in the outer Dural shell that housed the implosion components and then pushed down far enough in between the lenses and the inner explosive charges so that it touched the so-called "nuclear pit" at the very center of the implosion device. A 0.040 inch diameter manganese wire was then inserted into this hypodermic tube and withdrawn every six hours to check to see if it had acquired any induced radioactivity. If it had acquired any, this meant that the delicate and tiny Polonium-Beryllium initiator ("Urchin") inside the center of the plutonium core had somehow ruptured due to rough handling during the assembly process and was emitting neutrons which would cause the plutonium to pre-detonate resulting in a fizzle, or failure of the implosion process.
+
+Hydrick is correct when he details the numerous and continuing problems with the development of the detonator. Following Groves' prudent guidelines about multiple, redundant programs for just about everything connected with the Manhattan Project, the scientists were developing two completely different designs (EBW and spark-gap) at the same time in hopes that one of them would eventually work properly with the desired degree of simultaneity. While Luis Alvarez was the detonator group leader, the actual day-to-day design and development of the EBW and spark-gap detonators fell to Larry Johnston and Robert Alldredge. Johnston, not Alvarez, holds the patent for the EBW. There were also problems and delays in the design and production of the x-units that set off the detonators. Some of these delays were certainly compounded by the fact that Raytheon, like many of the sub-contractors, was not informed of the top secret nature of the unit so as not to draw undue attention and therefore treated it as a normal, non-rush production wartime component. In fact, the x-units designs were being constantly tweaked and changed by Los Alamos both before and after the Trinity test. This even resulted in a final drop test at Tinian of the revised unit on August 8th, the day before the Fat Man implosion device was dropped on Nagasaki. However, as every other historian even remotely familiar with these weapons will tell you, both the x-units and the EBW detonators worked perfectly on both the Trinity and Nagasaki devices and definitely did not involve in any way the use of any infra-red proximity fuses as postulated by Hydrick.
+
+Mere light waves, even infra-red ones generating simple and extremely weak electromagnetic radiation moving at the speed of light would not have exerted any pressure whatsoever on the plutonium. It was, in fact, the 5,600 volts of electricity generated by the 64 capacitors in the x-unit that caused the bridgewires in the EBW detonators to vaporize. It was the simultaneous explosion of these 32 EBW detonators that started the massive and powerful imploding detonation wave moving at almost 26,000 feet-per-second through the 5,300 pounds of specially shaped high explosives surrounding the nuclear pit that ultimately compressed the plutonium core and caused the nuclear chain reaction.
+
+Hydrick also spends a lot of time discussing the amount of enriched uranium that was used in the Little Boy uranium gun-assembled nuclear device dropped on Hiroshima. The total amount of uranium that was finally used in Little Boy was 64.15 kilograms, which was for all intents and purposes the entire quantity of enriched uranium that had been produced by Oak Ridge in a full year of round-the-clock production starting in July 1944. As Norris pointed out, none of that uranium was used at Hanford in the production of the plutonium used in both Trinity and Nagasaki devices.
+
+I could go on with even more elaborate explanations, but it simply isn't worth the effort. In the end, it is my considered opinion this book is a colossal waste of the reader's time and I would not recommend it. I'd give it a rating of zero stars, but Amazon will not allow lower than one star. This unfortunate book falls into the same fiction category as Peter Vogel's preposterous claims that the tragic 1944 Port Chicago explosion was actually a coldhearted, murderous test by Los Alamos scientists of a uranium hydride nuclear weapon and the similarly far-fetched claims by Robert Wilcox and others, that the Japanese constructed and possibly exploded their own domestically-produced nuclear weapon in the closing days of WWII.
+
+If the author had actually been able to talk to Harlow Russ before he died, Russ would have immediately set him straight about his far-fetched ideas and this book would never have been written 
+  - ?
+Nuclear weapons use arrays of explosive lenses to change several nearly spherical diverging waves into one spherical converging wave. It then uses converging waves to collapse various shells (tampers, reflectors, pushers, etc.) and finally compresses the fissile material core (pit) to an immediate critical state. These are typically machined from plastic bonded explosives and inert inserts called waveshapers. Waveshapers are often dense foam or plastic, but many other materials are available. Other, mostly older explosive lenses do not include waveshapers, but employ two explosive types with significantly different detonation velocities (VoD) ranging from 5 to 9 km/s. . Using slow and fast explosives again creates a spherical converging detonation wave, compressing the physics package. The original Gadget device used in the Trinity experiment and the Fat Man dropped on Nagasaki used Balatr as the low VoD explosive and Composition B as the high velocity explosive, but other combinations can be used. The illustration on the left represents a cross-section of a segment of a polygonal wedge. Combine the wedges to form a spherical device. The leftmost detonating bridgewire detonator creates a hemispherical detonation wave through a high velocity outer charge. (It's hemispherical because the detonating bridgewire acts as a point detonator.) When the wave is transmitted to a precisely shaped internal explosive, it forms a new spherical wave around the object. The successful functioning of this device depends on the simultaneous initiation of the waves in each segment, the uniformity and precision of the wave velocities, and the accuracy and precision of the shape of the interface between the two explosives. . A series of experiments were conducted in 1944 and 1945 during the Manhattan Project to develop a lens that produced satisfactory implosion. One of the most important tests was a series of RaLa experiments. Initially, 32 "point" assemblies were used (each equipped with a pair of explosive bridgewire detonators). After that, 92 "point" assemblies were tried with the goal of obtaining a smaller assembly with better performance. Finally, successful tests of the Swan nuclear explosive device allowed assembly at two "points". Using an "air lens" system in addition to a molding agent, the Swan is the basis for all U.S. successor designs, whether nuclear or thermonuclear, and features small size, light weight, and exceptional reliability and safety. , was minimal. Strategic material for any design.
+  - "A last minute decision was made to remove the Primacord [and AN219 contact fuses] one the F-31 [combat] unit"
+    * done because they were confident they were not needed.
+    * so, caps were installed in the fuse ports in the case
+  - Y-1561 sphere assembly needed 90 bolts
+  - F-31 was the combat unit
+  - normally gap of ~0.1875" (4.7625mm) between blocks of HE
+    * had to compress the Cork Liner a lot by torquing down the shell bolts
+  -  Design
+    * From JCM (pg 414):
+      - 181 Personal communication from Raemer Schreiber to the author dated 1/22/96 (1.9 cm or 0.7" diameter); Visgin, V.P. The Visgin document stated the initiator diameter to be 2.0 cm (0.79"). Robert Christy told the author on 6/16/02, "Everything was made to be a good fit." A source told the author that postwar LANL documents mention a "standard 0.8-inch diameter ball-polonium" initiator. The May 1, 1946 Los Alamos report LA-555 mentions that the thin-walled beryllium neutron source-sphere used inside the Be hemispheres had a 0.830" 0.D. The Monthly Progress Report of the Chemistry and Metallurgical Division, LAMS-352, February 1, 1946, p. 17, mentions that "Molds are being prepared for casting 0.8 inch diameter spheres of various metals, to be used for nuclear measurements." The interior cavity in the Pu hemispheres was about 0.85" in diameter. Since both the Urchin and the Pu core thermally expanded due to the heat generated by their alpha-particle emissions, the slightly smaller 0.8" diameter initiator (according to sources) "fit snugly" inside the Pu core. Current nuclear devices utilize external neutron initiation, which allows the plutonium core to be machined shapes such as a sphere, cylinder, or ovoid. The dimensions specified in the Visgin document for the Urchin initiator are as follows:
+        * Radius of the hollow beryllium sphere 1.0 cm (0.39")
+        * Radius of the base of the wedge-shaped groove 0.40 cm (0.157")
+        * Radius of the top of the wedge-shaped groove 0.609 cm (0.24")
+        * Radius of the solid beryllium ball 0.40 cm (0.156")
+      However, one source disputed the Visgin description and told the author on 5/ 1 9/08, "The urchin is machined from two beryllium hemispheres. The inside is hollowed out by boring steps of decreasing radius using a series of end-mills. The result is what looks like a 'theater in the round,' with the circular steps cut in each hemisphere. The beryllium is then flash-coated with Po-210 on the steps." Yet another source confirmed to the author in 2015 the Visgin descriptions are accurate.
+  - Fat Man Urchin (from JCM footnotes):
+    * Core internal cavity diameter (for the initiator/urchin): 0.85"
+    * Urchin outer diameter: 0.8"
+    * Urchin fits "snugly" into Core after thermal expansion of both
+    * Beryllium hemispheres outer diameter: 0.83"
+    * "two Beryllium hemispheres"
+      - "inside hollowed out by boring steps of decreasing radius using a series of end-mills"
+      - "result looks like a 'theater in the round,' with circular steps cut in each hemisphere"
+      - "Beryllium is then flash-coated with Po-210 on the steps"
+    * source: "I never saw the final design but if it had 'parallel' grooves they must have been like latitudes, the only way they could be machined to be parallel"
+  - JCM thinks Fat Man Pu hemispheres were 3.62" in diameter
+    * he doesn't think that his includes a 0.0005" (0.0127 mm) layer of nickle
+  - Urchin in USSR Copy Device
+    * inside out: 
+      - solid Beryllium sphere (1 cm), plated with Polonium, and then Gold (0.1 mm)
+        * BE sphere radius: 4 mm (diameter=8 mm, 10 mm after thermal expansion?)
+      - hollow Beryllium sphere, inner grooves plated with Polonium, and then Gold (0.1 mm)
+        * "inner surface are wedge-shaped grooves"
+        * "planes of all the grooves are parallel to one another"
+    * 15x "wedge-shaped grooves"
+      - radius of base of wedge-shaped groove: 4 mm
+      - radius of apex of wedge-shaped groove: 6.09 mm
+
+[I think that the USSR guys used a cast Be sphere with grooves and the US used a BE sphere that used different sized/depth end mills.]
+
+[
+Photogrametry
+  * Images: Code No. 4021 and Code No. 4024
+  * Bolts and Nuts
+    - 1/2" threaded bolts
+    - 1" x 1/2" bolt heads
+    - 1" x 1" nuts
+  * Polar Caps
+    - top cap flange looks >1" (1 1/4"?) -- might be temp cap, not real thing
+  * Equatorial Segments
+    - 1" top/bottom flanges
+      * large filet from almost edge of flange to 1 1/2" below flange lip
+    - 2" side flanges
+      * cut down to 7/8" at top/bottom flange
+      * some have Mounting Blocks attached
+    - 8x bolts, four pairs at edges of segments
+      * 2 1/2" between bolts in a pair
+      * 4 3/4" between pairs of bolts
+    - top Equatorial Segment (with Lift Handle)
+      * has raised fore/aft and left/right ribs
+      * has two Mounting Blocks
+    - side Equatorial Segments
+      * one pivot post (on the Y axis) 
+      * one Mounting block (in the middle)
+    - Mounting Blocks
+      * 3 1/2" by 3 1/2" and 2" high
+      * 3/4" hole center top, bottom of hole at 1" midline
+
+The dihedral angle between two hexagonal faces is 138o 11' and the angle between a hexagonal face and pentagonal face is 142o 32'. The angle between the arms that make up the hexagonal faces is 120o and the angle between arms of pentagonal faces is 108o.
+]
+
+* Christy Gadget Colors
+  - Urchin
+    * Beryllium Sphere
+      - Beryllium Sphere: [10]
+      - Polonium Coating: [7]
+      - Gold Coating: [9]
+      - Nickel Coating: [10]
+    * Polonium Sphere
+      - Top Hemisphere
+        * Polonium Coating: [7]
+        * Gold Coating: [9]
+        * Beryllium Top Hemisphere: [10]
+      - Bottom Hemisphere:
+        * Polonium Coating: [7]
+        * Gold Coating: [9]
+        * Beryllium Bottom Hemisphere: [10]
+  - Core
+    * Forward Plutonium Hemisphere: [1]
+    * Aft Plutonium Hemisphere: [1]
+    * Plutonium Ring: [1]
+  - Tamper
+    * Plug
+      - Top Half Tuballoy Cylinder: [2]
+      - Bottom Half Tuballoy Cylinder: [2]
+      - Forward Tuballoy Cap: [2]
+      - Aft Tuballoy Cap: [2]
+      - Forward Tuballoy Cap Bolt: [2]
+      - Aft Tuballoy Cap Bolt: [2]
+      - Forward Tuballoy Filler: [2]
+      - Aft Tuballoy Filler: [2]
+    * Tuballoy Sphere: [2]
+  - Plastic Shell
+    * Left Boron Plastic Shell: [3]
+    * Right Boron Plastic Shell: [3]
+    * Cap Boron Plastic Shell: [3]
+  - Pusher
+    * Forward Aluminum Pusher Hemisphere: [10]
+    * Aft Aluminum Pusher Hemisphere: [10]
+    * Bottom Filler: [10]
+    * Top Filler: [10]
+  - Pusher Felt Pad
+    * Cap Pusher Felt Pad: [8]
+    * [1-6] Pusher Felt Pad: [8]
+  - Booster Charges
+    * [1-20] Pentagonal Comp-B Booster Charge: [4]
+    * [1-12] Hexagonal Comp-B Booster Charge: [4]
+  - Booster Charges Felt Pad
+    * Cap Pusher Felt Pad: [8]
+    * [1-6] Pusher Felt Pad: [8]
+  - Explosive Lenses
+    * [1-20] Pentagonal Baritol Lens Part: [4]
+    * [1-20] Pentagonal Comp-B Lens Part: [4]
+    * [1-12] Hexagonal Baritol Lens Part: [5]
+    * [1-12] Hexagonal Comp-B Lens Part: [4]
+  - Cork Lining
+    * Forward Cap Shell Cork Lining: [6]
+    * Aft Cap Shell Cork Lining: [6]
+    * [1-5] Equatorial Shell Cork Lining: [6]
+  - Duralumin Shell
+    * Forward Cap Duralumin Shell: [10]
+    * Aft Cap Duralumin Shell: [10]
+    * [1-5] Equatorial Duralumin [10]
+
+* Colors:
+  1) Plutonium
+    - Description: bright silvery appearance at first and takes on a dull gray, yellow or olive green tarnish when oxidized in air.
+    - Filament Color:
+    - 
+  2) Tuballoy (Natural Refined Uranium)
+    - Description: silvery gray metallic; corrodes to a spalling black oxide coat in air. Looks shiny dark in B&W images.
+    - Filament Color:
+    - 
+  3) ?
+    - Description: amorphous: brown powder; crystalline: silvery to black, oxide: white powder
+    - Filament Color:
+    - 
+  4) ?
+    - Description: 
+    - Filament Color:
+    - 
+  5) ?
+    - Description: 
+    - Filament Color:
+    - 
+  6) ?
+    - Description: 
+    - Filament Color:
+    - 
+  7) ?
+    - Description: silvery-gray metal
+    - Filament Color: 
+    - 
+  8) ?
+    - Description: matte gray
+    - Filament Color: ?
+    - 
+  9) Gold
+    - Description: metalic, shiny/silk
+    - Filament Color: 
+    - 
+  10) Silvery-White
+    - Description: 
+    - Filament Color:
+    - 
+
+* Links
+  - https://nuclearweaponarchive.org/Nwfaq/Nfaq8.html
+  - https://www.bulletpicker.com/nose_-impact_-an-mk-219.html
+  - https://www.printables.com/model/14560-fat-man-atomic-bomb-display-model/files
+  - https://alexwellerstein.com/writing/books/restricted-data/photos/
+  - https://en.m.wikipedia.org/wiki/File:Gadget-schematic-crosssection.png
+  - https://ahf.nuclearmuseum.org/ahf/history/resources/
+  - https://www.atomicarchive.com/resources/documents/trinity/assembly.html
+  - https://twitter.com/Casillic/status/1032425883246764033/photo/1
+  - https://www.lanl.gov/museum/news/newsletter/2020/2/lanl-2.php
+  - https://nuclearweaponarchive.org/Nwfaq/Nfaq8.html
+  - https://youtube.com/shorts/UD6lswGriZg?si=cZvEqaQgzAP93PmB
+  - https://blog.nuclearsecrecy.com/wp-content/uploads/2012/11/1946-Soviet-archives-Trinity-gadget.jpg
+  - https://www.printables.com/model/14560-fat-man-atomic-bomb-display-model/files
+  - https://www.newyorker.com/magazine/2008/12/15/atomic-john
+  - https://nuclearweaponarchive.org/News/Voprosy2.html
+  - http://www.kilroywashere.org/004-Pages/Trinity/Trinity.html
+  - https://medium.com/@salilssharma/fat-man-and-nagasaki-cc491bc93fee
+  - https://blogs.loc.gov/loc/2023/07/oppenheimer-the-librarys-collection-chronicles-his-life/
+  - https://www.youtube.com/watch?v=sjB7iiwxVlM
+  - https://www.youtube.com/watch?v=nN5q8i-kQj0
+  - https://www.history.navy.mil/content/history/museums/nmusn/explore/photography/wwii/wwii-pacific/bombardment-japan/bombs-atomic/fat-man-nagasaki.html
+  - https://nukecompendium.com/weapons/mk3/
+  - 
+
+* Bainbridge Report on Trinity
+  - Model 2 Implosion Bomb used at Trinity, Nagasaki, and Bikini
+  - expected 4KT, range of .1-10KT, safety measures for up to 200KT
+  - Asimultaneity (X-7)
+    * special switches and circuits, recording at W-800
+    * "testing of HE-actuated switches"
+  - they drove around with the shell and a few lenses installed
+    * they didn't have enough lenses at the time
+    * determined no damage to the lenses by trucking around
+    * did complete disassembly fter driving around
+    * checked for chips, cracks, etc.
+  - wanted to use grease to fill gaps between lenses
+    * decided it was a bad idea
+    * also, newer lenses had insignificant air space between lenses
+  - inspection of assembly of charges done by removing each polar cap
+    * also special case with 1" holes at intersection of each lens
+  - all holes sealed and the unit was wrapped in Butvar
+    * Butvar is a waterproof wrapping material
+  - used dummy trap door plug until replaced at top of the tower
+  - sealed up casing holes with Scotch tape before shipping to tower
+  - final assembly in tent at base of tower
+    * removed polar cap and dummy plug
+    * installed special polar cap and funnel
+    * insert active materials, covered dummy plug hole with clean cloth
+    * turned on side to do insertion of explosive lenses and plub
+    * inserted hypodermic needle between lenses
+    * had shim paper to ensure tight fit
+    * returned to polar cap up position using tongs
+    * replace special polar cap with regular polar cap
+    * turn so polar caps are in horizontal plane and lug is up
+    * place sphere in special cradle and attach firmly
+    * remove tongs, chains, etc. -- clear deck
+    * left tent in place until morning
+  - HE vacuum cup was useful in handling HE charges
+  - lift sphere to top of tower
+  - install X-Unit, cables already attached to the cone
+  - detonators staked to coax
+  - detonators placed in correct position wrt "informer switches"
+  - X-unit and Informer Unit safed
+  - detonator springs provided by X-6
+    * maybe the fingers to keep the detonators in place?
+    * yes, leaf springs
+  - no live electrical connections to X-Unit or Informer Unit on tower
+    * all testing must be done before sphere is lifted to tower
+  - Detonator Asimultaneity: detonation wave operated switches and fast scopes
+    * K. Greisen and E.W. Titterton
+  - most of the tests failed due to blast, radiation, etc.
+
+* EGG Handout
+  - O'Keeffe
+    * only got working firing sets in Tinian
+    * discovered connector installed backwards at last minute in Tinian
+      - soldered an adaptor
+    * was part of Philip Morrison's team to see if Japan had a nuclear program
+      - report turned over to Karl and Arthur Compton
+      - further along than Germany, but also lacked resources to be successful
+    * firing sets were derived from HV discharge systems for aerial photography
+  - MIT wanted to return to pure research after the end of the war
+    * EGG took over continuing some of the government stuff
+
+* terminology
+  - at Los Alamos they refered to isotopes of elements by a code
+  - 28: Uranium, element 92, isotope 238
+  - 25: Uranium, element 92, isotope 235
+  - 49: Plutonium, element 94, isotope 239
+
+* Explosive Lenses
+  - Composition B
+    * Fast-burning, uniform burning
+    * 60% RDX, 40% TNT, and small amount of wax as a binder
+    * 7,900 m/s
+    * outer layer of the lens system
+  - Baratol
+    * Slow-burning
+    * 76% Barium Nitrate, 24% TNT
+    * 4,900 m/s
+    * inner layer of the lens system
+  - polyhedral arrangement
+    * 32 lenses: 12 pentagonal, 20 hexagonal
+    * truncated icosahedron
+  - lens shape
+    * biconvex or plano-convex lens
+    * Comp B outer and Baratol inner layers
+
+* Nukey
+  - transform sub-critical mass of radius R_1 to critical-mass of radius R_2
+    * by way of a Shock-Wave Lens
+  - Truncated Icosahedron lens apparatus for implosion-type weapon
+    * almost spherical shell of radius R_L
+  - can be viewed as a nested group of smaller truncated icosahedra
+    * each lens element is either a hexagon or pentahedron pyramidal cone/fustrum of decreasing radius
+  - at the top of each lens there is an exploding-bridgewire detonator
+  - lens intersection with any plane normal to the radius will be a regular pentagon or hexagon whose symmetry group is either S_5 or S_6 respectively
+    * can be modelled in 2D exactly, and extended to 3D using principal symmetries of these two groups in three dimensions
+  - Fast explosive (Comp B) and slow explosive (Baratol)
+    * v_1: shock wave velocity of fast explosive
+    * v_2: shock wave velocity of slow explosive
+    * R_A is sub-radius of the fast explosive prior to the focusing lens
+    * R_B is inner radius of the fast explosive after the focusing lens
+    * R_A + R_B = R_L
+  - all of the vertices of the truncated icosahedron are placed on a sphere
+    * R_L = sqrt(9*theta + 10) = 4.956037318
+      - theta = ((1 + sqrt(5)) / 2) = 1.618033989
+  - Theta_1: half apical angle of hexagonal cone
+  - Theta_2: half apical angle of pentagonal cone
+????vvvvvvvvvvvvvvvvvvvv????
+  - r_h (radius of hexagons) = R_L * sin(Theta_1)
+  - r_p (radius of pentagons) = R_L * sin(Theta_2)
+  - r_h = 2
+    * all sub-triangles in hexagonal cones are equilateral
+  - r_p = sqrt(50 + 10*sqrt(5)/5) = 7.380524098
+????^^^^^^^^^^^^^^^^^^^^?????
+  - Theta_1 = arcsin(4 / sqrt(58 + 18*sqrt(5)))
+  - Theta_2 = arcsin(2*sqrt(50 + 10*sqrt(5)) / (5*sqrt(58 + 18*sqrt(5)))
+  - ApicalAngle_1 = 47.60035621 deg (Hexagonal Cone)
+  - ApicalAngle_2 = 40.15350256 deg (Pentagonal Cone)
+  - each cone has either five or six neighbors that behave exactly the same
+    * all detonations are synchronized
+    * shock-waves propagate only towards the pit, and do not cross lens boundaries
+      - they are canceled by the shock-waves of the neighboring cones
+  - (x(t), y(t)): shock-wave front at time t, detonation time = 0
+    * x(0) = 0 and y(0) = R_L
+    * prior to focusing: p(t) = v_1*t
+      - x(t)^2 + (y(t) - R_L)^2 = (v_1*t)^2 = p_1(t)^2
+  - to focus shock-waves, must satisify this equation:
+    * x(t)^2 + y(t)^2 = (R_L - v_1*t)^2 = p_2(t)^2
+  - p_1 describes shape of shock wave prior to focusing
+    * starting at detonator and moving towards the pit at the fast speed
+    * shockwave starts convex
+  - p_2 describes shape of shock wave after focusing
+    * shockwave needs to become concave at the pit
+  - Y_1: shape of slow explosive
+    * must go from satisifying first equation to second one
+  - boundary between fast and slow explosive is a Cartesian Oval
+    * for a plane wave, the shape is a hyperbola
+      - a hyperbola is a degenerate shape of Cartesian Oval
+    * Cartesian Oval
+      - defined by a linear combination of distances
+        * n*r_1 + m*r_2 = 1; with foci F_1 = (-1, 0) and F_2 = (1, 0)
+        * in a Cartesian Oval, 'n' and 'm' can be arbitrary values
+        * ellipse: n = m = 1
+          - the distance from the two loci to any point on the ellipse is constant
+        * hyperbola: n = -m
+        * limacon: n = 1
+      - plot with two foci and a value 'r' ~ 0.11
+        * e.g., for Hexagonal lens: loci at (0, 0) and (0, R_L)
+          - (Figure 9) R_L = 3 and r = ~0.11
+            * I think 'r' represents the progression from (0, R_L) to (0, 0)
+              - i.e., r goes from 0.0 to 1.0
+          - looks like an egg with the big part centered around the origin
+      - k is weighted distances from any point on the oval to the loci
+        * weighted by 'n' and 'm'
+        * weighted sums of distances from each loci to a point on the oval are constant
+    * distance from a point on the shockwave at p_1(0) to p_2(t_n) is constant
+      - k = m*p_1 + n*p_2
+      - fast speed * distance1(t) + slow speed * distance2(t) = constant
+      - each path starts at detonation point and goes to origin of pit
+      - all linear combinations of the fast and slow sub-paths must be constant
+      - contributions of each path are a function of location on the shockwave and time
+  - for Hexagonal Lens
+    * detonator at (0, R_L) and pit at (0, 0)
+      - k = m*sqrt(x^2 + (y - R_L)^2) + n*sqrt(x^2 + y^2)
+    * r is a constant, 0 < r < 1
+      - ?represents progression from one locus to the other (0,R_L) to (0,0)?
+        * ?r = 0: start at detonation point (0, R_L)?
+        * ?r = 1: end at center of pit (0, 0)?
+    * p_1 = r*R_L
+    * p_2 = (1-r)*R_L
+    * k = m*p_1 + n*p_2 = (m*r + n(1 -r))*R_L
+    * ratio of fast to slow explosive speeds: n/m = v_1/v_2
+      - v_1 = 8050 m/s
+      - v_2 = 4900 m/s
+    * make m = 1 (to simplify the math, normalize by the slow speed)
+      - n = 23/14
+    * make R_L = 3m
+      - k = sqrt(x^2 + y^2 - 6*y + 9) + (23/14)*sqrt(x^2 + y^2)
+      - k = (-27*r + 69)/14
+        * r=0.11: k=4.716428571
+    * shape Y is a function of:
+      - the speed of explosives (n/m)
+      - r and hence R_A and therefore R_B
+      - the exact shape is machined using iteration
+        * check: y(r, x_1) = R_B*cos(Theta_1)
+      - with x_1 in [0,1]
+        * y(r, x) = x*tan((PI / 2) - Theta_1): must hold at edge of cone
+      - 
+  - for Pentagonal Lens
+    * replace Theta1 with Theta2
+    * both Hexagonal and Pentagonal lenses must be synchronized
+      - i.e., CompB at Radius R_B = 2/3*R_L must ignite at same time for both
+      - Time to start CompB at R_B: t_B = (r * R_L)/v_1 + ((1/3 - r)R_L)/v_2
+    * can use same r and therefore the same Cartesian Oval for both types of lens
+      - just have to adjust height in Pentagonal lense
+      - Cartesian Oval is locus invariant under different cone boundaries
+    * for both types of lenses
+      - r ~ 0.11 
+      - n = 23/14
+
+
+* ?
+  - https://nuclearweaponarchive.org/Nwfaq/Nfaq4-1.html
+  - initial implosion lenses were done with lots of trial and error tests
+    * 20,000 explosions
+    * smaller scale successes failed at when scaled up
+    * lacked computational resources to model
+  - slow explosive doesn't have to be an explosive
+  - multiple detonation points create jets if not careful
+  - circular shock waves meet at a point
+    * parts of the lenses outside the circumscribed shockwave circle cause non-uniformities
+  - need regularly spaced detonation points, to avoid irregularities
+    * 20 facets of icosahedron are too few
+    * Trinity was 32 (20 hexagons and 12 pentagons)
+    * designs with 40, 60, 72, and 92 lenses were used
+      - use non-Platonic solids
+  - the smaller the apex angle, the greater the curvature of the shockwave
+  - for a given base area, the smaller the apex angle, the taller the lens, and the greater its volume
+    * size and weight needed to be minimized
+  - conical lens design used in Gadget
+    * simple form
+    * single design variable -- cone apex angle
+  - once converted to convex shockwave, it's weakened
+    * so need booster charge that is initiated by convex shockwave
+      - so continues convex, as opposed to point initiated detonation
+  - 
