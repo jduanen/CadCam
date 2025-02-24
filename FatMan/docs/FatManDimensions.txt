@@ -1,0 +1,100 @@
+* Physics Package Component (from inside out) Dimensions
+  - Neutron Initiator ("Urchin")
+    * smooth, hollow, two-piece, nickel-plated
+    * plated with 4-mil layer of gold, followed by 30-curie layer of Polonium
+    * inside this was a sphere of solid beryllium
+      - covered in gold and 20-curies of Polonium
+      - plated with nickel
+    * two types of interiors: ? and ?
+      - Visgin document
+        * 15 parallel, wedge-like groves on inner surface
+          - dimensions: ????
+      - ????
+        * dimensions: ????
+  - Air Gap (between Urchin and Core)
+    * filled with 0.013mm gold foil (dimpled or flat?)
+  - Plutonium Core
+    * two hemispheres, faces machined to fit without gap
+      - triangular ring along equator
+        * ring dimensions: ????
+    * outer diameter: 3.62" (91.948mm)
+    * inner void diameter: ????
+  - Air Gap between Core and Tamper Plug
+    * filled with gold foil for tight fit: 0.0005" (0.0127mm)
+  - Uranium Tamper Plug (aka "Slug", aka "Capsule")
+    * Slug dimensions:
+      - height: 8.75" (222.25mm)
+        * measured at apex of curved ends
+        * should be the same as the Tamper Sphere
+      - cylindrical diameter: 5" (127mm)
+    * dimensions and locations of screws and washers/cups: ????
+  - Uranium Tamper Sphere
+    * diameter: 8.75" (222.25mm)
+  - Boron-10 Plastic Shell
+    * between Tamper and Pusher
+    * two hemispheres glued to Pusher prior to assembly
+      - need to accomodate opening for the Slug
+    * hole for Slug: ~5" (127mm)
+    * inner diameter: 8.75" (222.25mm)
+    * thickness: 0.125" (3.175mm)
+    * outer diameter: 8.875" (225.425mm)
+  - Aluminum Pusher
+    * two hemispheres (horizontal joint)
+    * faces of hemispheres have an annular alignment groove
+      - top hemisphere: square bottom groove, 1" wide and 0.5" deep
+      - bottom hemisphere: raised ring, 1" wide and 0.5" deep
+      - just a few thous of clearance
+      - 2"-3" diameter aluminium Cups, match curvature of sphere
+        * pushed into groves and fastened with screws
+        * tap both halves (through split)
+        * Cups have larger hole than screw head that is tapped
+          - for disassembly -- screw in extraction tool
+          - screws are not interchangeable
+        * dimensions: ????
+    * a trap-door plug on the top hemisphere
+      - threaded and screwed in place
+      - two untapped holes for spanner to insert/remove
+        * holes are filled with aluminum and held in place with scotch tape
+      - dimensions: ????
+    * 5" (127mm) hole cored out vertically (perpendicular to split)
+    * inner diameter: 8.875" (225.425mm)
+    * outer diameter: 18.5" (459.9mm)
+  - Felt Pad
+    * between Aluminum Pusher and Comp-B Booster Block
+    * dimensions: assume 0.0625" (1.5875mm)
+      - same as the other one between the Explosive Lenses and Booster Blocks
+  - Fast Explosive Booster Block
+    * Composition-B
+    * dimensions: ????
+  - Felt Pad
+    * between Comp B Booster Block and Baratol Explosive Lens Element
+    * dimensions: assumed 0.0625" (1.5875mm)
+  - Slow Explosive Lens Element
+    * Baratol
+    * height: 8.875" (225.425mm)
+  - Fast Explosive Lens Element
+    * Composition B: 60% RDX, 39% TNT, 1% wax
+    * 10cm between EBW and slow explosive
+    * height: 9.0" (228.6mm)
+    * outer edge length: 11.25" (285.75mm)
+    * outer diameter (when fully compressed by Cork Liner): 54.375" (1381.125mm)
+  - Blotter Paper between explosive prisms
+    * glued with rubber cement to create gasket between HE parts
+    * air gaps > 0.03" (0.762mm) could create issues
+    * different thicknesses of blotter paper were used as shim stock
+    * used 3M tape for covering the edges
+    * dimensions: ????
+  - Cork Liner
+    * around all Explosive Lens Elements
+    * uncompressed thickness: 0.5" (12.7mm)
+  - Dural Shell:
+    * seven parts: two polar caps, five equitoral plates
+    * eight 3.0" (76.2mm) cubes cast into the five zone plates
+      - holes drilled through them to mount the forward/aft ballistic case ellipsoids
+    * two removable plates bolted 180deg apart on the sphere
+      - attached with four large bolts
+      - screwed into raised circular parts cast into two of the zone plates
+      - removed prior to attaching ballistic case halves
+    * lift lug
+      - same as on Little Boy
+    * inner diameter: 55.25" (1,403.35mm)
