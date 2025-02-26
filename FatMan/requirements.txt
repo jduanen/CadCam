@@ -1,4 +1,7 @@
+fast_simplification
 matplotlib
 numpy
+pyvista
 setuptools
 solidpython2
+trimesh
