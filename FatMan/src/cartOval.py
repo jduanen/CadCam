@@ -55,8 +55,8 @@ def cartesianOval(x, y, r, k):
     return np.abs(r*r1 + r2 - k) < 0.1
 
 def drawCartesianOval():
-    x = np.linspace(-1000, 1000, 1000)
-    y = np.linspace(-1000, 1000, 1000)
+    x = np.linspace(-300, 300, 1000)
+    y = np.linspace(-250, 750, 1000)
     X, Y = np.meshgrid(x, y)
 
     k = 1080  # Adjust this value to change the size of the oval
