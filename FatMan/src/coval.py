@@ -5,16 +5,25 @@
 # Generate and plot a Cartesian Oval that describes the interface between the
 # fast and slow explosive lenses in the Gadget.
 #
+#
+# Hexagonal Pyramid
+#  Vertices: base=6, apex=1, total=7
+#  Faces: 10 (depends?)
+# Pentagonal Pyramid
+#   Vertices: base=5, apex=1, total=6
+#   Faces: 8 (depends?)
 ################################################################################
 '''
 
 import itertools
 from math import acos, degrees, pi, sqrt, tan, sin, cos
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import art3d
+from matplotlib.patches import Ellipse
+from mpl_toolkits.mplot3d import art3d, Axes3D
 import numpy as np
 from pprint import pprint
 import stl_reader
+import trimesh
 
 
 PENTA_COLOR = "red"
@@ -122,30 +131,103 @@ def generateVertices():
         wireframeVis(vertices)
     return list(set(vertices))
 
-##wireframeVis(truncatedIcosahedronVertices)
-##facesVis(truncatedIcosahedronVertices)
+def drawEllipse():
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection="3d")
+    center = (0, 0, 0)
+    width = 5
+    height = 10
+    angle = 0  # degs
+
+    oval = Ellipse((center[0], center[2]), width, height, angle=angle, facecolor="none", edgecolor="blue")
+    ax.add_patch(oval)
+    art3d.pathpatch_2d_to_3d(oval, z=0, zdir="y")
+
+    ax.set_aspect('equal')
+    ax.set_xlim(-10, 10)
+    ax.set_ylim(-1, 1)
+    ax.set_zlim(-10, 10)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.view_init(elev=0, azim=-90)
+    plt.title("Ellipse in the XZ Plane")
+    plt.show()
+
+def drawOval():
+    a = 8  # semi-major axis
+    b = 10   # semi-minor axis
+
+    theta = np.linspace(0, 2*np.pi, 100)
+    phi = np.linspace(0, 2*np.pi, 100)
+    theta, phi = np.meshgrid(theta, phi)
+
+    x = a * np.cos(theta) * np.cos(phi)
+    y = a * np.cos(theta) * np.sin(phi)
+    z = b * np.sin(theta)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    surface = ax.plot_surface(x, y, z, edgecolor="red")  #, cmap='viridis')
+
+    ax.set_aspect('equal')
+    ax.set_xlim(-14, 14)
+    ax.set_ylim(-14, 14)
+    ax.set_zlim(-14, 14)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Surface created by spinning a Cartesian Oval around the Z-axis')
+
+#    plt.colorbar(surface)
+    plt.show()
+
+def drawCartesianOval():
+    # create a rectangular grid
+    x = np.linspace(-10, 10, 100)
+    y = np.linspace(-10, 10, 100)
+    z = np.linspace(-10, 10, 100)
+
+    # x,y are 2D arrays that represent coordinates in the horizontal plane
+    # z is a 2D array representing the height of each (x,y) point
+    theta = np.linspace(0, 2*np.pi, 100)  # aziumuth (XY) [0,2n]
+    phi = np.linspace(0, 2*np.pi, 100)    # elevation (Z) [0,n]
+    theta, phi = np.meshgrid(theta, phi)  # returns polar coordinate matrices from the vectors
+
+    # generate a circular base with x and y, and elevate with z
+    # a = b makes a sphere of that radius
+    a = 10
+    b = 10
+    x = a * np.cos(theta) * np.cos(phi)
+    y = a * np.cos(theta) * np.sin(phi)
+    z = b * np.sin(theta)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    surface = ax.plot_surface(x, y, z, edgecolor="red")
+
+    ax.set_aspect('equal')
+    ax.set_xlim(-14, 14)
+    ax.set_ylim(-14, 14)
+    ax.set_zlim(-14, 14)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('Surface created by spinning a Cartesian Oval around the Z-axis')
+
+#    plt.colorbar(surface)
+    plt.show()
+
 
 def run(options):
-    vertices, faces = stl_reader.read(options['stlFileName'])
-    pprint(vertices.astype(int))
-    pprint(faces)
-
-    #wireframeVis(vertices)
-    facesVis(vertices, faces)
-
-    '''
-    cartesianOval = lambda a, b, angle: [a * cos(angle), b * sin(angle)]
-    cartesianOvalX = lambda a, angle: a * cos(angle)
-    cartesianOvalY = lambda b, angle: b * sin(angle)
-
-    truncatedIcosahedronVertices = generateVertices()
-
-    ##normalized_vertices = [normalize_vertex(v) for v in truncated_icosahedron_vertices]
-    '''
+    #drawOval()
+    drawCartesianOval()
 
 def getOps():
     #### FIXME make CLI
-    opts = {'stlFileName': "./p0.stl"}
+    opts = {'stlFileName': "./p0.stl"}  # "./explLenses.stl"}
     return opts
 
 if __name__ == '__main__':
@@ -154,6 +236,47 @@ if __name__ == '__main__':
  
 
 '''
+    if False:
+        vertices, faces = stl_reader.read(options['stlFileName'])
+        pprint(vertices.astype(int))
+        pprint(faces)
+        #wireframeVis(vertices)
+        facesVis(vertices, faces)
+
+    #import pyvista
+    #mesh = stl_reader.read_as_mesh("./explLenses.stl")
+
+    #import trimesh
+    mesh = trimesh.load_mesh("./p0.stl")
+    #smesh = mesh.simplify_quadric_decimation(0.5)  # reduce by 50%
+    rotMat = trimesh.transformations.rotation_matrix(np.pi, [1, 0, 0])
+    mesh.apply_transform(rotMat)
+    facesVis(mesh.vertices, mesh.faces)
+
+##wireframeVis(truncatedIcosahedronVertices)
+##facesVis(truncatedIcosahedronVertices)
+
+    simpFaces = np.array([
+        [0, 1, 2],
+        [0, 3, 1],
+        [4, 3, 0],
+        [3, 4, 5],
+        [2, 1, 6],
+        [1, 3, 6],
+        [3, 5, 6],
+        [5, 4, 6],
+        [4, 0, 6],
+        [0, 2, 6]], dtype=np.uint32)
+    faces = mesh.faces if False else simpFaces
+
+    cartesianOval = lambda a, b, angle: [a * cos(angle), b * sin(angle)]
+    cartesianOvalX = lambda a, angle: a * cos(angle)
+    cartesianOvalY = lambda b, angle: b * sin(angle)
+
+    truncatedIcosahedronVertices = generateVertices()
+
+    ##normalized_vertices = [normalize_vertex(v) for v in truncated_icosahedron_vertices]
+
 def makePentPoly(radius, color="Red"):
     p = PolygonalPyramid(5, radius)
     ''
