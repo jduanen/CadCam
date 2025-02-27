@@ -26,7 +26,7 @@
 '''
 
 import numpy as np
-from math import asin, sqrt, degrees
+from math import asin, degrees, pi, sin, sqrt, tan
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 
@@ -68,21 +68,17 @@ HEX_ANGLE = asin(4 / sqrt(58 + (18 * sqrt(5))))  # half apical angle of a hexago
 PENT_ANGLE = asin((2 * sqrt(50 + (10 * sqrt(5)))) / (5 * sqrt(58 + (18 * sqrt(5)))))  # half apical angle of a pentagonal pyramid
 
 
-'''
-def f(y, x, r):
-    return sqrt(x**2 + y**2 - 6*y + 9) + (23/14)*sqrt(x**2 + y**2) - (69 - 27*r)/14
+def func(y, x, r):
+    return sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2) + \
+           ((FAST_EXPL * sqrt(x**2 + y**2)) / SLOW_EXPL) - \
+           (r + ((FAST_EXPL * (1 - r)) / SLOW_EXPL))
 
-def f_prime(y, x):
-    return (2*y - 6)/(2*sqrt(x**2 + y**2 - 6*y + 9)) + (23*y)/(14*sqrt(x**2 + y**2))
-'''
+# first derivative of 'f'' with respect to 'y'
+def funcPrime(y, x):
+    return (((2 * y) - (2 * LENS_OUTER_RADIUS)) / (2 * sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2))) + \
+           ((FAST_EXPL * y)/(SLOW_EXPL * sqrt(x**2 + y**2)))
 
-def newtonMethod(x, r, y0=0, maxIterations=100, tolerance=1e-6):
-    f = lambda y, x, r: sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2) + \
-                            ((FAST_EXPL * sqrt(x**2 + y**2)) / SLOW_EXPL) - \
-                            (r + ((FAST_EXPL * (1 - r)) / SLOW_EXPL))
-    # first derivative of f wrt y
-    fPrime = lambda y, x: (((2 * y) - (2 * LENS_OUTER_RADIUS)) / (2 * sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2))) + \
-                              ((FAST_EXPL * y)/(SLOW_EXPL * sqrt(x**2 + y**2)))
+def newtonMethod(x, r, f, fPrime, y0=0, maxIterations=100, tolerance=1e-6):
     y = y0
     for i in range(maxIterations):
         yNew = y - f(y, x, r) / fPrime(y, x)
@@ -118,6 +114,20 @@ def drawCartesianOval(k=1080):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.grid(True)
+
+def hexTransitionCurve():
+    MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
+    X = [x for x in range(0, MAX_X)]
+    Y = [0]
+    for x in X[1:]:
+        y = sqrt((LENS_OUTER_RADIUS - 100.0)**2 - x**2)  #### TMP TMP TMP
+        Y.append(y)
+        if y == (x * tan((pi / 2) - HEX_ANGLE)):
+            print("TERM COND")
+            break;
+    plt.plot(X, Y, '*', color="hotpink", label='Hex Transisition')
+    negX = [-x for x in range(1, MAX_X)]
+    plt.plot(negX, Y[1:], '*', color="hotpink", label='Hex Transition')
 
 def drawPrism(prismShape):
     if prismShape.lower() == "hexagonal":
@@ -164,9 +174,12 @@ def drawPentPrism():
     drawPrism("Pentagonal")
 
 def run(options):
+    '''
     drawCartesianOval()
-    drawHexPrism()
     drawPentPrism()
+    '''
+    drawHexPrism()
+    hexTransitionCurve()
     plt.show()
 
 def getOps():
