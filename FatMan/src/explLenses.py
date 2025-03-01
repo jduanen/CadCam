@@ -82,21 +82,14 @@ def newtonMethod(x, r, f, fPrime, y0=0, maxIterations=100, tolerance=1e-6):
     y = y0
     for i in range(maxIterations):
         yNew = y - f(y, x, r) / fPrime(y, x)
+        print(f"{y}, {yNew}, {f(y, x, r)}, {fPrime(y,x)}")
         if abs(yNew - y) < tolerance:
+            print("Tolerance")
             return yNew
         y = yNew
+        return 0
+    print("MaxIterations")
     return y  # Return the last computed value if maxIterations is reached
-
-'''
-# Example usage
-x = 0.5
-r = 0.11
-result = newtonMethod(x, r)
-print(f"Approximate solution for y({r}, {x}): {result}")
-
-exit(1)
-'''
-
 
 def drawCartesianOval(k=1080):
     def cartesianOval(x, y, r, k):
@@ -107,7 +100,7 @@ def drawCartesianOval(k=1080):
     x = np.linspace(-300, 300, 1000)
     y = np.linspace(-250, 750, 1000)
     X, Y = np.meshgrid(x, y)
-    r = FAST_EXPL / SLOW_EXPL
+    r = FAST_EXPL / SLOW_EXPL  #### FIXME wrong -- this has to be (0,1)
     plt.contour(X, Y, cartesianOval(X, Y, r, k), [0])
     plt.axis('equal')
     plt.title('Cartesian Oval')
@@ -116,18 +109,25 @@ def drawCartesianOval(k=1080):
     plt.grid(True)
 
 def hexTransitionCurve():
+    END_TOLERANCE = 0.1
     MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
     X = [x for x in range(0, MAX_X)]
-    Y = [0]
+    y = (LENS_OUTER_RADIUS - 100.0)
+    Y = [y]
+    r = 0.854856853
+    plt.plot(X[0], Y[0], "o", color="black", label="Start")
     for x in X[1:]:
-        y = sqrt((LENS_OUTER_RADIUS - 100.0)**2 - x**2)  #### TMP TMP TMP
+        y = newtonMethod(x, r, func, funcPrime, y)
         Y.append(y)
-        if y == (x * tan((pi / 2) - HEX_ANGLE)):
+        endY = (x * tan((pi / 2) - HEX_ANGLE))
+        plt.plot(x, endY, "+", color="cyan", label="End")
+        if abs(y - endY) < END_TOLERANCE:
             print("TERM COND")
             break;
     plt.plot(X, Y, '*', color="hotpink", label='Hex Transisition')
     negX = [-x for x in range(1, MAX_X)]
     plt.plot(negX, Y[1:], '*', color="hotpink", label='Hex Transition')
+    #plt.legend()
 
 def drawPrism(prismShape):
     if prismShape.lower() == "hexagonal":
@@ -142,7 +142,7 @@ def drawPrism(prismShape):
     # foci and peak of slow explosive
     plt.plot(*FOCUS_1, 'ro', label='Focus 1')
     plt.plot(*FOCUS_2, 'go', label='Focus 2')
-    plt.plot((0, (LENS_OUTER_RADIUS - 100.0)), 'b+', label='APEX')
+    plt.plot(0, (LENS_OUTER_RADIUS - 100.0), 'b+', label='APEX')
 
     # draw the hexagonal prism boundaries
     x1 = LENS_OUTER_RADIUS * np.sin(APICAL_ANGLE)
