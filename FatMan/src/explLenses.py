@@ -30,6 +30,8 @@ from math import asin, degrees, pi, sin, sqrt, tan
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 
+import pdb  ## pdb.set_trace()  #### TMP TMP TMP
+
 
 FAST_EXPL = 8050*1000  # mm/s
 SLOW_EXPL = 4900*1000  # mm/s
@@ -108,7 +110,7 @@ def drawCartesianOval(k=1080):
     plt.ylabel('Y')
     plt.grid(True)
 
-def hexTransitionCurve():
+def xxxTransitionCurve():
     END_TOLERANCE = 0.1
     MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
     X = [x for x in range(0, MAX_X)]
@@ -129,6 +131,49 @@ def hexTransitionCurve():
     plt.plot(negX, Y[1:], '*', color="hotpink", label='Hex Transition')
     #plt.legend()
 
+def aPolar(r, theta):
+    return ((SLOW_EXPL * (r - LENS_INNER_RADIUS)) +
+            (FAST_EXPL * np.sqrt((r**2 * np.cos(theta)**2) +
+                         LENS_OUTER_RADIUS**2 +
+                         (2 * r * LENS_OUTER_RADIUS * np.sin(theta)) +
+                         (r**2 * np.sin(theta)**2))))
+
+def toCart(radius, angle, yOffset):
+    x = radius * np.cos(angle)
+    y = (radius * np.sin(angle)) + yOffset
+    return x, y
+
+def hexTransitionCurve():
+    MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
+    x = 0
+    y = (LENS_OUTER_RADIUS - 100.0)
+    plt.plot(x, y, "o", color="black", label="Starting point")
+
+    r = 100
+    theta = -pi/2
+    k = aPolar(r, theta)  ## good 2954953750.0
+
+
+
+    '''
+    tolerance = 1.0
+
+    r = np.linspace(0, (LENS_OUTER_RADIUS / 2), 100)  #### 1000
+    theta = np.linspace(0, -(np.pi / 2), 100)  #### 1000
+    R, THETA = np.meshgrid(r, theta)
+
+    Z = aPolar(R, THETA)
+
+    mask = np.abs(Z - k) < tolerance
+    pdb.set_trace()  #### TMP TMP TMP
+    X, Y = toCart(R[mask], THETA[mask], LENS_OUTER_RADIUS)
+    plt.scatter(X, Y, s=1)
+    '''
+
+#    surf1 = ax.plot_surface(X, Y, Z, cmap='viridis')
+#    contour = ax.contour(X, Y, Z, [k], zdir='z', cmap='coolwarm')
+
+
 def drawPrism(prismShape):
     if prismShape.lower() == "hexagonal":
         APICAL_ANGLE = HEX_ANGLE
@@ -136,8 +181,6 @@ def drawPrism(prismShape):
         APICAL_ANGLE = PENT_ANGLE
     else:
         raise Exception(f"Unknown prism type: {prismShape} != hexagonal | pentagonal")
-    fig = plt.figure()
-    ax = fig.add_subplot()
 
     # foci and peak of slow explosive
     plt.plot(*FOCUS_1, 'ro', label='Focus 1')
@@ -174,12 +217,18 @@ def drawPentPrism():
     drawPrism("Pentagonal")
 
 def run(options):
+    global fig, ax
+
     '''
     drawCartesianOval()
     drawPentPrism()
     '''
+    fig = plt.figure()
+    ax = fig.add_subplot()  #111, projection='3d')
+
     drawHexPrism()
     hexTransitionCurve()
+
     plt.show()
 
 def getOps():
@@ -190,4 +239,3 @@ def getOps():
 if __name__ == '__main__':
     opts = getOps()
     run(opts)
- 
