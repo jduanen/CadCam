@@ -83,6 +83,13 @@ def polarPlot(ax, options):
     R, THETA = np.meshgrid(r, theta)
     Z = aPolar(R, THETA)
 
+    if True:
+      xx = np.linspace(0, (R_l / 2), 100)
+      yy = np.linspace(0, R_l, 100)
+      XX, YY = np.meshgrid(xx, yy)
+      ZZ = np.full_like(XX, k)
+      ax.plot_surface(XX, YY, ZZ, color='gray', alpha=1)
+
     X, Y = toCart(R, THETA, R_l)
     if options['surface']:
       surf1 = ax.plot_surface(X, Y, Z, cmap='viridis')
@@ -99,8 +106,8 @@ def cartesianPlot(ax, options):
     if options['apex']:
       plt.plot(x, y, k, "o", color="magenta", label='cartesian apex')
 
-    x = np.linspace(0, R_l/2, NUM_STEPS)
-    y = np.linspace(R_l, R_l/2, NUM_STEPS)
+    x = np.linspace(0, (R_l / 2), NUM_STEPS)
+    y = np.linspace(R_l, (R_l / 2), NUM_STEPS)
     X, Y = np.meshgrid(x, y)
     Z = aCart(X, Y)
 
