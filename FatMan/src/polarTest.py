@@ -13,8 +13,8 @@ import pdb  ## pdb.set_trace()  #### TMP TMP TMP
 
 NUM_STEPS = 100
 
-N = 4900*1000  # mm/s
-M = 8050*1000  # mm/s
+M = 4900*1000  # mm/s
+N = 8050*1000  # mm/s
 
 # all are in mm
 LENS_OUTER_RADIUS = 688.975
@@ -97,6 +97,8 @@ def cartesianPlot(ax, options):
     k = aCart(x, y)
     if options['verbose']:
         print(f"k={k}, x={x}, y={y} Cartesian")
+    k = (N *(R_l - Y_OFFSET - LENS_INNER_RADIUS)) + (M * Y_OFFSET)
+    print(f"k'={k}")
 
     if options['apex']:
         plt.plot(x, y, k, "o", color="magenta", label='cartesian apex')
