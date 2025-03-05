@@ -26,9 +26,9 @@
 '''
 
 import numpy as np
-from math import asin, degrees, pi, sin, sqrt, tan
+from math import asin, cos, degrees, pi, sin, sqrt, tan
 import matplotlib.pyplot as plt
-from matplotlib.patches import Arc
+from matplotlib.patches import Arc, Polygon
 
 import pdb  ## pdb.set_trace()  #### TMP TMP TMP
 
@@ -63,35 +63,20 @@ CORK_THICKNESS = 12.7
 
 GAP = INTER_LENS_GAP
 
+CURVE_APEX = 100.0
+
 FOCUS_1 = (0, 0)
 FOCUS_2 = (0, LENS_OUTER_RADIUS)
 
 HEX_ANGLE = asin(4 / sqrt(58 + (18 * sqrt(5))))  # half apical angle of a hexagonal pyramid
 PENT_ANGLE = asin((2 * sqrt(50 + (10 * sqrt(5)))) / (5 * sqrt(58 + (18 * sqrt(5)))))  # half apical angle of a pentagonal pyramid
 
+NUM_STEPS = 3000
+TOLERANCE = 1e2
 
-def func(y, x, r):
-    return sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2) + \
-           ((FAST_EXPL * sqrt(x**2 + y**2)) / SLOW_EXPL) - \
-           (r + ((FAST_EXPL * (1 - r)) / SLOW_EXPL))
-
-# first derivative of 'f'' with respect to 'y'
-def funcPrime(y, x):
-    return (((2 * y) - (2 * LENS_OUTER_RADIUS)) / (2 * sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2))) + \
-           ((FAST_EXPL * y)/(SLOW_EXPL * sqrt(x**2 + y**2)))
-
-def newtonMethod(x, r, f, fPrime, y0=0, maxIterations=100, tolerance=1e-6):
-    y = y0
-    for i in range(maxIterations):
-        yNew = y - f(y, x, r) / fPrime(y, x)
-        print(f"{y}, {yNew}, {f(y, x, r)}, {fPrime(y,x)}")
-        if abs(yNew - y) < tolerance:
-            print("Tolerance")
-            return yNew
-        y = yNew
-        return 0
-    print("MaxIterations")
-    return y  # Return the last computed value if maxIterations is reached
+def func(x, y):
+    return ((FAST_EXPL * (np.sqrt(x**2 + y**2) - LENS_INNER_RADIUS)) + 
+            (SLOW_EXPL * (np.sqrt(x**2 + (LENS_OUTER_RADIUS - y)**2))))
 
 def drawCartesianOval(k=1080):
     def cartesianOval(x, y, r, k):
@@ -110,69 +95,60 @@ def drawCartesianOval(k=1080):
     plt.ylabel('Y')
     plt.grid(True)
 
-def xxxTransitionCurve():
-    END_TOLERANCE = 0.1
-    MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
-    X = [x for x in range(0, MAX_X)]
-    y = (LENS_OUTER_RADIUS - 100.0)
-    Y = [y]
-    r = 0.854856853
-    plt.plot(X[0], Y[0], "o", color="black", label="Start")
-    for x in X[1:]:
-        y = newtonMethod(x, r, func, funcPrime, y)
-        Y.append(y)
-        endY = (x * tan((pi / 2) - HEX_ANGLE))
-        plt.plot(x, endY, "+", color="cyan", label="End")
-        if abs(y - endY) < END_TOLERANCE:
-            print("TERM COND")
-            break;
-    plt.plot(X, Y, '*', color="hotpink", label='Hex Transisition')
-    negX = [-x for x in range(1, MAX_X)]
-    plt.plot(negX, Y[1:], '*', color="hotpink", label='Hex Transition')
-    #plt.legend()
+def transitionCurve(prismShape):
+    if prismShape.lower() == "hexagonal":
+        APICAL_ANGLE = HEX_ANGLE
+        print("Hexagonal Transition Curve")
+    elif prismShape.lower() == "pentagonal":
+        APICAL_ANGLE = PENT_ANGLE
+        print("Pentagonal Transition Curve")
+    else:
+        raise Exception(f"Unknown prism type: {prismShape} != hexagonal | pentagonal")
 
-def aPolar(r, theta):
-    return ((SLOW_EXPL * (r - LENS_INNER_RADIUS)) +
-            (FAST_EXPL * np.sqrt((r**2 * np.cos(theta)**2) +
-                         LENS_OUTER_RADIUS**2 +
-                         (2 * r * LENS_OUTER_RADIUS * np.sin(theta)) +
-                         (r**2 * np.sin(theta)**2))))
+    apexX = 0
+    apexY = (LENS_OUTER_RADIUS - CURVE_APEX)
+    plt.plot(apexX, apexY, "o", color="black", label="Starting point")
+    k = func(apexX, apexY)
+    print(f"f({apexX}, {apexY}) = {k}")
 
-def toCart(radius, angle, yOffset):
-    x = radius * np.cos(angle)
-    y = (radius * np.sin(angle)) + yOffset
-    return x, y
+    minX = 0
+    maxX = (LENS_OUTER_RADIUS * sin(APICAL_ANGLE))
+    x = np.linspace(minX, maxX, NUM_STEPS)
+    minY = (LENS_INNER_RADIUS * cos(APICAL_ANGLE))
+    maxY = LENS_OUTER_RADIUS
+    y = np.linspace(minY, maxY, NUM_STEPS)
+    if True:
+        plt.plot([minX, maxX, maxX, minX, minX], [minY, minY, maxY, maxY, minY], 'r-', linewidth=1)
+    X, Y = np.meshgrid(x, y)
+    K = func(X, Y)
+    if False:
+        ax2.contour(X, Y, K, [k], zdir='z', colors=['magenta'])
+        surf2 = ax2.plot_surface(X, Y, K, cmap='viridis')
+    mask = np.isclose(K, k, atol=TOLERANCE)
+    print(f"# Trues: {np.count_nonzero(mask)}")
+    X_k = X[mask]
+    Y_k = Y[mask]
+    if False:
+        plt.scatter(X_k, Y_k, color='cyan', s=1)
+
+    #### FIXME check for points outside the limits
+    points = np.column_stack((X_k, Y_k))
+    s1 = points.shape
+    points = np.array([p for i, p in enumerate(points) if p not in points[:i]])
+    s2 = points.shape
+#    points = np.insert(points, 0, (apexX, apexY), axis=0)
+    points = np.append(points, [(apexX, apexY), (0, minY), (points[0][0], minY)], axis=0)
+    s3 = points.shape
+    print(f"{s1}, {s2}, {s3}")
+    polygon = Polygon(points, closed=True, fill=False)
+    ax.add_patch(polygon)
+    return polygon.get_xy()
 
 def hexTransitionCurve():
-    MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
-    x = 0
-    y = (LENS_OUTER_RADIUS - 100.0)
-    plt.plot(x, y, "o", color="black", label="Starting point")
+    return transitionCurve("Hexagonal")
 
-    r = 100
-    theta = -pi/2
-    k = aPolar(r, theta)  ## good 2954953750.0
-
-
-
-    '''
-    tolerance = 1.0
-
-    r = np.linspace(0, (LENS_OUTER_RADIUS / 2), 100)  #### 1000
-    theta = np.linspace(0, -(np.pi / 2), 100)  #### 1000
-    R, THETA = np.meshgrid(r, theta)
-
-    Z = aPolar(R, THETA)
-
-    mask = np.abs(Z - k) < tolerance
-    pdb.set_trace()  #### TMP TMP TMP
-    X, Y = toCart(R[mask], THETA[mask], LENS_OUTER_RADIUS)
-    plt.scatter(X, Y, s=1)
-    '''
-
-#    surf1 = ax.plot_surface(X, Y, Z, cmap='viridis')
-#    contour = ax.contour(X, Y, Z, [k], zdir='z', cmap='coolwarm')
-
+def pentTransitionCurve():
+    return transitionCurve("Pentagonal")
 
 def drawPrism(prismShape):
     if prismShape.lower() == "hexagonal":
@@ -217,17 +193,22 @@ def drawPentPrism():
     drawPrism("Pentagonal")
 
 def run(options):
-    global fig, ax
+    global fig, ax, ax2
 
-    '''
-    drawCartesianOval()
-    drawPentPrism()
-    '''
     fig = plt.figure()
-    ax = fig.add_subplot()  #111, projection='3d')
+    ax = fig.add_subplot()
+#    ax2 = fig.add_subplot(111, projection='3d')
 
     drawHexPrism()
-    hexTransitionCurve()
+    points = hexTransitionCurve()
+    np.savetxt('slowExplHex.csv', points, delimiter=',', fmt='%d')
+
+    fig = plt.figure()
+    ax = fig.add_subplot()
+
+    drawPentPrism()
+    points = pentTransitionCurve()
+    np.savetxt('slowExplPent.csv', points, delimiter=',', fmt='%d')
 
     plt.show()
 
@@ -239,3 +220,68 @@ def getOps():
 if __name__ == '__main__':
     opts = getOps()
     run(opts)
+
+
+'''
+def func(y, x, r):
+    return sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2) + \
+           ((FAST_EXPL * sqrt(x**2 + y**2)) / SLOW_EXPL) - \
+           (r + ((FAST_EXPL * (1 - r)) / SLOW_EXPL))
+
+# first derivative of 'f'' with respect to 'y'
+def funcPrime(y, x):
+    return (((2 * y) - (2 * LENS_OUTER_RADIUS)) / (2 * sqrt(x**2 + y**2 - (2 * LENS_OUTER_RADIUS * y) + LENS_OUTER_RADIUS**2))) + \
+           ((FAST_EXPL * y)/(SLOW_EXPL * sqrt(x**2 + y**2)))
+
+def newtonMethod(x, r, f, fPrime, y0=0, maxIterations=100, tolerance=1e-6):
+    y = y0
+    for i in range(maxIterations):
+        yNew = y - f(y, x, r) / fPrime(y, x)
+        print(f"{y}, {yNew}, {f(y, x, r)}, {fPrime(y,x)}")
+        if abs(yNew - y) < tolerance:
+            print("Tolerance")
+            return yNew
+        y = yNew
+        return 0
+    print("MaxIterations")
+    return y  # Return the last computed value if maxIterations is reached
+
+
+    tolerance = 1.0
+
+    r = np.linspace(0, (LENS_OUTER_RADIUS / 2), 100)  #### 1000
+    theta = np.linspace(0, -(np.pi / 2), 100)  #### 1000
+    R, THETA = np.meshgrid(r, theta)
+
+    Z = aPolar(R, THETA)
+
+    mask = np.abs(Z - k) < tolerance
+    pdb.set_trace()  #### TMP TMP TMP
+    X, Y = toCart(R[mask], THETA[mask], LENS_OUTER_RADIUS)
+    plt.scatter(X, Y, s=1)
+
+#    surf1 = ax.plot_surface(X, Y, Z, cmap='viridis')
+#    contour = ax.contour(X, Y, Z, [k], zdir='z', cmap='coolwarm')
+
+def xxxTransitionCurve():
+    END_TOLERANCE = 0.1
+    MAX_X = int((LENS_OUTER_RADIUS * sin(HEX_ANGLE)))
+    X = [x for x in range(0, MAX_X)]
+    y = (LENS_OUTER_RADIUS - 100.0)
+    Y = [y]
+    r = 0.854856853
+    plt.plot(X[0], Y[0], "o", color="black", label="Start")
+    for x in X[1:]:
+        y = newtonMethod(x, r, func, funcPrime, y)
+        Y.append(y)
+        endY = (x * tan((pi / 2) - HEX_ANGLE))
+        plt.plot(x, endY, "+", color="cyan", label="End")
+        if abs(y - endY) < END_TOLERANCE:
+            print("TERM COND")
+            break;
+    plt.plot(X, Y, '*', color="hotpink", label='Hex Transisition')
+    negX = [-x for x in range(1, MAX_X)]
+    plt.plot(negX, Y[1:], '*', color="hotpink", label='Hex Transition')
+    #plt.legend()
+
+'''
