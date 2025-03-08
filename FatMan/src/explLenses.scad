@@ -266,7 +266,6 @@ module makeHexSlowLens() {
 
 module makeHexBooster() {
     face = FACES[HEX_PYRAMID];
-    echo("HB: ", [for (f = face) VERTICES[f]]);
     assert(len(face) == 6);
     normal = NORMALS[HEX_PYRAMID];
     difference() {
@@ -382,7 +381,7 @@ PENT_FAST_LENS = 5;
 HEX_LENS = 6;   // full fast lens
 PENT_LENS = 7;  // full fast lens
 
-p = PENT_LENS;
+p = HEX_FAST_LENS;
 
 if (p == HEX_BOOSTER) makeHexBooster();
 else if (p == HEX_SLOW_LENS) makeHexSlowLens();
