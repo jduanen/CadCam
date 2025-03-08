@@ -1,0 +1,120 @@
+group() {
+	group() {
+		group() {
+			group() {
+				group() {
+					group() {
+						group() {
+							group() {
+								difference() {
+									intersection() {
+										group() {
+											group() {
+												multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+													group() {
+														group() {
+															group() {
+																color([0, 0, 1, 0.5]) {
+																	polyhedron(points = [[-565.475, 215.992, 1372.44], [-95.6828, 597.712, 1372.44], [469.793, 381.72, 1372.44], [565.475, -215.992, 1372.44], [95.6828, -597.712, 1372.44], [-469.793, -381.72, 1372.44], [0, 0, 0]], faces = [[0, 1, 2, 3, 4, 5], [6, 1, 0], [6, 2, 1], [6, 3, 2], [6, 4, 3], [6, 5, 4], [6, 0, 5]], convexity = 6);
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+										group() {
+											group() {
+												group() {
+													group() {
+														multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						group() {
+																							group() {
+																								group() {
+																									group() {
+																										group() {
+																											group() {
+																												group() {
+																													sphere($fn = 1024, $fa = 12, $fs = 2, r = 688.975);
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																	group() {
+																		group();
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+									group() {
+										group() {
+											group() {
+												group() {
+													multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						group() {
+																							group() {
+																								group() {
+																									group() {
+																										group() {
+																											group() {
+																												sphere($fn = 1024, $fa = 12, $fs = 2, r = 464.55);
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+																group() {
+																	group();
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

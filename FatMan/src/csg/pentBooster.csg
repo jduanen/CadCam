@@ -1,0 +1,114 @@
+group() {
+	group() {
+		group() {
+			group() {
+				group() {
+					difference() {
+						intersection() {
+							group() {
+								group() {
+									multmatrix([[0.800427, -0.0718616, 0.595107, 0], [0, 0.992788, 0.119883, 0], [-0.59943, -0.0959578, 0.794654, 0], [0, 0, 0, 1]]) {
+										group() {
+											group() {
+												group() {
+													color([1, 0, 0, 0.5]) {
+														polyhedron(points = [[-1046.77, 328.382, 1022.95], [-565.475, 215.992, 1372.44], [-469.793, -381.72, 1372.44], [-891.953, -638.736, 1022.95], [-1248.54, -199.869, 806.962], [0, 0, 0]], faces = [[0, 1, 2, 3, 4], [5, 1, 0], [5, 2, 1], [5, 3, 2], [5, 4, 3], [5, 0, 4]], convexity = 5);
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+							group() {
+								group() {
+									group() {
+										group() {
+											multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+												group() {
+													group() {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						group() {
+																							group() {
+																								group() {
+																									group() {
+																										sphere($fn = 1024, $fa = 12, $fs = 2, r = 463.55);
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+														group() {
+															group();
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						group() {
+							group() {
+								group() {
+									group() {
+										multmatrix([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]) {
+											group() {
+												group() {
+													group() {
+														group() {
+															group() {
+																group() {
+																	group() {
+																		group() {
+																			group() {
+																				group() {
+																					group() {
+																						group() {
+																							group() {
+																								group() {
+																									sphere($fn = 1024, $fa = 12, $fs = 2, r = 234.95);
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+													group() {
+														group();
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
