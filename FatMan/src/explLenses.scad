@@ -12,30 +12,25 @@ HEXA_COLOR = "blue";
 PENT_SLOW_COLOR = "cyan";
 HEX_SLOW_COLOR = "magenta";
 
-//// FIXME use actual dimensions
 LARGEST_RADIUS = 1500;
 LARGEST_DIAMETER = (LARGEST_RADIUS * 2);
 
-LENS_OUTER_RADIUS = 688.975;
-LENS_OUTER_DIAMETER = (LENS_OUTER_RADIUS * 2);  // 1377.95
-LENS_HEIGHT = 224.425;
-LENS_INNER_RADIUS = (LENS_OUTER_RADIUS - LENS_HEIGHT);  // 465.55
-LENS_INNER_DIAMETER = (LENS_INNER_RADIUS * 2);
-LENS_FELT_GAP = 2;
+LENS_OUTER_RADIUS = 690.56;
+LENS_OUTER_DIAMETER = (LENS_OUTER_RADIUS * 2);  // 1381.13
+LENS_HEIGHT = 228.60;
+LENS_INNER_RADIUS = (LENS_OUTER_RADIUS - LENS_HEIGHT);  // 461.96
+LENS_INNER_DIAMETER = (LENS_INNER_RADIUS * 2);  // 923.92
 
-BOOSTER_OUTER_RADIUS = 463.55;
-BOOSTER_OUTER_DIAMETER = (BOOSTER_OUTER_RADIUS * 2);  // 927.1
-BOOSTER_HEIGHT = 228.6;
+BOOSTER_OUTER_RADIUS = 461.17;
+BOOSTER_OUTER_DIAMETER = (BOOSTER_OUTER_RADIUS * 2);  // 922.34
+BOOSTER_HEIGHT = 225.43;
 BOOSTER_INNER_RADIUS = (BOOSTER_OUTER_RADIUS - BOOSTER_HEIGHT);
 BOOSTER_INNER_DIAMETER = (BOOSTER_INNER_RADIUS * 2);
-BOOSTER_FELT_GAP = 2;
 
-INTER_LENS_GAP = 0.5;
+//// FIXME use actual dimensions
 
-PUSHER_OUTER_RADIUS = 234.95;
-PUSHER_OUTER_DIAMETER = (PUSHER_OUTER_RADIUS * 2);
+INTER_LENS_GAP = 0.025;
 
-GAP = INTER_LENS_GAP;
 VERTICES = regular_polyhedron_info("vertices", d=LARGEST_DIAMETER, name="truncated icosahedron");
 FACES = regular_polyhedron_info("faces", d=LARGEST_DIAMETER, name="truncated icosahedron");
 NORMALS = regular_polyhedron_info("face normals", d=LARGEST_DIAMETER, name="truncated icosahedron");
@@ -76,11 +71,11 @@ module makePyramid(faceNum) {
         face = FACES[faceNum];
         normal = NORMALS[faceNum];
         if (len(face) == 5) {
-            translate([for (n = normal) n * GAP])
+            translate([for (n = normal) n * INTER_LENS_GAP])
                 pentagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
         }
         if (len(face) == 6) {
-            translate([for (n = normal) n * GAP])
+            translate([for (n = normal) n * INTER_LENS_GAP])
                 hexagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
         }
 }
@@ -213,7 +208,7 @@ module explLens(pyramidNum) {
                     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
                     rotate([rotX, rotY, 0])
                         makePyramid(pyramidNum);
-                    translate([for (n = normal) n * GAP])
+                    translate([for (n = normal) n * INTER_LENS_GAP])
                         hexSlowLens();
                 }
                 hexSlowLens();
@@ -346,7 +341,7 @@ module foo() {
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     rotate([rotX, rotY, 0])
         makePyramid(PENT_PYRAMID);
-    translate([for (n = normal) n * GAP])
+    translate([for (n = normal) n * INTER_LENS_GAP])
         pentSlowLens();
 }
 
