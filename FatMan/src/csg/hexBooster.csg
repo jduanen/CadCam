@@ -26,7 +26,7 @@ group() {
 																				group() {
 																					group() {
 																						group() {
-																							sphere($fn = 1024, $fa = 12, $fs = 2, r = 463.55);
+																							sphere($fn = 1024, $fa = 12, $fs = 2, r = 461.17);
 																						}
 																					}
 																				}
@@ -69,7 +69,7 @@ group() {
 																			group() {
 																				group() {
 																					group() {
-																						sphere($fn = 1024, $fa = 12, $fs = 2, r = 234.95);
+																						sphere($fn = 1024, $fa = 12, $fs = 2, r = 235.74);
 																					}
 																				}
 																			}
