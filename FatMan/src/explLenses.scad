@@ -29,9 +29,16 @@ BOOSTER_INNER_DIAMETER = (BOOSTER_INNER_RADIUS * 2);
 
 INTER_LENS_GAP = 0.025;
 
-VERTICES = regular_polyhedron_info("vertices", d=LARGEST_DIAMETER, name="truncated icosahedron");
-FACES = regular_polyhedron_info("faces", d=LARGEST_DIAMETER, name="truncated icosahedron");
-NORMALS = regular_polyhedron_info("face normals", d=LARGEST_DIAMETER, name="truncated icosahedron");
+VERTICES = regular_polyhedron_info("vertices",
+                                   d=LARGEST_DIAMETER,
+                                   name="truncated icosahedron");
+FACES = regular_polyhedron_info("faces",
+                                d=LARGEST_DIAMETER,
+                                name="truncated icosahedron");
+NORMALS = regular_polyhedron_info("face normals",
+                                  d=LARGEST_DIAMETER,
+                                  name="truncated icosahedron");
+assert(len(FACES) == len(NORMALS));
 
 HEX_PYRAMID = 30;   // vertical hexagonal pyramid
 PENT_PYRAMID = 29;  // pentagonal pyramid, rotated CCW on Y-axis
@@ -41,7 +48,7 @@ ALPHA = 0.5;
 //-----------------------------------------------------------------------------
 // make a max-sized hex/pent pyramid
 
-module pentagonalPyramid(points, prismColor) {
+module pentMaxPyramid(points, prismColor) {
    faceIndices = [
         [0, 1, 2, 3, 4],  // base
         [5, 1, 0],        // side faces
@@ -54,7 +61,7 @@ module pentagonalPyramid(points, prismColor) {
         polyhedron(points = points, faces = faceIndices, convexity = 5);
 }
 
-module hexagonalPyramid(points, prismColor) {
+module hexMaxPyramid(points, prismColor) {
     faceIndices = [
         [0, 1, 2, 3, 4, 5],  // base
         [6, 1, 0],           // side faces
@@ -68,16 +75,16 @@ module hexagonalPyramid(points, prismColor) {
         polyhedron(points = points, faces = faceIndices, convexity = 6);
 }
 
-module makePyramid(faceNum) {
+module makeMaxPyramid(faceNum) {
         face = FACES[faceNum];
         normal = NORMALS[faceNum];
         if (len(face) == 5) {
             translate([for (n = normal) n * INTER_LENS_GAP])
-                pentagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
+                pentMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
         }
         if (len(face) == 6) {
             translate([for (n = normal) n * INTER_LENS_GAP])
-                hexagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
+                hexMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
         }
 }
 
@@ -85,13 +92,12 @@ module makePyramid(faceNum) {
 // make fast-only/full lenses and boosters
 
 module truncatedIcosahedron() {
-    assert(len(FACES) == len(NORMALS));
     for (i = [0:(len(FACES) - 1)]) {
-        makePyramid(i);
+        makeMaxPyramid(i);
     }
 }
 
-module makeLenses() {
+module lenses() {
     difference() {
         intersection() {
             truncatedIcosahedron();
@@ -101,7 +107,7 @@ module makeLenses() {
     }
 }
 
-module makeBoosters() {
+module boosters() {
     difference() {
         intersection() {
             truncatedIcosahedron();
@@ -118,8 +124,8 @@ module viewSplitter() {
 
 module makeCombined() {
     union() {
-        makeLenses();
-        makeBoosters();
+        lenses();
+        boosters();
     }
 }
 
@@ -136,7 +142,7 @@ module combinedView() {
 module hexSlowLens() {
     difference() {
         intersection() {
-            makePyramid(HEX_PYRAMID);
+            makeMaxPyramid(HEX_PYRAMID);
             color(HEX_SLOW_COLOR, 0.75)
                 rotate_extrude()
                     polygon(points=hexPts);
@@ -152,7 +158,7 @@ module pentSlowLens() {
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                makePyramid(PENT_PYRAMID);
+                makeMaxPyramid(PENT_PYRAMID);
             color(PENT_SLOW_COLOR, 0.75)
                 rotate_extrude()
                     polygon(points=pentPts);
@@ -183,7 +189,7 @@ module compoundHexLens(pyramidNum) {
             rotate([rotX, rotY, 0])
                 rotate_extrude()
                     polygon(points=hexPts);
-            makePyramid(pyramidNum);
+            makeMaxPyramid(pyramidNum);
         }
         sphere(d=LENS_INNER_DIAMETER);
     }
@@ -206,7 +212,7 @@ module pentSlowLens(pyramidNum) {
             rotate([rotX, rotY, 0])
                 rotate_extrude()
                     polygon(points=pentPts);
-            makePyramid(pyramidNum);
+            makeMaxPyramid(pyramidNum);
         }
         sphere(d=LENS_INNER_DIAMETER);
     }
@@ -229,7 +235,7 @@ module explLens(pyramidNum) {
                     rotX = atan2(normal.y, normal.z);
                     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
                     rotate([rotX, rotY, 0])
-                        makePyramid(pyramidNum);
+                        makeMaxPyramid(pyramidNum);
                     translate([for (n = normal) n * INTER_LENS_GAP])
                         hexSlowLens();
                 }
@@ -244,17 +250,17 @@ module explLens(pyramidNum) {
 //-----------------------------------------------------------------------------
 // make representative versions of each type of lens
 
-module makeHexFastLens() {
+module makeHexFastLensComponent() {
     difference() {
         makeHexFullFastLens();
-        translate([0, 0, 0.01])  // space between lenses
+        translate([0, 0, 0.01])  // space between components
             makeHexSlowLens();
-        translate([0, 0, -0.01])  // space between lenses
+        translate([0, 0, -0.01])  // space between components
             makeHexSlowLens();
     }
 }
 
-module makeHexFullFastLens() {
+module makeHexFullFastLens() {  // no slow lens component
     face = FACES[HEX_PYRAMID];
     assert(len(face) == 6);
     normal = NORMALS[HEX_PYRAMID];
@@ -263,7 +269,7 @@ module makeHexFullFastLens() {
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                hexagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
+                hexMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
             sphere(d=LENS_OUTER_DIAMETER);
         }
         sphere(d=LENS_INNER_DIAMETER);
@@ -273,7 +279,7 @@ module makeHexFullFastLens() {
 module makeHexSlowLens() {
     difference() {
         intersection() {
-            makePyramid(HEX_PYRAMID);
+            makeMaxPyramid(HEX_PYRAMID);
             color("magenta", 0.75)
                 rotate_extrude()
                     polygon(points=hexPts);
@@ -282,20 +288,21 @@ module makeHexSlowLens() {
     }
 }
 
-module makeHexBooster() {
-    face = FACES[HEX_PYRAMID];
+module makeHexBooster(pyramidNum) {
+    face = FACES[pyramidNum];
     assert(len(face) == 6);
     normal = NORMALS[HEX_PYRAMID];
     difference() {
         intersection() {
-            hexagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
+            translate([for (n = normal) n * INTER_LENS_GAP])
+                hexMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), HEXA_COLOR);
             sphere(d=BOOSTER_OUTER_DIAMETER);
         }
         sphere(d=BOOSTER_INNER_DIAMETER);
     }
 }
 
-module makePentFastLens() {
+module makePentFastLens() {  // void for slow lens
     difference() {
         makePentFullFastLens();
         translate([0, 0, 0.01])  // space between lenses
@@ -305,7 +312,7 @@ module makePentFastLens() {
     }
 }
 
-module makePentFullFastLens() {
+module makePentFullFastLens() {  // no slow lens component
     face = FACES[PENT_PYRAMID];
     assert(len(face) == 5);
     normal = NORMALS[PENT_PYRAMID];
@@ -314,7 +321,7 @@ module makePentFullFastLens() {
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                pentagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
+                pentMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
             sphere(d=LENS_OUTER_DIAMETER);
         }
         sphere(d=LENS_INNER_DIAMETER);
@@ -328,7 +335,7 @@ module makePentSlowLens() {
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                makePyramid(PENT_PYRAMID);
+                makeMaxPyramid(PENT_PYRAMID);
             color("cyan", 0.75)
                 rotate_extrude()
                     polygon(points=pentPts);
@@ -337,16 +344,14 @@ module makePentSlowLens() {
     }
 }
 
-module makePentBooster() {
-    face = FACES[PENT_PYRAMID];
+module makePentBooster(pyramidNum) {
+    face = FACES[pyramidNum];
     assert(len(face) == 5);
     normal = NORMALS[PENT_PYRAMID];
-    rotX = atan2(normal.y, normal.z);
-    rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     difference() {
         intersection() {
-            rotate([rotX, rotY, 0])
-                pentagonalPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
+            translate([for (n = normal) n * INTER_LENS_GAP])
+                pentMaxPyramid(concat([for (f = face) VERTICES[f]], [[0,0,0]]), PENTA_COLOR);
             sphere(d=BOOSTER_OUTER_DIAMETER);
         }
         sphere(d=BOOSTER_INNER_DIAMETER);
@@ -356,9 +361,24 @@ module makePentBooster() {
 //-----------------------------------------------------------------------------
 // make complete sets of explosives
 
+function hexPyramidNums() = [for (i = [0:len(FACES)-1]) if (len(FACES[i]) == 6) i];
+function pentPyramidNums() = [for (i = [0:len(FACES)-1]) if (len(FACES[i]) == 5) i];
+
+module makeHexBoosters() {
+    for (n = hexPyramidNums()) {
+        makeHexBooster(n);
+    }
+}
+
+module makePentBoosters() {
+    for (n = pentPyramidNums()) {
+        makePentBooster(n);
+    }
+}
+
 module makeBoosters() {
-    makeHexBooster();
-    makePentBooster();
+    makeHexBoosters();
+    makePentBoosters();
 }
 
 module makeLenses() {
@@ -382,13 +402,13 @@ module foo() {
     rotX = atan2(normal.y, normal.z);
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     rotate([rotX, rotY, 0])
-        makePyramid(PENT_PYRAMID);
+        makeMaxPyramid(PENT_PYRAMID);
     translate([for (n = normal) n * INTER_LENS_GAP])
         pentSlowLens();
 }
 
 //num=12;
-//for (i = [0:(num-1)]) makePyramid(i);
+//for (i = [0:(num-1)]) makeMaxPyramid(i);
 
 //=============================================================================
 
@@ -400,29 +420,31 @@ module foo() {
 HEX_BOOSTER = 0;
 HEX_SLOW_LENS = 1;
 HEX_FAST_LENS = 2;
-
 PENT_BOOSTER = 3;
 PENT_SLOW_LENS = 4;
 PENT_FAST_LENS = 5;
-
 HEX_LENS = 6;   // full fast lens
 PENT_LENS = 7;  // full fast lens
-
 BOOSTERS = 8;
 LENSES = 9;
 ALL = 10;
 
-p = -1; // -1;
+module makeGeometry(p) {
+    if (p == HEX_BOOSTER) makeHexBooster(HEX_PYRAMID);
+    else if (p == HEX_SLOW_LENS) makeHexSlowLens();
+    else if (p == HEX_FAST_LENS) makeHexFastLens();
+    else if (p == PENT_BOOSTER) makePentBooster(PENT_PYRAMID);
+    else if (p == PENT_SLOW_LENS) makePentSlowLens();
+    else if (p == PENT_FAST_LENS) makePentFastLens();
+    else if (p == HEX_LENS) makeHexFullFastLens();
+    else if (p == PENT_LENS) makePentFullFastLens();
+    else if (p == BOOSTERS) makeBoosters();
+    else if (p == LENSES) makeLenses();
+    else if (p == ALL) makeAllExpls();
+    else echo("Invalid pyramid selector: ", p);
+}
 
-if (p == HEX_BOOSTER) makeHexBooster();
-else if (p == HEX_SLOW_LENS) makeHexSlowLens();
-else if (p == HEX_FAST_LENS) makeHexFastLens();
-else if (p == PENT_BOOSTER) makePentBooster();
-else if (p == PENT_SLOW_LENS) makePentSlowLens();
-else if (p == PENT_FAST_LENS) makePentFastLens();
-else if (p == HEX_LENS) makeHexFullFastLens();
-else if (p == PENT_LENS) makePentFullFastLens();
-else if (p == BOOSTERS) makeBoosters();
-else if (p == LENSES) makeLenses();
-else if (p == ALL) makeAllExpls();
-else echo("Invalid pyramid selector: ", p);
+difference() {
+    makeGeometry(BOOSTERS);
+    viewSplitter();
+}
