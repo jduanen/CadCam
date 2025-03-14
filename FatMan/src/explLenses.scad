@@ -15,19 +15,26 @@ HEX_SLOW_COLOR = "magenta";
 LARGEST_RADIUS = 1500;
 LARGEST_DIAMETER = (LARGEST_RADIUS * 2);
 
-LENS_OUTER_RADIUS = 690.56;
+LENS_OUTER_RADIUS = 690.5625;
 LENS_OUTER_DIAMETER = (LENS_OUTER_RADIUS * 2);  // 1381.13
 LENS_HEIGHT = 228.60;
 LENS_INNER_RADIUS = (LENS_OUTER_RADIUS - LENS_HEIGHT);  // 461.96
 LENS_INNER_DIAMETER = (LENS_INNER_RADIUS * 2);  // 923.92
 
-BOOSTER_OUTER_RADIUS = 461.17;
+BOOSTER_OUTER_RADIUS = 461.16875;
 BOOSTER_OUTER_DIAMETER = (BOOSTER_OUTER_RADIUS * 2);  // 922.34
 BOOSTER_HEIGHT = 225.43;
 BOOSTER_INNER_RADIUS = (BOOSTER_OUTER_RADIUS - BOOSTER_HEIGHT);
 BOOSTER_INNER_DIAMETER = (BOOSTER_INNER_RADIUS * 2);
 
-//// FIXME use actual dimensions
+echo(LENS_OUTER_RADIUS);
+echo(LENS_OUTER_DIAMETER);
+echo(LENS_INNER_RADIUS);
+echo(LENS_INNER_DIAMETER);
+echo(BOOSTER_OUTER_RADIUS);
+echo(BOOSTER_OUTER_DIAMETER);
+echo(BOOSTER_INNER_RADIUS);
+echo(BOOSTER_INNER_DIAMETER);
 
 INTER_LENS_GAP = 0.025;
 
@@ -39,6 +46,9 @@ HEX_PYRAMID = 30;   // vertical hexagonal pyramid
 PENT_PYRAMID = 29;  // pentagonal pyramid, rotated CCW on Y-axis
 
 ALPHA = 0.5;
+
+//-----------------------------------------------------------------------------
+// make a max-sized hex/pent pyramid
 
 module pentagonalPyramid(points, prismColor) {
    faceIndices = [
@@ -80,7 +90,8 @@ module makePyramid(faceNum) {
         }
 }
 
-//----------------------------------------------
+//-----------------------------------------------------------------------------
+// make fast-only/full lenses and boosters
 
 module truncatedIcosahedron() {
     assert(len(FACES) == len(NORMALS));
@@ -89,7 +100,7 @@ module truncatedIcosahedron() {
     }
 }
 
-module explosiveLenses() {
+module makeLenses() {
     difference() {
         intersection() {
             truncatedIcosahedron();
@@ -99,7 +110,7 @@ module explosiveLenses() {
     }
 }
 
-module boosters() {
+module makeBoosters() {
     difference() {
         intersection() {
             truncatedIcosahedron();
@@ -114,21 +125,22 @@ module viewSplitter() {
         cube([LARGEST_DIAMETER, LARGEST_DIAMETER, LARGEST_DIAMETER]);
 }
 
-module combined() {
+module makeCombined() {
     union() {
-        explosiveLenses();
-        boosters();
+        makeLenses();
+        makeBoosters();
     }
 }
 
 module combinedView() {
     difference() {
-        combined();
+        makeCombined();
         viewSplitter();
     }
 }
 
-//----------------------------------------------
+//-----------------------------------------------------------------------------
+// make a representative hex/pent slow lens component
 
 module hexSlowLens() {
     difference() {
@@ -158,10 +170,13 @@ module pentSlowLens() {
     }
 }
 
+//-----------------------------------------------------------------------------
+// make hex/slow compound lens (i.e., fast and slow components)
+//// FIXME doesn't work
 module compoundLens(pyramidNum) {
     face = FACES[pyramidNum];
     if (len(face) == 5) {
-        compoundHexLens(pyramidNum);
+        compoundPentLens(pyramidNum);
     }
     if (len(face) == 6) {
         compoundHexLens(pyramidNum);
@@ -183,6 +198,14 @@ module compoundHexLens(pyramidNum) {
     }
 }
 
+module compoundPentLens(pyramidNum) {
+    echo("TBD");
+}
+
+//-----------------------------------------------------------------------------
+// make a given compound lens (includes fast and slow components)
+//// FIXME doesn't work
+
 module pentSlowLens(pyramidNum) {
     normal = NORMALS[pyramidNum];
     rotX = atan2(-normal.y, normal.z);
@@ -197,6 +220,14 @@ module pentSlowLens(pyramidNum) {
         sphere(d=LENS_INNER_DIAMETER);
     }
 }
+
+module hexSlowLens(pyramidNum) {
+    echo("TBD");
+}
+
+//-----------------------------------------------------------------------------
+// make a given compound lens
+//// FIXME only works for hex, need to add in pent case
 
 module explLens(pyramidNum) {
     difference() {
@@ -219,7 +250,8 @@ module explLens(pyramidNum) {
     }
 }
 
-//---------------------------------
+//-----------------------------------------------------------------------------
+// make representative versions of each type of lens
 
 module makeHexFastLens() {
     difference() {
@@ -330,10 +362,29 @@ module makePentBooster() {
     }
 }
 
-///////////////////////////
+//-----------------------------------------------------------------------------
+// make complete sets of explosives
 
-//num=12;
-//for (i = [0:(num-1)]) makePyramid(i);
+module makeBoosters() {
+    makeHexBooster();
+    makePentBooster();
+}
+
+module makeLenses() {
+    makeHexSlowLens();
+    makeHexFastLens();
+
+    makePentSlowLens();
+    makePentFastLens();
+}
+
+module makeAllExpls() {
+    makeBoosters();
+    makeLenses();
+}
+
+//-----------------------------------------------------------------------------
+//// TMP TMP TMP
 
 module foo() {
     normal = NORMALS[PENT_PYRAMID];
@@ -345,25 +396,15 @@ module foo() {
         pentSlowLens();
 }
 
-module allLens() {
-    makeHexBooster();
-    makeHexSlowLens();
-    makeHexFastLens();
+//num=12;
+//for (i = [0:(num-1)]) makePyramid(i);
 
-    makePentBooster();
-    makePentSlowLens();
-    makePentFastLens();
-}
-
-//difference() {
-//    allLens();
-//    viewSplitter();
-//}
+//=============================================================================
 
 //$fn=128; //     20s HEX_BOOSTER
 //$fn=512; //   4m20s HEX_BOOSTER
 //$fn=1024; // 15m40s HEX_BOOSTER
-$fn = 1024;
+//$fn = 1024;
 
 HEX_BOOSTER = 0;
 HEX_SLOW_LENS = 1;
@@ -376,7 +417,11 @@ PENT_FAST_LENS = 5;
 HEX_LENS = 6;   // full fast lens
 PENT_LENS = 7;  // full fast lens
 
-p = HEX_FAST_LENS;
+BOOSTERS = 8;
+LENSES = 9;
+ALL = 10;
+
+p = -1; // -1;
 
 if (p == HEX_BOOSTER) makeHexBooster();
 else if (p == HEX_SLOW_LENS) makeHexSlowLens();
@@ -386,4 +431,7 @@ else if (p == PENT_SLOW_LENS) makePentSlowLens();
 else if (p == PENT_FAST_LENS) makePentFastLens();
 else if (p == HEX_LENS) makeHexFullFastLens();
 else if (p == PENT_LENS) makePentFullFastLens();
+else if (p == BOOSTERS) makeBoosters();
+else if (p == LENSES) makeLenses();
+else if (p == ALL) makeAllExpls();
 else echo("Invalid pyramid selector: ", p);
