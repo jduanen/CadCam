@@ -444,7 +444,37 @@ module makeGeometry(p) {
     else echo("Invalid pyramid selector: ", p);
 }
 
-difference() {
-    makeGeometry(BOOSTERS);
-    viewSplitter();
+//difference() {
+//    makeGeometry(BOOSTERS);
+//    viewSplitter();
+//}
+
+//makeGeometry(BOOSTERS);
+
+hexs = hexPyramidNums();
+pents = pentPyramidNums();
+
+//makeHexBooster(hexs[0]);
+//makePentBooster(pents[0]);
+
+//for (i = [0:7]) {
+//    if (i < len(hexs)) makeHexBooster(hexs[i]);
+//    if (i < len(pents)) makePentBooster(pents[i]);
+//}
+
+//INTER_LENS_GAP=1;
+
+module boosts() {
+    intersection() {
+        difference() {
+            truncatedIcosahedron();
+            sphere(d=BOOSTER_INNER_DIAMETER);
+        }
+        sphere(d=BOOSTER_OUTER_DIAMETER);
+    }
 }
+
+//difference() {
+    boosts();
+//    viewSplitter();
+//}
