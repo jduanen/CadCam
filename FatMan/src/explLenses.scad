@@ -395,6 +395,39 @@ module makeAllExpls() {
 }
 
 //-----------------------------------------------------------------------------
+// the ones used in Fusion360
+
+module boosts() {
+    intersection() {
+        difference() {
+            truncatedIcosahedron();
+            sphere(d=BOOSTER_INNER_DIAMETER);
+        }
+        sphere(d=BOOSTER_OUTER_DIAMETER);
+    }
+}
+
+module lensesX() {
+    intersection() {
+        difference() {
+            truncatedIcosahedron();
+            sphere(d=LENS_INNER_DIAMETER);
+        }
+        sphere(d=LENS_OUTER_DIAMETER);
+    }
+}
+
+module lenses() {
+    difference() {
+        intersection() {
+            truncatedIcosahedron();
+            sphere(d=LENS_OUTER_DIAMETER);
+        }
+        sphere(d=LENS_INNER_DIAMETER);
+    }
+}
+
+//-----------------------------------------------------------------------------
 //// TMP TMP TMP
 
 module foo() {
@@ -445,17 +478,16 @@ module makeGeometry(p) {
 }
 
 //difference() {
-//    makeGeometry(BOOSTERS);
+//    //makeGeometry(PENT);
+//    union() {
+//        lensesX();
+//        sphere(d=LENS_INNER_DIAMETER);
+//        sphere(d=LENS_OUTER_DIAMETER);
+//    }
 //    viewSplitter();
 //}
 
 //makeGeometry(BOOSTERS);
-
-hexs = hexPyramidNums();
-pents = pentPyramidNums();
-
-//makeHexBooster(hexs[0]);
-//makePentBooster(pents[0]);
 
 //for (i = [0:7]) {
 //    if (i < len(hexs)) makeHexBooster(hexs[i]);
@@ -464,17 +496,4 @@ pents = pentPyramidNums();
 
 //INTER_LENS_GAP=1;
 
-module boosts() {
-    intersection() {
-        difference() {
-            truncatedIcosahedron();
-            sphere(d=BOOSTER_INNER_DIAMETER);
-        }
-        sphere(d=BOOSTER_OUTER_DIAMETER);
-    }
-}
-
-//difference() {
-    boosts();
-//    viewSplitter();
-//}
+lenses();
