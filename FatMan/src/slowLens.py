@@ -9,14 +9,12 @@
 
 from slowPts import *  #### FIXME read this in, don't import it
 
-from math import asin, cos, degrees, sin, sqrt
+from math import asin, cos, sin, sqrt
 import matplotlib.pyplot as plt
-from matplotlib.patches import Arc
-from matplotlib.patches import Polygon as mPoly
-import numpy as np
+#import numpy as np
 from shapely.geometry import box, LineString, Point, Polygon
-from solid import polygon
-from solid.utils import *
+import solid
+import solid.utils
 
 
 LENS_OUTER_RADIUS = 690.5625
@@ -64,36 +62,44 @@ def trimPolygonLeftOfLine(polygon, line):
     trimmedPolygon = polygon.difference(leftRect)
     return trimmedPolygon
 
+def makePentProfile(ax):
+    circle = Point(0,0).buffer(LENS_INNER_RADIUS)
+    poly = Polygon(pentPts)
+    ciPoly = poly.difference(circle)
+
+    x = (LENS_OUTER_RADIUS * sin(PENT_ANGLE))
+    y = (LENS_OUTER_RADIUS * cos(PENT_ANGLE))
+    line = LineString([(0, 0), (x, y)])
+    ax.plot(*line.xy, color='red')
+    mask = createMask(line, side='left')
+    p = ciPoly.intersection(mask)
+    ax.plot(*p.exterior.xy, color="green")
+    return p.exterior.xy
+
+def makeHexProfile(ax):
+    circle = Point(0,0).buffer(LENS_INNER_RADIUS)
+    poly = Polygon(hexPts)
+    ciPoly = poly.difference(circle)
+
+    x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
+    y = (LENS_OUTER_RADIUS * cos(HEX_ANGLE))
+    line = LineString([(0, 0), (x, y)])
+    ax.plot(*line.xy, color='black')
+    mask = createMask(line, side='left')
+    h = ciPoly.intersection(mask)
+    ax.plot(*h.exterior.xy, color="blue")
+    return h.exterior.xy
+
 def run(options):
     fig, ax = plt.subplots()
     ax.autoscale()
     ax.set_aspect('equal')
 
-    circle = Point(0,0).buffer(LENS_INNER_RADIUS)
-
     if options['pent']:
-        poly = Polygon(pentPts)
-        ciPoly = poly.difference(circle)
-
-        x = (LENS_OUTER_RADIUS * sin(PENT_ANGLE))
-        y = (LENS_OUTER_RADIUS * cos(PENT_ANGLE))
-        line = LineString([(0, 0), (x, y)])
-        ax.plot(*line.xy, color='red')
-        mask = createMask(line, side='left')
-        p = ciPoly.intersection(mask)
-        ax.plot(*p.exterior.xy, color="green")
+        pentProfile = makePentProfile(ax)
 
     if options['hex']:
-        poly = Polygon(hexPts)
-        ciPoly = poly.difference(circle)
-
-        x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
-        y = (LENS_OUTER_RADIUS * cos(HEX_ANGLE))
-        line = LineString([(0, 0), (x, y)])
-        ax.plot(*line.xy, color='black')
-        mask = createMask(line, side='left')
-        h = ciPoly.intersection(mask)
-        ax.plot(*h.exterior.xy, color="blue")
+        hexProfile = makeHexProfile(ax)
 
     plt.show()
 
@@ -105,31 +111,3 @@ def getOps():
 if __name__ == '__main__':
     opts = getOps()
     run(opts)
-
-'''
-th1 = 0
-th2 = 90
-a = Arc((0, 0), LENS_INNER_RADIUS * 2, LENS_INNER_RADIUS * 2, theta1=th1, theta2=th2, edgecolor='red', lw=2)
-ax.add_patch(a)
-
-    ##plt.plot([0, x], [0, y], 'r-', linewidth=1)
-    x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
-    y = (LENS_INNER_RADIUS * cos(HEX_ANGLE))
-    plt.plot([0, x], [0, y], 'r-', linewidth=1)
-
-    h = mPoly(hexPts, closed=True, facecolor='lightgreen', edgecolor='green', alpha=0.7, linewidth=2)
-    ax.add_patch(h)
-
-    p = ciPoly.difference(line)
-    plt.plot(*p.exterior.xy, color="blue")
-    p = ciPoly.intersection(mask)
-#    p = trimPolygonLeftOfLine(ciPoly, line)
-#    ax.plot(*p.exterior.xy, color='green')
-
-        pent = rotatePolygon(p, 360)
-        x, y = pent.exterior.xy
-        ax.plot(x, y)
-
-def rotatePolygon(polygon, angle, origin='center'):
-    return affinity.rotate(polygon, angle, origin=origin)
-'''
