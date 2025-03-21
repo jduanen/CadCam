@@ -63,33 +63,42 @@ def trimPolygonLeftOfLine(polygon, line):
     return trimmedPolygon
 
 
-def run(options) {
+def run(options):
     fig, ax = plt.subplots()
     ax.autoscale()
     ax.set_aspect('equal')
 
-    circle = Point(0,0).buffer(LENS_INNER_RADIUS)  #.boundary
-    #ax.plot(*circle.exterior.xy, color='green')
+    circle = Point(0,0).buffer(LENS_INNER_RADIUS)
 
-    if True:
+    if options['pent']:
         poly = Polygon(pentPts)
-#       ax.plot(*poly.exterior.xy, color='gray')
         ciPoly = poly.difference(circle)
-#       ax.plot(*ciPoly.exterior.xy, color='magenta')
 
         x = (LENS_OUTER_RADIUS * sin(PENT_ANGLE))
         y = (LENS_OUTER_RADIUS * cos(PENT_ANGLE))
         line = LineString([(0, 0), (x, y)])
         ax.plot(*line.xy, color='red')
         mask = createMask(line, side='left')
-#       ax.plot(*mask.exterior.xy, color='cyan')
         p = ciPoly.intersection(mask)
         ax.plot(*p.exterior.xy, color="green")
+
+    if options['hex']:
+        poly = Polygon(hexPts)
+        ciPoly = poly.difference(circle)
+
+        x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
+        y = (LENS_OUTER_RADIUS * cos(HEX_ANGLE))
+        line = LineString([(0, 0), (x, y)])
+        ax.plot(*line.xy, color='black')
+        mask = createMask(line, side='left')
+        p = ciPoly.intersection(mask)
+        ax.plot(*p.exterior.xy, color="blue")
+
     plt.show()
 
 def getOps():
     #### FIXME make CLI
-    opts = {}
+    opts = {'hex': True, 'pent': True}
     return opts
 
 if __name__ == '__main__':
