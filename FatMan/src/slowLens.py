@@ -7,14 +7,16 @@
 ################################################################################
 '''
 
-from slowPts import *
+from slowPts import *  #### FIXME read this in, don't import it
 
 from math import asin, cos, degrees, sin, sqrt
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 from matplotlib.patches import Polygon as mPoly
-from shapely.geometry import Point, LineString, box
-from shapely.geometry import Polygon
+import numpy as np
+from shapely.geometry import box, LineString, Point, Polygon
+from solid import polygon
+from solid.utils import *
 
 
 LENS_OUTER_RADIUS = 690.5625
@@ -62,7 +64,6 @@ def trimPolygonLeftOfLine(polygon, line):
     trimmedPolygon = polygon.difference(leftRect)
     return trimmedPolygon
 
-
 def run(options):
     fig, ax = plt.subplots()
     ax.autoscale()
@@ -91,8 +92,8 @@ def run(options):
         line = LineString([(0, 0), (x, y)])
         ax.plot(*line.xy, color='black')
         mask = createMask(line, side='left')
-        p = ciPoly.intersection(mask)
-        ax.plot(*p.exterior.xy, color="blue")
+        h = ciPoly.intersection(mask)
+        ax.plot(*h.exterior.xy, color="blue")
 
     plt.show()
 
@@ -124,4 +125,11 @@ ax.add_patch(a)
     p = ciPoly.intersection(mask)
 #    p = trimPolygonLeftOfLine(ciPoly, line)
 #    ax.plot(*p.exterior.xy, color='green')
+
+        pent = rotatePolygon(p, 360)
+        x, y = pent.exterior.xy
+        ax.plot(x, y)
+
+def rotatePolygon(polygon, angle, origin='center'):
+    return affinity.rotate(polygon, angle, origin=origin)
 '''
