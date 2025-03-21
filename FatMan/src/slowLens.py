@@ -13,15 +13,19 @@ from math import asin, cos, sin, sqrt
 import matplotlib.pyplot as plt
 #import numpy as np
 from shapely.geometry import box, LineString, Point, Polygon
-import solid
-import solid.utils
+import solid2
+##import solid
+##import solid.utils
 
 
+#### FIXME make a common file for constants
 LENS_OUTER_RADIUS = 690.5625
 LENS_INNER_RADIUS = 461.9625
 
 HEX_ANGLE = asin(4 / sqrt(58 + (18 * sqrt(5))))  # half apical angle of a hexagonal pyramid
 PENT_ANGLE = asin((2 * sqrt(50 + (10 * sqrt(5)))) / (5 * sqrt(58 + (18 * sqrt(5)))))  # half apical angle of a pentagonal pyramid
+
+ax = None
 
 
 def createMask(line, side='left'):
@@ -62,7 +66,7 @@ def trimPolygonLeftOfLine(polygon, line):
     trimmedPolygon = polygon.difference(leftRect)
     return trimmedPolygon
 
-def makePentProfile(ax):
+def makePentProfile():
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(pentPts)
     ciPoly = poly.difference(circle)
@@ -76,7 +80,7 @@ def makePentProfile(ax):
     ax.plot(*p.exterior.xy, color="green")
     return p.exterior.xy
 
-def makeHexProfile(ax):
+def makeHexProfile():
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(hexPts)
     ciPoly = poly.difference(circle)
@@ -91,21 +95,30 @@ def makeHexProfile(ax):
     return h.exterior.xy
 
 def run(options):
+    global ax
+
     fig, ax = plt.subplots()
     ax.autoscale()
     ax.set_aspect('equal')
 
     if options['pent']:
-        pentProfile = makePentProfile(ax)
+        pentProfile = makePentProfile()
+        profile = solid2.polygon(pentProfile)
+        pent = solid2.rotate_extrude()(profile)
+        solid2.scad_render_to_file(pent, "./pent.stl")
 
     if options['hex']:
-        hexProfile = makeHexProfile(ax)
+        hexProfile = makeHexProfile()
+        profile = solid2.polygon(hexProfile)
+        hex = solid2.rotate_extrude()(profile)
+        solid2.scad_render_to_file(hex, "./hex.stl")
 
-    plt.show()
+    if options['plot']:
+        plt.show()
 
 def getOps():
     #### FIXME make CLI
-    opts = {'hex': True, 'pent': True}
+    opts = {'hex': True, 'pent': True, 'plot': False}
     return opts
 
 if __name__ == '__main__':
