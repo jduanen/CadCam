@@ -30,12 +30,15 @@ BOOSTER_INNER_DIAMETER = (BOOSTER_INNER_RADIUS * 2);
 INTER_LENS_GAP = 0.025;
 
 VERTICES = regular_polyhedron_info("vertices",
+                                   facedown=5,
                                    d=LARGEST_DIAMETER,
                                    name="truncated icosahedron");
 FACES = regular_polyhedron_info("faces",
+                                facedown=5,
                                 d=LARGEST_DIAMETER,
                                 name="truncated icosahedron");
 NORMALS = regular_polyhedron_info("face normals",
+                                  facedown=5,
                                   d=LARGEST_DIAMETER,
                                   name="truncated icosahedron");
 assert(len(FACES) == len(NORMALS));
@@ -44,6 +47,9 @@ HEX_PYRAMID = 30;   // vertical hexagonal pyramid
 PENT_PYRAMID = 29;  // pentagonal pyramid, rotated CCW on Y-axis
 
 ALPHA = 0.5;
+
+function isNan(x) = x != x;
+function isEqual(a, b, eps=EPSILON) = abs(a - b) < eps;
 
 //-----------------------------------------------------------------------------
 // make a max-sized hex/pent pyramid
@@ -407,7 +413,7 @@ module boosts() {
     }
 }
 
-module lensesX() {
+module lensesX() {  // freecad doesn't like this one
     intersection() {
         difference() {
             truncatedIcosahedron();
@@ -427,6 +433,77 @@ module lenses() {
     }
 }
 
+module pentSlowLenses() {
+    pentNums = pentPyramidNums();
+    for (p = pentNums) {
+        slowPentLens(p);
+    }
+}
+
+module hexSlowLenses() {
+    hexNums = hexPyramidNums();
+    for (h = hexNums) {
+        slowHexLens(h);
+    }
+}
+
+module slowLenses() {
+    pentSlowLenses();
+    hexSlowLenses();
+}
+
+module slowPentLens(pyramidNum) {
+    normal = NORMALS[pyramidNum];
+    echo("Pent normal: ", normal);
+
+    angle = acos(normal.z);
+    // cross product of [0, 0, 1] and the normal
+    axis = (isEqual(normal.x, 0) && isEqual(normal.y, 0)) ? [1, 0, 0] : [-normal.y, normal.x, 0];
+    echo("angle: ", angle, ", axis: ", axis);
+    difference() {
+        intersection() {
+            rotate(a=angle, v=axis)
+                color(PENT_SLOW_COLOR, 0.75)
+                    rotate_extrude()
+                        polygon(points=pentPts);
+            makeMaxPyramid(pyramidNum);
+        }
+        sphere(d=LENS_INNER_DIAMETER);
+    }
+}
+
+module slowHexLens(pyramidNum) {
+    n = NORMALS[pyramidNum];
+    echo("Hex normal:", n);
+
+    normal = [(isEqual(n.x, 0)) ? 0 :
+              (isEqual(n.x, 1)) ? 1 :
+              (isEqual(n.x, -1)) ? -1 :
+              n.x,
+              (isEqual(n.y, 0)) ? 0 :
+              (isEqual(n.y, 1)) ? 1 :
+              (isEqual(n.y, -1)) ? -1 :
+              n.y,
+              (isEqual(n.z, 0)) ? 0 :
+              (isEqual(n.z, 1)) ? 1 :
+              (isEqual(n.z, -1)) ? -1 :
+              n.z];
+    echo("Normal:", normal);
+    angle = acos(normal.z);
+    axis = [-normal.y, normal.x, 0];
+    echo("angle:", angle, "axis:", axis);
+    difference() {
+        intersection() {
+            rotate(a=angle, v=axis)
+                color(HEX_SLOW_COLOR, 0.75)
+                    rotate_extrude()
+                        polygon(points=hexPts);
+            makeMaxPyramid(pyramidNum);
+        }
+        sphere(d=LENS_INNER_DIAMETER);
+    }
+}
+
 //-----------------------------------------------------------------------------
 //// TMP TMP TMP
 
@@ -438,6 +515,76 @@ module foo() {
         makeMaxPyramid(PENT_PYRAMID);
     translate([for (n = normal) n * INTER_LENS_GAP])
         pentSlowLens();
+}
+
+//function isEq(a, b, eps=EPSILON) = abs(a - b) < eps;
+
+module printNormals(F = 800) {
+    for (n = NORMALS) {
+        normal = [(isEqual(n.x, 0)) ? 0 :
+                  (isEqual(n.x, 1)) ? 1 :
+                  (isEqual(n.x, -1)) ? -1 :
+                  n.x,
+                  (isEqual(n.y, 0)) ? 0 :
+                  (isEqual(n.y, 1)) ? 1 :
+                  (isEqual(n.y, -1)) ? -1 :
+                  n.y,
+                  (isEqual(n.z, 0)) ? 0 :
+                  (isEqual(n.z, 1)) ? 1 :
+                  (isEqual(n.z, -1)) ? -1 :
+                  n.z];
+//      if (n != normal) echo(n, normal);
+        pt = [normal[0] * F, normal[1] * F, normal[2] * F];
+        echo(pt);
+    }
+}
+
+module printAzEl() {
+    for (n = NORMALS) {
+        normal = [(isEqual(n.x, 0)) ? 0 :
+                  (isEqual(n.x, 1)) ? 1 :
+                  (isEqual(n.x, -1)) ? -1 :
+                  n.x,
+                  (isEqual(n.y, 0)) ? 0 :
+                  (isEqual(n.y, 1)) ? 1 :
+                  (isEqual(n.y, -1)) ? -1 :
+                  n.y,
+                  (isEqual(n.z, 0)) ? 0 :
+                  (isEqual(n.z, 1)) ? 1 :
+                  (isEqual(n.z, -1)) ? -1 :
+                  n.z];
+        az = acos(normal.z);
+        el = atan2(normal.y, normal.x);
+        if (el < 0) {
+            el = el + 360;
+        }
+        echo(az, el);  // aka (phi, theta)
+    }
+}
+
+module printTypeAzEl() {
+    for (i = [0:len(NORMALS)-1]) {
+        n = NORMALS[i];
+        normal = [(isEqual(n.x, 0)) ? 0 :
+                  (isEqual(n.x, 1)) ? 1 :
+                  (isEqual(n.x, -1)) ? -1 :
+                  n.x,
+                  (isEqual(n.y, 0)) ? 0 :
+                  (isEqual(n.y, 1)) ? 1 :
+                  (isEqual(n.y, -1)) ? -1 :
+                  n.y,
+                  (isEqual(n.z, 0)) ? 0 :
+                  (isEqual(n.z, 1)) ? 1 :
+                  (isEqual(n.z, -1)) ? -1 :
+                  n.z];
+        az = acos(normal.z);
+        el = atan2(normal.y, normal.x);
+        if (el < 0) {
+            el = el + 360;
+        }
+        typ = (len(FACES[i]) == 5) ? "  // Pentagon" : "  // Hexagon";
+        echo(az, el, typ);  // aka (phi, theta) // <type>
+    }
 }
 
 //num=12;
@@ -453,47 +600,69 @@ module foo() {
 HEX_BOOSTER = 0;
 HEX_SLOW_LENS = 1;
 HEX_FAST_LENS = 2;
+
 PENT_BOOSTER = 3;
 PENT_SLOW_LENS = 4;
 PENT_FAST_LENS = 5;
+
 HEX_LENS = 6;   // full fast lens
 PENT_LENS = 7;  // full fast lens
+
 BOOSTERS = 8;
 LENSES = 9;
-ALL = 10;
+
+PENT_SLOW_LENSES = 10;
+HEX_SLOW_LENSES = 11;
+
+ALL = 12;
 
 module makeGeometry(p) {
     if (p == HEX_BOOSTER) makeHexBooster(HEX_PYRAMID);
     else if (p == HEX_SLOW_LENS) makeHexSlowLens();
     else if (p == HEX_FAST_LENS) makeHexFastLens();
+
     else if (p == PENT_BOOSTER) makePentBooster(PENT_PYRAMID);
     else if (p == PENT_SLOW_LENS) makePentSlowLens();
-    else if (p == PENT_FAST_LENS) makePentFastLens();
+    else if (p == PENT_FAST_LENS) makeFastLens();
+
     else if (p == HEX_LENS) makeHexFullFastLens();
     else if (p == PENT_LENS) makePentFullFastLens();
-    else if (p == BOOSTERS) makeBoosters();
-    else if (p == LENSES) makeLenses();
+
+    else if (p == BOOSTERS) boosters();
+    else if (p == LENSES) lenses();
+
+    else if (p == HEX_SLOW_LENSES) hexSlowLenses();
+    else if (p == PENT_SLOW_LENSES) pentSlowLenses();
+
     else if (p == ALL) makeAllExpls();
     else echo("Invalid pyramid selector: ", p);
 }
 
 //difference() {
-//    //makeGeometry(PENT);
-//    union() {
-//        lensesX();
-//        sphere(d=LENS_INNER_DIAMETER);
-//        sphere(d=LENS_OUTER_DIAMETER);
-//    }
-//    viewSplitter();
+//    slowPentLens(PENT_PYRAMID);
+//    makeGeometry(HEX_SLOW_LENS);
+    //viewSplitter();
 //}
 
-//makeGeometry(BOOSTERS);
-
-//for (i = [0:7]) {
-//    if (i < len(hexs)) makeHexBooster(hexs[i]);
-//    if (i < len(pents)) makePentBooster(pents[i]);
+//pNums = pentPyramidNums();
+//hNums = hexPyramidNums();
+//num = 1;
+//for (i = [0:(num-1)]) {
+//    echo("Pyramid #: ", hNums[i]);
+//    slowHexLens(hNums[i]);
+//    color("gray", 0.5)
+//    makeMaxPyramid(hNums[i]);
 //}
 
-//INTER_LENS_GAP=1;
+makeGeometry(PENT_SLOW_LENSES);  // works
+//makeGeometry(HEX_SLOW_LENSES);  // doesn't work
 
-lenses();
+//hexNums = hexPyramidNums();
+//echo(hexNums);
+//for (i = [1:19]) {
+//    h = hexNums[i];
+//    echo("HEX#", h);
+//    slowHexLens(h);
+//}
+
+//regular_polyhedron("truncated icosahedron", facedown=5, d=LENS_OUTER_DIAMETER);
