@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 #import numpy as np
 from shapely.geometry import box, LineString, Point, Polygon
 import solid2
-##import solid
-##import solid.utils
+#from solid2 import polygon, rotate_extrude, scad_render_to_file
+#import solid2.utils
 
 
 #### FIXME make a common file for constants
@@ -74,11 +74,11 @@ def makePentProfile():
     x = (LENS_OUTER_RADIUS * sin(PENT_ANGLE))
     y = (LENS_OUTER_RADIUS * cos(PENT_ANGLE))
     line = LineString([(0, 0), (x, y)])
-    ax.plot(*line.xy, color='red')
+#    ax.plot(*line.xy, color='red')
     mask = createMask(line, side='left')
     p = ciPoly.intersection(mask)
-    ax.plot(*p.exterior.xy, color="green")
-    return p.exterior.xy
+#    ax.plot(*p.exterior.xy, color="green")
+    return list(zip(p.exterior.xy[0], p.exterior.xy[1]))
 
 def makeHexProfile():
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
@@ -88,11 +88,11 @@ def makeHexProfile():
     x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
     y = (LENS_OUTER_RADIUS * cos(HEX_ANGLE))
     line = LineString([(0, 0), (x, y)])
-    ax.plot(*line.xy, color='black')
+#    ax.plot(*line.xy, color='black')
     mask = createMask(line, side='left')
     h = ciPoly.intersection(mask)
-    ax.plot(*h.exterior.xy, color="blue")
-    return h.exterior.xy
+#    ax.plot(*h.exterior.xy, color="blue")
+    return list(zip(h.exterior.xy[0], h.exterior.xy[1]))
 
 def run(options):
     global ax
@@ -103,22 +103,26 @@ def run(options):
 
     if options['pent']:
         pentProfile = makePentProfile()
-        profile = solid2.polygon(pentProfile)
-        pent = solid2.rotate_extrude()(profile)
-        solid2.scad_render_to_file(pent, "./pent.stl")
+        poly = solid2.polygon(pentProfile)
+        pent = solid2.rotate_extrude()(poly)
+        solid2.scad_render_to_file(pent, "./pentLens.scad")
+        if options['verbose']:
+            print("Wrote Hex SCAD file")
 
     if options['hex']:
         hexProfile = makeHexProfile()
-        profile = solid2.polygon(hexProfile)
-        hex = solid2.rotate_extrude()(profile)
-        solid2.scad_render_to_file(hex, "./hex.stl")
+        poly = solid2.polygon(hexProfile)
+        hexa = solid2.rotate_extrude()(poly)
+        solid2.scad_render_to_file(hexa, "./hexLens.scad")
+        if options['verbose']:
+            print("Wrote Hex SCAD file")
 
     if options['plot']:
         plt.show()
 
 def getOps():
     #### FIXME make CLI
-    opts = {'hex': True, 'pent': True, 'plot': False}
+    opts = {'hex': True, 'pent': True, 'plot': False, 'verbose': True}
     return opts
 
 if __name__ == '__main__':
