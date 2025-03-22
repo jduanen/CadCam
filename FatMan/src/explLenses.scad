@@ -3,7 +3,7 @@
 include <BOSL2/std.scad>
 include <BOSL2/polyhedra.scad>
 
-include <slowExpl.scad>
+include <scad/slowExpl.scad>
 
 
 PENTA_COLOR = "red";
@@ -43,13 +43,20 @@ NORMALS = regular_polyhedron_info("face normals",
                                   name="truncated icosahedron");
 assert(len(FACES) == len(NORMALS));
 
-HEX_PYRAMID = 30;   // vertical hexagonal pyramid
-PENT_PYRAMID = 29;  // pentagonal pyramid, rotated CCW on Y-axis
+HEX_PYRAMID_NUM = 20;   // pentagonal pyramid, rotated CCW on Y-axis
+PENT_PYRAMID_NUM = 28;  // vertical hexagonal pyramid
 
 ALPHA = 0.5;
 
 function isNan(x) = x != x;
 function isEqual(a, b, eps=EPSILON) = abs(a - b) < eps;
+
+module splitView() {
+    difference() {
+        children();
+        viewSplitter();
+    }
+}
 
 //-----------------------------------------------------------------------------
 // make a max-sized hex/pent pyramid
@@ -148,7 +155,7 @@ module combinedView() {
 module hexSlowLens() {
     difference() {
         intersection() {
-            makeMaxPyramid(HEX_PYRAMID);
+            makeMaxPyramid(HEX_PYRAMID_NUM);
             color(HEX_SLOW_COLOR, 0.75)
                 rotate_extrude()
                     polygon(points=hexPts);
@@ -158,13 +165,13 @@ module hexSlowLens() {
 }
 
 module pentSlowLens() {
-    normal = NORMALS[PENT_PYRAMID];
+    normal = NORMALS[PENT_PYRAMID_NUM];
     rotX = atan2(normal.y, normal.z);
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                makeMaxPyramid(PENT_PYRAMID);
+                makeMaxPyramid(PENT_PYRAMID_NUM);
             color(PENT_SLOW_COLOR, 0.75)
                 rotate_extrude()
                     polygon(points=pentPts);
@@ -258,7 +265,7 @@ module explLens(pyramidNum) {
 
 module makeHexFastLensComponent() {
     difference() {
-        makeHexFullFastLens();
+        makeHexFastLensFull();
         translate([0, 0, 0.01])  // space between components
             makeHexSlowLens();
         translate([0, 0, -0.01])  // space between components
@@ -266,10 +273,10 @@ module makeHexFastLensComponent() {
     }
 }
 
-module makeHexFullFastLens() {  // no slow lens component
-    face = FACES[HEX_PYRAMID];
+module makeHexFastLensFull() {  // no slow lens component
+    face = FACES[HEX_PYRAMID_NUM];
     assert(len(face) == 6);
-    normal = NORMALS[HEX_PYRAMID];
+    normal = NORMALS[HEX_PYRAMID_NUM];
     rotX = atan2(normal.y, normal.z);
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     difference() {
@@ -282,10 +289,10 @@ module makeHexFullFastLens() {  // no slow lens component
     }
 }
 
-module makeHexSlowLens() {
+module makeHexSlowLensComponent() {
     difference() {
         intersection() {
-            makeMaxPyramid(HEX_PYRAMID);
+            makeMaxPyramid(HEX_PYRAMID_NUM);
             color("magenta", 0.75)
                 rotate_extrude()
                     polygon(points=hexPts);
@@ -297,7 +304,7 @@ module makeHexSlowLens() {
 module makeHexBooster(pyramidNum) {
     face = FACES[pyramidNum];
     assert(len(face) == 6);
-    normal = NORMALS[HEX_PYRAMID];
+    normal = NORMALS[HEX_PYRAMID_NUM];
     difference() {
         intersection() {
             translate([for (n = normal) n * INTER_LENS_GAP])
@@ -308,20 +315,20 @@ module makeHexBooster(pyramidNum) {
     }
 }
 
-module makePentFastLens() {  // void for slow lens
+module makePentFastLensComponent() {  // void for slow lens
     difference() {
-        makePentFullFastLens();
+        makePentFastLensFull();
         translate([0, 0, 0.01])  // space between lenses
-            makePentSlowLens();
+            makePentSlowLensComponent();
         translate([0, 0, -0.01])  // space between lenses
-            makePentSlowLens();
+            makePentSlowLensComponent();
     }
 }
 
-module makePentFullFastLens() {  // no slow lens component
-    face = FACES[PENT_PYRAMID];
+module makePentFastLensFull() {  // no slow lens component
+    face = FACES[PENT_PYRAMID_NUM];
     assert(len(face) == 5);
-    normal = NORMALS[PENT_PYRAMID];
+    normal = NORMALS[PENT_PYRAMID_NUM];
     rotX = atan2(normal.y, normal.z);
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     difference() {
@@ -334,14 +341,14 @@ module makePentFullFastLens() {  // no slow lens component
     }
 }
 
-module makePentSlowLens() {
-    normal = NORMALS[PENT_PYRAMID];
+module makePentSlowLensComponent() {
+    normal = NORMALS[PENT_PYRAMID_NUM];
     rotX = atan2(normal.y, normal.z);
     rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
     difference() {
         intersection() {
             rotate([rotX, rotY, 0])
-                makeMaxPyramid(PENT_PYRAMID);
+                makeMaxPyramid(PENT_PYRAMID_NUM);
             color("cyan", 0.75)
                 rotate_extrude()
                     polygon(points=pentPts);
@@ -353,7 +360,7 @@ module makePentSlowLens() {
 module makePentBooster(pyramidNum) {
     face = FACES[pyramidNum];
     assert(len(face) == 5);
-    normal = NORMALS[PENT_PYRAMID];
+    normal = NORMALS[PENT_PYRAMID_NUM];
     difference() {
         intersection() {
             translate([for (n = normal) n * INTER_LENS_GAP])
@@ -388,11 +395,11 @@ module makeBoosters() {
 }
 
 module makeLenses() {
-    makeHexSlowLens();
-    makeHexFastLens();
+    makeHexSlowLensComponent();
+    makeHexFastLensComponent();
 
-    makePentSlowLens();
-    makePentFastLens();
+    makePentSlowLensComponent();
+    makePentFastLensComponent();
 }
 
 module makeAllExpls() {
@@ -454,12 +461,10 @@ module slowLenses() {
 
 module slowPentLens(pyramidNum) {
     normal = NORMALS[pyramidNum];
-    echo("Pent normal: ", normal);
 
     angle = acos(normal.z);
     // cross product of [0, 0, 1] and the normal
     axis = (isEqual(normal.x, 0) && isEqual(normal.y, 0)) ? [1, 0, 0] : [-normal.y, normal.x, 0];
-    echo("angle: ", angle, ", axis: ", axis);
     difference() {
         intersection() {
             rotate(a=angle, v=axis)
@@ -474,8 +479,6 @@ module slowPentLens(pyramidNum) {
 
 module slowHexLens(pyramidNum) {
     n = NORMALS[pyramidNum];
-    echo("Hex normal:", n);
-
     normal = [(isEqual(n.x, 0)) ? 0 :
               (isEqual(n.x, 1)) ? 1 :
               (isEqual(n.x, -1)) ? -1 :
@@ -488,10 +491,8 @@ module slowHexLens(pyramidNum) {
               (isEqual(n.z, 1)) ? 1 :
               (isEqual(n.z, -1)) ? -1 :
               n.z];
-    echo("Normal:", normal);
     angle = acos(normal.z);
     axis = [-normal.y, normal.x, 0];
-    echo("angle:", angle, "axis:", axis);
     difference() {
         intersection() {
             rotate(a=angle, v=axis)
@@ -505,19 +506,7 @@ module slowHexLens(pyramidNum) {
 }
 
 //-----------------------------------------------------------------------------
-//// TMP TMP TMP
-
-module foo() {
-    normal = NORMALS[PENT_PYRAMID];
-    rotX = atan2(normal.y, normal.z);
-    rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
-    rotate([rotX, rotY, 0])
-        makeMaxPyramid(PENT_PYRAMID);
-    translate([for (n = normal) n * INTER_LENS_GAP])
-        pentSlowLens();
-}
-
-//function isEq(a, b, eps=EPSILON) = abs(a - b) < eps;
+// Print info
 
 module printNormals(F = 800) {
     for (n = NORMALS) {
@@ -587,8 +576,25 @@ module printTypeAzEl() {
     }
 }
 
+//-----------------------------------------------------------------------------
+//// TMP TMP TMP
+
 //num=12;
 //for (i = [0:(num-1)]) makeMaxPyramid(i);
+
+//regular_polyhedron("truncated icosahedron", facedown=5, d=LENS_OUTER_DIAMETER);
+
+module foo() {
+    normal = NORMALS[PENT_PYRAMID_NUM];
+    rotX = atan2(normal.y, normal.z);
+    rotY = atan2(-normal.x, sqrt(normal.y * normal.y + normal.z * normal.z));
+    rotate([rotX, rotY, 0])
+        makeMaxPyramid(PENT_PYRAMID_NUM);
+    translate([for (n = normal) n * INTER_LENS_GAP])
+        pentSlowLens();
+}
+
+//function isEq(a, b, eps=EPSILON) = abs(a - b) < eps;
 
 //=============================================================================
 
@@ -610,26 +616,29 @@ PENT_LENS = 7;  // full fast lens
 
 BOOSTERS = 8;
 LENSES = 9;
+SLOW_LENSES = 10;
 
-PENT_SLOW_LENSES = 10;
-HEX_SLOW_LENSES = 11;
+PENT_SLOW_LENSES = 11;
+HEX_SLOW_LENSES = 12;
 
-ALL = 12;
+ALL = 13;
 
 module makeGeometry(p) {
-    if (p == HEX_BOOSTER) makeHexBooster(HEX_PYRAMID);
-    else if (p == HEX_SLOW_LENS) makeHexSlowLens();
-    else if (p == HEX_FAST_LENS) makeHexFastLens();
+    if (p == HEX_BOOSTER) makeHexBooster(HEX_PYRAMID_NUM);
+    else if (p == PENT_BOOSTER) makePentBooster(PENT_PYRAMID_NUM);
 
-    else if (p == PENT_BOOSTER) makePentBooster(PENT_PYRAMID);
-    else if (p == PENT_SLOW_LENS) makePentSlowLens();
-    else if (p == PENT_FAST_LENS) makeFastLens();
+    else if (p == HEX_FAST_LENS) makeHexFastLensComponent();
+    else if (p == PENT_FAST_LENS) makePentFastLensComponent();
 
-    else if (p == HEX_LENS) makeHexFullFastLens();
-    else if (p == PENT_LENS) makePentFullFastLens();
+    else if (p == HEX_SLOW_LENS) makeHexSlowLensComponent();
+    else if (p == PENT_SLOW_LENS) makePentSlowLensComponent();
+
+    else if (p == HEX_LENS) makeHexFastLensFull();
+    else if (p == PENT_LENS) makePentFastLensFull();
 
     else if (p == BOOSTERS) boosters();
     else if (p == LENSES) lenses();
+    else if (p == SLOW_LENSES) slowLenses();
 
     else if (p == HEX_SLOW_LENSES) hexSlowLenses();
     else if (p == PENT_SLOW_LENSES) pentSlowLenses();
@@ -638,12 +647,14 @@ module makeGeometry(p) {
     else echo("Invalid pyramid selector: ", p);
 }
 
-//difference() {
-//    slowPentLens(PENT_PYRAMID);
-//    makeGeometry(HEX_SLOW_LENS);
-    //viewSplitter();
+
+//// TMP TMP TMP
+//splitView() {
+//    makeGeometry(BOOSTERS);
+//    makeGeometry(LENSES);
 //}
 
+//// TMP TMP TMP
 //pNums = pentPyramidNums();
 //hNums = hexPyramidNums();
 //num = 1;
@@ -654,9 +665,7 @@ module makeGeometry(p) {
 //    makeMaxPyramid(hNums[i]);
 //}
 
-makeGeometry(PENT_SLOW_LENSES);  // works
-//makeGeometry(HEX_SLOW_LENSES);  // doesn't work
-
+//// TMP TMP TMP
 //hexNums = hexPyramidNums();
 //echo(hexNums);
 //for (i = [1:19]) {
@@ -665,4 +674,20 @@ makeGeometry(PENT_SLOW_LENSES);  // works
 //    slowHexLens(h);
 //}
 
-//regular_polyhedron("truncated icosahedron", facedown=5, d=LENS_OUTER_DIAMETER);
+//=======
+//makeGeometry(HEX_BOOSTER);    // works, rotated
+////makeGeometry(HEX_FAST_LENS);  // not correct bottom surface, vertical, crashes FreeCAD
+////makeGeometry(HEX_SLOW_LENS);  // not correct, only a sliver, verical?
+//makeGeometry(HEX_LENS);       // works, but is vertical, should it be rotated?
+
+//makeGeometry(PENT_BOOSTER);    // works, vertical
+//makeGeometry(PENT_FAST_LENS);  // works, vertical, crashes FreeCAD
+//makeGeometry(PENT_SLOW_LENS);  // works, vertical, crashes FreeCAD
+//makeGeometry(PENT_LENS);       // works, vertical, crashes FreeCAD
+
+//makeGeometry(BOOSTERS);     // works
+//makeGeometry(LENSES);       // works
+//makeGeometry(SLOW_LENSES);  // works, crashes FreeCAD
+
+//makeGeometry(HEX_SLOW_LENSES);   // works, crashes FreeCAD (RotateExtrude)
+//makeGeometry(PENT_SLOW_LENSES);  // works, crashes FreeCAD (RotateExtrude)
