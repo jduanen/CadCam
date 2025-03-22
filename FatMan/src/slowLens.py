@@ -4,6 +4,8 @@
 #
 # Generate CGS file for the Pentagonal and Hexagonal Slow Explosive Lenses
 #
+# N.B. These solids need to be trimmed by their associated hex/pent prisms
+#
 ################################################################################
 '''
 
@@ -74,29 +76,48 @@ def makePentProfile(pentPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(pentPts)
     ciPoly = poly.difference(circle)
+    return list(zip(ciPoly.exterior.xy[0], ciPoly.exterior.xy[1]))
 
+'''
+    #### FIXME need to intersect this with the pyramid after rotating the profile
     x = (LENS_OUTER_RADIUS * sin(PENT_ANGLE))
     y = (LENS_OUTER_RADIUS * cos(PENT_ANGLE))
     line = LineString([(0, 0), (x, y)])
-#    ax.plot(*line.xy, color='red')
+    ax.plot(*line.xy, color='red')
     mask = createMask(line, side='left')
     p = ciPoly.intersection(mask)
-#    ax.plot(*p.exterior.xy, color="green")
+    ax.plot(*p.exterior.xy, color="green")
     return list(zip(p.exterior.xy[0], p.exterior.xy[1]))
+'''
 
 def makeHexProfile(hexPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(hexPts)
     ciPoly = poly.difference(circle)
+    return list(zip(ciPoly.exterior.xy[0], ciPoly.exterior.xy[1]))
 
+'''
     x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
     y = (LENS_OUTER_RADIUS * cos(HEX_ANGLE))
     line = LineString([(0, 0), (x, y)])
-#    ax.plot(*line.xy, color='black')
+    ax.plot(*line.xy, color='black')
     mask = createMask(line, side='left')
     h = ciPoly.intersection(mask)
-#    ax.plot(*h.exterior.xy, color="blue")
+    ax.plot(*h.exterior.xy, color="blue")
     return list(zip(h.exterior.xy[0], h.exterior.xy[1]))
+'''
+
+def makePentSolid(profile):
+    pentProfile = makePentProfile(profile)
+    poly = solid2.polygon(pentProfile)
+    pent = solid2.rotate_extrude()(poly)
+    return pent
+
+def makeHexSolid(profile):
+    hexProfile = makeHexProfile(profile)
+    poly = solid2.polygon(hexProfile)
+    hexa = solid2.rotate_extrude()(poly)
+    return hexa
 
 def run(options):
     global ax
@@ -125,27 +146,26 @@ def run(options):
     assert('pentPts' in profiles and 'hexPts' in profiles)
 
     if options['pent']:
-        pentProfile = makePentProfile(profiles['pentPts'])
-        poly = solid2.polygon(pentProfile)
-        pent = solid2.rotate_extrude()(poly)
-        solid2.scad_render_to_file(pent, PENT_SLOW_LENS_FILE)
+        pent = makePentSolid(profiles['pentPts'])
+        solid2.scad_render_to_file(pent, options['pentFilename'])
         if options['verbose']:
-            print("Wrote Pent SCAD file")
+            print(f"Wrote Pent SCAD file to: {options['pentFilename']}")
 
     if options['hex']:
-        hexProfile = makeHexProfile(profiles['hexPts'])
-        poly = solid2.polygon(hexProfile)
-        hexa = solid2.rotate_extrude()(poly)
-        solid2.scad_render_to_file(hexa, HEX_SLOW_LENS_FILE)
+        hexa = makeHexSolid(profiles['hexPts'])
+        solid2.scad_render_to_file(hexa, options['hexFilename'])
         if options['verbose']:
-            print("Wrote Hex SCAD file")
+            print(f"Wrote Hex SCAD file to: {options['hexFilename']}")
 
     if options['plot']:
         plt.show()
 
 def getOps():
     #### FIXME make CLI
-    opts = {'ptsFilename': SLOW_LENS_PROFILE_FILE, 'hex': True, 'pent': True, 'plot': False, 'verbose': True}
+    opts = {'ptsFilename': SLOW_LENS_PROFILE_FILE,
+            'pentFilename': PENT_SLOW_LENS_FILE,
+            'hexFilename': HEX_SLOW_LENS_FILE,
+            'hex': True, 'pent': True, 'plot': False, 'verbose': True}
     return opts
 
 if __name__ == '__main__':
