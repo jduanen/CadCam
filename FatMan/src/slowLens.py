@@ -7,16 +7,20 @@
 ################################################################################
 '''
 
-from slowPts import *  #### FIXME read this in, don't import it
-
+import ast
 from math import asin, cos, sin, sqrt
 import matplotlib.pyplot as plt
 #import numpy as np
+from pprint import pprint
 from shapely.geometry import box, LineString, Point, Polygon
 import solid2
 #from solid2 import polygon, rotate_extrude, scad_render_to_file
 #import solid2.utils
 
+BASE_DIR = "/home/jdn/CadCam/FatMan/src"
+SLOW_LENS_PROFILE_FILE = f"{BASE_DIR}/slowLensPts.py"
+HEX_SLOW_LENS_FILE = f"{BASE_DIR}/scad/hexSlowLens.scad"
+PENT_SLOW_LENS_FILE = f"{BASE_DIR}/scad/pentSlowLens.scad"
 
 #### FIXME make a common file for constants
 LENS_OUTER_RADIUS = 690.5625
@@ -66,7 +70,7 @@ def trimPolygonLeftOfLine(polygon, line):
     trimmedPolygon = polygon.difference(leftRect)
     return trimmedPolygon
 
-def makePentProfile():
+def makePentProfile(pentPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(pentPts)
     ciPoly = poly.difference(circle)
@@ -80,7 +84,7 @@ def makePentProfile():
 #    ax.plot(*p.exterior.xy, color="green")
     return list(zip(p.exterior.xy[0], p.exterior.xy[1]))
 
-def makeHexProfile():
+def makeHexProfile(hexPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(hexPts)
     ciPoly = poly.difference(circle)
@@ -101,19 +105,38 @@ def run(options):
     ax.autoscale()
     ax.set_aspect('equal')
 
+    profiles = {}
+    curName = None
+    with open(options['ptsFilename'], 'r') as f:
+        content = f.read().strip().split('\n')
+        for line in content:
+            if line.startswith('#') or not line or line.isspace():
+                continue
+            if "=" in line:
+                assert(curName is None)
+                parts = line.split('=')
+                curName = parts[0].strip()
+                profiles[curName] = []
+            elif line == "];":
+                curName = None
+            else:
+                pts = ast.literal_eval(line.rstrip(','))
+                profiles[curName].append(pts)
+    assert('pentPts' in profiles and 'hexPts' in profiles)
+
     if options['pent']:
-        pentProfile = makePentProfile()
+        pentProfile = makePentProfile(profiles['pentPts'])
         poly = solid2.polygon(pentProfile)
         pent = solid2.rotate_extrude()(poly)
-        solid2.scad_render_to_file(pent, "./pentLens.scad")
+        solid2.scad_render_to_file(pent, PENT_SLOW_LENS_FILE)
         if options['verbose']:
-            print("Wrote Hex SCAD file")
+            print("Wrote Pent SCAD file")
 
     if options['hex']:
-        hexProfile = makeHexProfile()
+        hexProfile = makeHexProfile(profiles['hexPts'])
         poly = solid2.polygon(hexProfile)
         hexa = solid2.rotate_extrude()(poly)
-        solid2.scad_render_to_file(hexa, "./hexLens.scad")
+        solid2.scad_render_to_file(hexa, HEX_SLOW_LENS_FILE)
         if options['verbose']:
             print("Wrote Hex SCAD file")
 
@@ -122,7 +145,7 @@ def run(options):
 
 def getOps():
     #### FIXME make CLI
-    opts = {'hex': True, 'pent': True, 'plot': False, 'verbose': True}
+    opts = {'ptsFilename': SLOW_LENS_PROFILE_FILE, 'hex': True, 'pent': True, 'plot': False, 'verbose': True}
     return opts
 
 if __name__ == '__main__':
