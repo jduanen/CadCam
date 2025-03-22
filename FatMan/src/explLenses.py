@@ -38,6 +38,7 @@ SCAD_OUTPUT_FILENAME = f"{BASE_DIR}/slowLensPts.scad"
 FAST_EXPL = 8050*1000  # mm/s
 SLOW_EXPL = 4900*1000  # mm/s
 
+#### FIXME use a common file derived from the spreadsheet
 LENS_OUTER_RADIUS = 690.56
 LENS_OUTER_DIAMETER = (LENS_OUTER_RADIUS * 2)  # 1381.13
 LENS_HEIGHT = 228.60
