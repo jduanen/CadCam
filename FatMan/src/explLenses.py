@@ -31,8 +31,9 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Arc, Polygon
 
 
-PY_OUTPUT_FILENAME = "slowLensPts.py"
-SCAD_OUTPUT_FILENAME = "slowLensPts.scad"
+BASE_DIR = "."
+PY_OUTPUT_FILENAME = f"{BASE_DIR}/slowLensPts.py"
+SCAD_OUTPUT_FILENAME = f"{BASE_DIR}/slowLensPts.scad"
 
 FAST_EXPL = 8050*1000  # mm/s
 SLOW_EXPL = 4900*1000  # mm/s
@@ -79,11 +80,11 @@ def transitionCurve(prismShape, verbose=False):
     if prismShape.lower() == "hexagonal":
         APICAL_ANGLE = HEX_ANGLE
         if verbose:
-            print("Hexagonal Transition Curve")
+            print("Created hexagonal transition curve")
     elif prismShape.lower() == "pentagonal":
         APICAL_ANGLE = PENT_ANGLE
         if verbose:
-            print("Pentagonal Transition Curve")
+            print("Created pentagonal transition curve")
     else:
         raise Exception(f"Unknown prism type: {prismShape} != hexagonal | pentagonal")
 
@@ -224,8 +225,12 @@ def run(options):
 
     if options['scadOut']:
         writeFile(options['scadOut'], hexPoints, pentPoints)
+        if options['verbose']:
+            print(f"Wrote profile points to: {options['scadOut']}")
     if options['pyOut']:
         writeFile(options['pyOut'], hexPoints, pentPoints)
+        if options['verbose']:
+            print(f"Wrote profile points to: {options['pyOut']}")
 
     if options['plot']:
         plt.show()
