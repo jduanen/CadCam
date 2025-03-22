@@ -146,14 +146,30 @@ def run(options):
     assert('pentPts' in profiles and 'hexPts' in profiles)
 
     if options['pent']:
-        pent = makePentSolid(profiles['pentPts'])
-        solid2.scad_render_to_file(pent, options['pentFilename'])
+        moduleObj = makePentSolid(profiles['pentPts'])
+        scadCode = solid2.scad_render(moduleObj)
+        moduleCode = f"""
+module pentSlowLens() {{
+    {scadCode}
+}}
+
+        """
+        with open(options['pentFilename'], 'w') as f:
+            f.write(moduleCode)
         if options['verbose']:
             print(f"Wrote Pent SCAD file to: {options['pentFilename']}")
 
     if options['hex']:
-        hexa = makeHexSolid(profiles['hexPts'])
-        solid2.scad_render_to_file(hexa, options['hexFilename'])
+        moduleObj = makeHexSolid(profiles['hexPts'])
+        scadCode = solid2.scad_render(moduleObj)
+        moduleCode = f"""
+module hexSlowLens() {{
+    {scadCode}
+}}
+
+        """
+        with open(options['hexFilename'], 'w') as f:
+            f.write(moduleCode)
         if options['verbose']:
             print(f"Wrote Hex SCAD file to: {options['hexFilename']}")
 
