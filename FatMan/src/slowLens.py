@@ -24,7 +24,7 @@ SLOW_LENS_PROFILE_FILE = f"{BASE_DIR}/slowLensPts.py"
 HEX_SLOW_LENS_FILE = f"{BASE_DIR}/scad/hexSlowLens.scad"
 PENT_SLOW_LENS_FILE = f"{BASE_DIR}/scad/pentSlowLens.scad"
 
-#### FIXME make a common file for constants
+#### FIXME use a common file derived from the spreadsheet
 LENS_OUTER_RADIUS = 690.5625
 LENS_INNER_RADIUS = 461.9625
 
