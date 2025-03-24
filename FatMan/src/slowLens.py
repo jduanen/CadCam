@@ -75,8 +75,9 @@ def trimPolygonLeftOfLine(polygon, line):
 def makePentProfile(pentPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(pentPts)
-    ciPoly = poly.difference(circle)
-    return list(zip(ciPoly.exterior.xy[0], ciPoly.exterior.xy[1]))
+#### FIXME leave the bottom large and trim later
+#    ciPoly = poly.difference(circle)
+    return list(zip(poly.exterior.xy[0], poly.exterior.xy[1]))
 
 '''
     #### FIXME need to intersect this with the pyramid after rotating the profile
@@ -93,8 +94,9 @@ def makePentProfile(pentPts):
 def makeHexProfile(hexPts):
     circle = Point(0,0).buffer(LENS_INNER_RADIUS)
     poly = Polygon(hexPts)
-    ciPoly = poly.difference(circle)
-    return list(zip(ciPoly.exterior.xy[0], ciPoly.exterior.xy[1]))
+#### FIXME leave the bottom large and trim later
+#    ciPoly = poly.difference(circle)
+    return list(zip(poly.exterior.xy[0], poly.exterior.xy[1]))
 
 '''
     x = (LENS_OUTER_RADIUS * sin(HEX_ANGLE))
