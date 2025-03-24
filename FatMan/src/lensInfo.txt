@@ -1,0 +1,74 @@
+* HEX_BOOSTER
+  - representative hexagonal booster
+  - should it be vertical?
+  - makeHexBooster(HEX_PYRAMID_NUM)
+    * hexMaxPyramid()
+  - OpenSCAD: works, rotated off top
+  - FreeCAD: 
+* PENT_BOOSTER
+  - representative pentagonal booster
+  - makePentBooster(HEX_PYRAMID_NUM)
+    * pentMaxPyramid()
+  - OpenSCAD: works, verical top
+  - FreeCAD: 
+** HEX_FAST_LENS
+  - representative hexagonal fast lens (vertical)
+  - OpenSCAD: 
+  - FreeCAD: 
+** PENT_FAST_LENS
+  - representative pentagonal fast lens (?)
+  - OpenSCAD: 
+  - FreeCAD: 
+* HEX_SLOW_LENS
+  - representative hexagonal slow lens
+  - makeHexSlowLensComponent()
+    * makeMaxPyramid(HEX_PYRAMID_NUM)
+  - OpenSCAD: works, vertical top
+  - FreeCAD: 
+* PENT_SLOW_LENS
+  - representative pentagonal slow lens
+  - makePentSlowLensComponent()
+    * makeMaxPyramid(PENT_PYRAMID_NUM)
+  - OpenSCAD: works, vertical top
+  - FreeCAD: 
+
+* HEX_LENS (both components)
+  - includes both fast and slow lens hexagonal components
+  - OpenSCAD: 
+  - FreeCAD: 
+* PENT_LENS (both components)
+  - includes both fast and slow lens pentagonal components
+  - OpenSCAD: 
+  - FreeCAD: 
+* HEX_LENS_EXT
+  - external of combined both lens hexagonal components
+  - OpenSCAD: 
+  - FreeCAD: 
+* PENT_LENS_EXT
+  - external of combined both lens pentagonal components
+  - OpenSCAD: 
+  - FreeCAD: 
+* HEX_SLOW_LENSES
+  - all hexagonal slow lens components
+  - OpenSCAD: 
+  - FreeCAD: 
+* PENT_SLOW_LENSES
+  - all pentagonal slow lens components
+  - OpenSCAD: 
+  - FreeCAD: 
+* BOOSTERS
+  - all boosters (hexagonal and pentagonal)
+  - OpenSCAD: 
+  - FreeCAD: 
+* FAST_LENSES
+  - all fast lenses (hexagonal and pentagonal)
+  - OpenSCAD: 
+  - FreeCAD: 
+* SLOW_LENSES
+  - all slow lenses (hexagonal and pentagonal)
+  - OpenSCAD: 
+  - FreeCAD: 
+* LENSES
+  - all lenses (both fast and slow, hexagonal and pentagonal)
+  - OpenSCAD: 
+  - FreeCAD: 
