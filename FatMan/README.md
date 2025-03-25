@@ -57,6 +57,14 @@ While Fusion360 is the primary tool used to create this model, several other too
   - using OpenSCAD it is possible to write out the desired objects in CSG format for conversion into STEP format files by FreeCAD
 * FreeCAD './csg/*.csg'
   - open the desired CSG files export each shape into STEP format files
+  - select the last entry in the device tree on the left
+  - export to STEP format from 'File->Export'
 * Fusion360
   - open each STEP file with Fusion360 and save in the FatMan folder
+  - do all the trimming of the spherical features here as it works much better with solids
+    * this means I need to leave the bottoms and tops a bit oversized in order to allow them to be trimmed in Fusion360
+    * **not clear if boosters have to be trimmed, need to check**
+  - all lenses need to be aligned to the origin in the Fusion360 file where they are first imported
   - use Insert Component to add objects and continue with Fusion360 as normal
+  - **not clear if it's possible to import all the slow and fast lens components as a whole, or if I have to import representative ones and replicate and place them in F360**
+
