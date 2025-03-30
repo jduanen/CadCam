@@ -29,6 +29,7 @@ import numpy as np
 from math import asin, cos, degrees, sin, sqrt
 import matplotlib.pyplot as plt
 from matplotlib.patches import Arc, Polygon
+from shapely.geometry import Polygon as ShapelyPolygon
 
 
 BASE_DIR = "."
@@ -118,13 +119,15 @@ def transitionCurve(prismShape, verbose=False):
     points = np.array([p for i, p in enumerate(points) if p not in points[:i]])
 #    points = np.insert(points, 0, (apexX, apexY), axis=0)
     points = np.append(points, [(apexX, apexY), (0, minY), (points[0][0], minY)], axis=0)
-    polygon = Polygon(points, closed=True, fill=False)
+    simplPts = ShapelyPolygon(points).simplify(tolerance=0.01)
+    simplPoints = [list(p) for p in list(zip(simplPts.exterior.xy[0], simplPts.exterior.xy[1]))]
+    polygon = Polygon(simplPoints, closed=True, fill=False)
     if ax is not None:
         ax.add_patch(polygon)
     return polygon.get_xy()
 
 def hexTransitionCurve(verbose=False):
-    return transitionCurve("Hexagonal", verbose)
+     return transitionCurve("Hexagonal", verbose)
 
 def pentTransitionCurve(verbose=False):
     return transitionCurve("Pentagonal", verbose)
