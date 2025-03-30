@@ -1,5 +1,4 @@
-Component,Material,Thickness,,(Outer) Diameter,,Radius,,
-,,(in),(mm),(in),(mm),(mm),,Notes
+Component,Material,Thickness,,(Outer) Diameter,mm,Radius,,,,(in),(mm),(in),(mm),(mm),,Notes
 Urchin,Berylium & Polonium,0.2362,6.00,0.8,20.32,10.16,,
 Core,Plutonium,2.82,71.63,3.62,91.948,45.974,,includes 5 thou silver/nickel plating
 Tamper,Uranium,5.13,130.30,8.75,222.25,111.125,,
