@@ -1,6 +1,6 @@
 * HEX_BOOSTER
   - representative hexagonal booster
-  - should it be vertical?
+  - should it be vertical? it's the only one that's not
   - modules
     * makeHexBooster(HEX_PYRAMID_NUM)
       - hexMaxPyramid()
@@ -46,7 +46,7 @@
       - makeMaxPyramid(PENT_PYRAMID_NUM)
   - OpenSCAD: works, vertical top
   - FreeCAD: 
-* HEX_LENS (both components)
+* HEX_LENS
   - includes both fast and slow lens hexagonal components
   - bottom is untrimmed
   - modules
@@ -55,7 +55,7 @@
       - makeHexFastLensComponent()
   - OpenSCAD: works, vertical top 
   - FreeCAD: 
-* PENT_LENS (both components)
+* PENT_LENS
   - includes both fast and slow lens pentagonal components
   - bottom is untrimmed
   - modules
@@ -95,7 +95,7 @@
   - modules
     * makeHexSlowLenses()
       - h = hexPyramidNums()
-      - makeHexSlowLens(h)
+      - makeSlowLens(h)
         * hexSlowLens()
         * makeMaxPyramid()
   - OpenSCAD: works
@@ -104,28 +104,43 @@
   - all pentagonal slow lens components
   - modules
     * makePentSlowLenses()
-      - h = pentPyramidNums()
-      - makePentSlowLens(h)
-        * makeMaxPyramid()
+      - p = pentPyramidNums()
+      - makeSlowLens(p)
         * pentSlowLens()
-  - OpenSCAD: 
+        * makeMaxPyramid()
+  - OpenSCAD: works 
   - FreeCAD: 
 * FAST_LENSES
   - all fast lenses (hexagonal and pentagonal)
   - modules
-    * ????
+    * makeFastLenses()
+      - makeHexFastLenses()
+        * h = hexPyramidNums()
+        * makeHexFastLens(h)
+          - makeFastLens(h)
+            * ?
+      - makePentFastLenses()
+        * p = pentPyramidNums()
+        * makePentFastLens(p)
+          - makeFastLens(p)
+            * ?
   - OpenSCAD: 
   - FreeCAD: 
 * SLOW_LENSES
   - all slow lenses (hexagonal and pentagonal)
   - modules
-    * pentSlowLenses()
-    * hexSlowLenses()
-  - OpenSCAD: 
+    * makeSlowLenses()
+      - makePentSlowLenses()
+      - makeHexSlowLenses()
+  - OpenSCAD: works
   - FreeCAD: 
 * LENSES
-  - all lenses (both fast and slow, hexagonal and pentagonal)
+  - a representative of all lenses (both fast and slow, hexagonal and pentagonal)
   - modules
-    * ????
-  - OpenSCAD: 
+    * makeLenses()
+      - makeHexSlowLensComponent()
+      - makeHexFastLensComponent()
+      - makePentSlowLensComponent()  // TBD
+      - makePentFastLensComponent()  // TBD
+  - OpenSCAD: works, all overlaid vertical top
   - FreeCAD: 
