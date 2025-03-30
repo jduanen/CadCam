@@ -1,7 +1,9 @@
 fast_simplification
 matplotlib
 numpy
+pyglet<2
 pyvista
 setuptools
+shapely
 solidpython2
 trimesh
