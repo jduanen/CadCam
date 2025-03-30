@@ -54,6 +54,8 @@ FOCUS_2 = (0, LENS_OUTER_RADIUS)
 HEX_ANGLE = asin(4 / sqrt(58 + (18 * sqrt(5))))  # half apical angle of a hexagonal pyramid
 PENT_ANGLE = asin((2 * sqrt(50 + (10 * sqrt(5)))) / (5 * sqrt(58 + (18 * sqrt(5)))))  # half apical angle of a pentagonal pyramid
 
+POLY_TOLERANCE = 0.05
+
 NUM_STEPS = 3000
 TOLERANCE = 1e2
 
@@ -119,7 +121,7 @@ def transitionCurve(prismShape, verbose=False):
     points = np.array([p for i, p in enumerate(points) if p not in points[:i]])
 #    points = np.insert(points, 0, (apexX, apexY), axis=0)
     points = np.append(points, [(apexX, apexY), (0, minY), (points[0][0], minY)], axis=0)
-    simplPts = ShapelyPolygon(points).simplify(tolerance=0.01)
+    simplPts = ShapelyPolygon(points).simplify(tolerance=POLY_TOLERANCE)
     simplPoints = [list(p) for p in list(zip(simplPts.exterior.xy[0], simplPts.exterior.xy[1]))]
     polygon = Polygon(simplPoints, closed=True, fill=False)
     if ax is not None:
