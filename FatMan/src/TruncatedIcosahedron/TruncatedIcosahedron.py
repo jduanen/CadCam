@@ -43,6 +43,7 @@ class TruncatedIcosahedron():
             self.vertices.append((x, y, z))
 
         # Group 3: (±ϕ, ±2, ±(2ϕ+1)) and permutations (24 vertices)
+        #### FIXME errors in [52-55]
         for x, y, z in [(phi, 2, 2*phi+1), (phi, 2, -2*phi-1),
                         (phi, -2, 2*phi+1), (phi, -2, -2*phi-1),
                         (-phi, 2, 2*phi+1), (-phi, 2, -2*phi-1),
@@ -51,14 +52,48 @@ class TruncatedIcosahedron():
                         (-2, 2*phi+1, phi), (-2, -2*phi-1, phi),
                         (2*phi+1, phi, 2), (2*phi+1, phi, -2),
                         (2*phi+1, -phi, 2), (2*phi+1, -phi, -2),
-                        (-2*phi+1, phi, 2), (-2*phi+1, phi, -2),
-                        (-2*phi+1, -phi, 2), (-2*phi+1, -phi, -2),
+                        (-(2*phi+1), phi, 2), (-(2*phi+1), phi, -2),  # 52-53 new
+                        (-(2*phi+1), -phi, 2), (-(2*phi+1), -phi, -2),  # 54-55 new
                         (2, 2*phi+1, -phi), (2, -2*phi-1, -phi),
                         (-2, 2*phi+1, -phi), (-2, -2*phi-1, -phi)]:
             self.vertices.append((x, y, z))
-        print(len(self.vertices))
         self.vertices = self.scale * np.array(self.vertices)
-        print(self.vertices.shape)
+
+        self.pentagonalFaces = [[8, 50, 26, 24, 48, 8],  # Pentagon 0
+                                [0, 36, 12, 16, 40, 0],
+                                [2, 38, 14, 18, 42, 2],
+                                [9, 49, 25, 27, 51, 9],
+                                [4, 44, 20, 32, 56, 4],
+                                [5, 57, 33, 21, 45, 5],
+                                [7, 59, 35, 23, 47, 7],
+                                [1, 41, 17, 13, 37, 1],
+                                [3, 39, 15, 19, 43, 3],
+                                [6, 58, 34, 22, 46, 6],
+                                [10, 54, 30, 28, 52, 10],
+                                [11, 55, 31, 29, 53, 11]  # Pentagon 11
+                                ]
+        self.hexagonalFaces = [[0, 2, 38, 26, 24, 36, 0],     # Hexagon 0
+                               [0, 2, 42, 30, 28, 40, 0],
+                               [12, 36, 24, 48, 20, 44, 12],
+                               [14, 45, 21, 50, 26, 38, 14],
+                               [8, 50, 21, 33, 51, 9, 8],
+                               [8, 9, 49, 32, 20, 48, 8],
+                               [4, 6, 46, 16, 12, 44, 4],
+                               [5, 7, 47, 18, 14, 45, 5],
+                               [13, 37, 25, 49, 32, 56, 13],
+                               [1, 3, 43, 31, 29, 41, 1],
+                               [1, 3, 39, 27, 25, 37, 1],
+                               [15, 57, 33, 51, 27, 39, 15],
+                               [4, 56, 13, 17, 58, 6, 4],
+                               [5, 57, 15, 19, 59, 7, 5],
+                               [18, 42, 30, 54, 23, 47, 18],
+                               [16, 40, 28, 52, 22, 46, 16],
+                               [10, 52, 22, 34, 53, 11, 10],
+                               [10, 11, 55, 35, 23, 54, 10],
+                               [19, 43, 31, 55, 35, 59, 19],
+                               [17, 58, 34, 53, 29, 41, 17]     # Hexagon 19
+                               ]
+        self.faces = [*self.hexagonalFaces, *self.pentagonalFaces]
 
     def getFaceNumbers(self):
         return self.faces
