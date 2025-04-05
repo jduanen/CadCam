@@ -125,8 +125,11 @@ class TruncatedIcosahedron():
     def getPentagonalFaceNumbers(self):
         return list(range(self.hexCount, (self.hexCount + self.pentCount)))
 
-    def getFaceVertices(self, faceNumber):
-        return self.vertices[self.faces[faceNumber]]
+    def getFaceVertices(self, faceNumber, closed=False):
+        vertices = self.vertices[self.faces[faceNumber]]
+        if closed:
+            vertices = np.append(vertices, np.array([vertices[0]]), axis=0)
+        return vertices
 
     def getFaceCenter(self, faceNumber):
         vertices = np.array(self.getFaceVertices(faceNumber))
