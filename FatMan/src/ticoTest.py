@@ -31,6 +31,11 @@ for pentFaceNumber in pentFaceNumbers:
     if tico.isFaceHexagonal(pentFaceNumber) or not tico.isFacePentagonal(pentFaceNumber):
         print(f"Error: {pentFaceNumber}")
 
+faceCenters = []
+for faceNum in bothFaceNumbers:
+    faceVertices = tico.getFaceVertices(faceNum)
+    faceCenter = tico.getFaceCenter(faceNum)
+    faceCenters.append((faceCenter, faceVertices))
 
 # plot stuff
 fig = plt.figure(figsize=(10, 8))
@@ -44,15 +49,32 @@ if False:
     hexFaceNumbers = tico.getHexagonalFaceNumbers()
     print(f"hexFaceNumbers: {hexFaceNumbers}")
     for faceNumber in hexFaceNumbers:
-        x, y, z = zip(*vertices[faceNumber])
+        vertices = tico.getFaceVertices(faceNumber)
+        vertices = np.append(vertices, np.array([vertices[0]]), axis=0)
+        x, y, z = zip(*vertices)
         ax.plot(x, y, z, 'r-')
 
 if False:
     pentFaceNumbers = tico.getPentagonalFaceNumbers()
     print(f"pentFaceNumbers: {pentFaceNumbers}")
     for faceNumber in pentFaceNumbers:
-        x, y, z = zip(*vertices[faceNumber])
+        vertices = tico.getFaceVertices(faceNumber)
+        vertices = np.append(vertices, np.array([vertices[0]]), axis=0)
+        x, y, z = zip(*vertices)
         ax.plot(x, y, z, 'g-')
+
+if False:
+    for center, vertices in faceCenters[0:1]:
+        print(center)
+        print(vertices)
+        color = 'g-' if len(vertices) == 5 else 'r-'
+        x, y, z = zip(*vertices)
+        ax.plot(x, y, z, color)
+        ax.scatter(center[0], center[1], center[2], c='b')
+        for v in vertices:
+            d = np.linalg.norm(v - center)
+            print(d)
+        print("")
 
 ax.set_title("Truncated Icosahedron Vertices", fontsize=14)
 plt.tight_layout()
