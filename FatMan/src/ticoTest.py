@@ -1,40 +1,57 @@
-import numpy as np
-from TruncatedIcosahedron.TruncatedIcosahedron import TruncatedIcosahedron
-
-# Generate vertices
-##vertices = generate_truncated_icosahedron()
-tico = TruncatedIcosahedron()
-vertices = tico.getVertices()
-print(f"Generated {len(vertices)} vertices (expected: 60)")
-slice = vertices
-#print("Sample vertices:\n", slice[0:4])
-for v in [52, 53, 54, 55]:
-    print(f"vertex #{v}: {vertices[v]}")
-
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import sys
 
+from TruncatedIcosahedron.TruncatedIcosahedron import TruncatedIcosahedron
+
+
+tico = TruncatedIcosahedron()
+
+vertices = tico.getVertices()
+
+facesCount = len(tico.getFaces())
+hexFaceNumbers = tico.getHexagonalFaceNumbers()
+pentFaceNumbers = tico.getPentagonalFaceNumbers()
+if (len(hexFaceNumbers) + len(pentFaceNumbers)) != facesCount:
+    print(f"Bad Faces Counts: {len(hexFaceNumbers)} + {len(pentFaceNumbers)} != {facesCount}")
+    sys.exit(1)
+
+bothFaceNumbers = set([*hexFaceNumbers, *pentFaceNumbers])
+faceNumbers = set(tico.getFaceNumbers())
+if bothFaceNumbers != faceNumbers:
+    print("Face Number Mismatch:")
+    print(f"    All: {faceNumbers}")
+    print(f"    Both: {bothFaceNumbers}")
+    sys.exit(1)
+for hexFaceNumber in hexFaceNumbers:
+    if tico.isFacePentagonal(hexFaceNumber) or not tico.isFaceHexagonal(hexFaceNumber):
+        print(f"Error: {hexFaceNumber}")
+for pentFaceNumber in pentFaceNumbers:
+    if tico.isFaceHexagonal(pentFaceNumber) or not tico.isFacePentagonal(pentFaceNumber):
+        print(f"Error: {pentFaceNumber}")
+
+
+# plot stuff
 fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
-ax.scatter(slice[:, 0], slice[:, 1], slice[:, 2], s=50, alpha=0.8)
-#for i in range(52, 56):
-#    ax.scatter(slice[i, 0], slice[i, 1], slice[i, 2], c='cyan')
+ax.scatter(vertices[:, 0], vertices[:, 1], vertices[:, 2], s=50, alpha=0.8)
 
-for i, (xi, yi, zi) in enumerate(slice):
+for i, (xi, yi, zi) in enumerate(vertices):
     ax.text(xi, yi, zi, f"#{i}", size=8, color='black') # ha='center', va='top')
 
 if False:
-    hexFaces = tico.getHexagonalFaceNumbers()
-    print(f"hexFaces: {hexFaces}")
-    for face in hexFaces:
-        x, y, z = zip(*vertices[face])
+    hexFaceNumbers = tico.getHexagonalFaceNumbers()
+    print(f"hexFaceNumbers: {hexFaceNumbers}")
+    for faceNumber in hexFaceNumbers:
+        x, y, z = zip(*vertices[faceNumber])
         ax.plot(x, y, z, 'r-')
 
-if True:
-    pentFaces = tico.getPentagonalFaceNumbers()
-    print(f"pentFaces: {pentFaces}")
-    for face in pentFaces:
-        x, y, z = zip(*vertices[face])
+if False:
+    pentFaceNumbers = tico.getPentagonalFaceNumbers()
+    print(f"pentFaceNumbers: {pentFaceNumbers}")
+    for faceNumber in pentFaceNumbers:
+        x, y, z = zip(*vertices[faceNumber])
         ax.plot(x, y, z, 'g-')
 
 ax.set_title("Truncated Icosahedron Vertices", fontsize=14)
