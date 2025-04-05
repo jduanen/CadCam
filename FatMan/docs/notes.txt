@@ -42,6 +42,7 @@
   - E-Plate
 
 * Physics Package Components (from inside out):
+==> see FatManDimensions.txt for updated dimension information
   - Neutron Initiator ("Urchin")
     * "Urchin" (Polonium-Beryllium) initiator
       - inside two hemispheres of the Plutonium core/pit
@@ -128,6 +129,8 @@
         * screws are not interchangeable
     * a trap-door plug on the top hemisphere
       - threaded and screwed in place
+        * top 1" threaded with 3/8-16 coarse threads
+          - about 3 thou's of slopt
       - two untapped holes for spanner to insert/remove
         * holes are filled with aluminum and held in place with scotch tape
     * inner diameter: 8.875" (225.425mm)
@@ -160,6 +163,7 @@
     * height: 9.0" (228.6mm)
     * outer edge length: 11.25" (285.75mm)
     * outer diameter (when fully compressed by Cork Liner): 54.375" (1381.125mm)
+  - Inter-explosive gaps: 0.1875"
   - Explosive Bridge Wire (EBW) Detonators
     * two in each Fast Explosive Lens Element
     * dimensions?
@@ -168,8 +172,9 @@
     * uncompressed thickness: 0.5" (12.7mm)
   - Dural Shell
     * Al-2024, aka Duralumin
-    * seven pieces, all 1" (25.4mm) thick1
-      - two polar caps, and five zone plates
+    * seven pieces, all 1" (25.4mm) thick
+      - two polar caps: 53.3" 
+      - five equitorial zone plates
     * total weigth ~1,146lbs
     * eight 3.0" (76.2mm) cubes cast into the five zone plates
       - holes drilled through them to mount the forward/aft ballistic case ellipsoids
@@ -180,7 +185,7 @@
     * lift lug      - same as on Little Boy
       - 
     * two polar caps
-      - ? diameter: 53.3" (1,353.82mm)
+      - diameter: 53.3" (1,353.82mm)
       - 30 high-strength bolts
       - six detonator holes in Polar Caps
       - four added holes in Forward Polar Cap for Primacord attached to AN219-2 contact fuses (aka daisy cutters)
@@ -191,7 +196,7 @@
         * installed in-flight
     * Cork liner
       - uncompressed: .5" (12.7mm)
-    * inner diameter: 55.25" (1,403.35mm)
+    * shell inner diameter: 55.25" (1,403.35mm) - without cork liner
   - Air Space between Dural Shell and Steel Ballistic Case
     * ?
     * dimensions?
@@ -208,6 +213,7 @@
   - locations and dimensions of add-ons?
   - ???? 3" (76.2mm) cubes around center of gadget
     * used to mount Forward and Rear Case
+  - 0.375" steel (not armor, didn't fit)
 
 * Plates
   - A Plate
@@ -567,7 +573,7 @@ Nuclear weapons use arrays of explosive lenses to change several nearly spherica
         * Radius of the base of the wedge-shaped groove 0.40 cm (0.157")
         * Radius of the top of the wedge-shaped groove 0.609 cm (0.24")
         * Radius of the solid beryllium ball 0.40 cm (0.156")
-      However, one source disputed the Visgin description and told the author on 5/ 1 9/08, "The urchin is machined from two beryllium hemispheres. The inside is hollowed out by boring steps of decreasing radius using a series of end-mills. The result is what looks like a 'theater in the round,' with the circular steps cut in each hemisphere. The beryllium is then flash-coated with Po-210 on the steps." Yet another source confirmed to the author in 2015 the Visgin descriptions are accurate.
+      However, one source disputed the Visgin description and told the author on 5/19/08, "The urchin is machined from two beryllium hemispheres. The inside is hollowed out by boring steps of decreasing radius using a series of end-mills. The result is what looks like a 'theater in the round,' with the circular steps cut in each hemisphere. The beryllium is then flash-coated with Po-210 on the steps." Yet another source confirmed to the author in 2015 the Visgin descriptions are accurate.
   - Fat Man Urchin (from JCM footnotes):
     * Core internal cavity diameter (for the initiator/urchin): 0.85"
     * Urchin outer diameter: 0.8"
@@ -752,6 +758,9 @@ The dihedral angle between two hexagonal faces is 138o 11' and the angle between
   - https://www.youtube.com/watch?v=nN5q8i-kQj0
   - https://www.history.navy.mil/content/history/museums/nmusn/explore/photography/wwii/wwii-pacific/bombardment-japan/bombs-atomic/fat-man-nagasaki.html
   - https://nukecompendium.com/weapons/mk3/
+  - https://www.lanl.gov/museum/news/newsletter/2020/2/lanl-2.php
+  - https://www.flickr.com/photos/rocbolt/48277903382/in/photostream/
+  - https://skfb.ly/onXP7
   - 
 
 * Bainbridge Report on Trinity
@@ -977,4 +986,18 @@ The dihedral angle between two hexagonal faces is 138o 11' and the angle between
   - once converted to convex shockwave, it's weakened
     * so need booster charge that is initiated by convex shockwave
       - so continues convex, as opposed to point initiated detonation
-  - 
+  - different configurations of explosives and detonators
+    * Y-1222
+      - 12-pentagon dodecahedron arrangement
+        * with each pentagon divided into 6 smaller pentagons
+      - 72 total blocks
+      - two photos of partial assembly exist
+    * Y-1561
+      - aka Trinity/Fat Man/Mk3
+      - inner and outer layer of 32 blocks each in a truncated icosahedron (soccer ball)
+      - required only 90 bolts to assemble
+      - used in Trinity and final Fat Man design
+      - no photographs have been declassified
+    * Y-1562
+      - 132 detonators
+    * Mk5: 92 point detonation
