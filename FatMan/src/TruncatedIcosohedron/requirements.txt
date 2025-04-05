@@ -1,5 +1,0 @@
-abcplus
-matplotlib
-numpy
-solidpython
-vtk
