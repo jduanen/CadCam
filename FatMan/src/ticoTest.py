@@ -63,7 +63,7 @@ if False:
         x, y, z = zip(*vertices)
         ax.plot(x, y, z, 'g-')
 
-if False:
+if True:
     for center, vertices in faceCenters[0:1]:
         print(center)
         print(vertices)
