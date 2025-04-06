@@ -68,3 +68,13 @@ While Fusion360 is the primary tool used to create this model, several other too
   - use Insert Component to add objects and continue with Fusion360 as normal
   - **not clear if it's possible to import all the slow and fast lens components as a whole, or if I have to import representative ones and replicate and place them in F360**
 
+### Workflow for Placing Detonator Features on Casing and Explosive Lenses
+
+* detonatorPoints.py
+  - run and generate (x,y,z) tuples for each point
+* Fusion360
+  - run and go into 3D sketch mode 
+  - add point at the origin
+  - select move command and move the point by the x,y,z amounts
+  - use that point to create construction scaffolding and sketches for the geometry related to the EBW detonators
+
