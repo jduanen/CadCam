@@ -177,4 +177,4 @@ class TruncatedIcosahedron():
 
     def rotate(self, xDeg=0, yDeg=0, zDeg=0):
         R = TruncatedIcosahedron._rotationMatrix(np.array([xDeg, yDeg, zDeg]))
-        vertices = (R @ self.vertices.T).T
+        self.vertices = (R @ self.vertices.T).T
