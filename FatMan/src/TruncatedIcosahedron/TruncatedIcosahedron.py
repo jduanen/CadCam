@@ -162,8 +162,6 @@ class TruncatedIcosahedron():
     @staticmethod
     def _rotationMatrix(anglesInDegrees):
         A, B, C = np.radians(anglesInDegrees)
-        print(anglesInDegrees)
-        print(A, B, C)
         Rx = np.array([[1, 0, 0],
                        [0, np.cos(A), -np.sin(A)],
                        [0, np.sin(A), np.cos(A)]])
