@@ -40,36 +40,37 @@ for faceNumber in bothFaceNumbers:
 # plot stuff
 fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
-ax.scatter(vertices[:, 0], vertices[:, 1], vertices[:, 2], s=50, alpha=0.8)
 
-for i, (xi, yi, zi) in enumerate(vertices):
-    ax.text(xi, yi, zi, f"#{i}", size=8, color='black') # ha='center', va='top')
+def plotLabeledVertices():
+    ax.scatter(vertices[:, 0], vertices[:, 1], vertices[:, 2], s=50, alpha=0.8)
+    for i, (xi, yi, zi) in enumerate(vertices):
+        ax.text(xi, yi, zi, f"#{i}", size=8, color='black') # ha='center', va='top')
 
-if False:
+def plotHexFaces(color='red'):
     hexFaceNumbers = tico.getHexagonalFaceNumbers()
-    print(f"hexFaceNumbers: {hexFaceNumbers}")
+    ##print(f"hexFaceNumbers: {hexFaceNumbers}")
     for faceNumber in hexFaceNumbers:
         vertices = tico.getFaceVertices(faceNumber, closed=True)
         x, y, z = zip(*vertices)
-        ax.plot(x, y, z, 'r-')
+        ax.plot(x, y, z, '-', c=color)
 
-if False:
+def plotPentFaces(color='green'):
     pentFaceNumbers = tico.getPentagonalFaceNumbers()
-    print(f"pentFaceNumbers: {pentFaceNumbers}")
+    ##print(f"pentFaceNumbers: {pentFaceNumbers}")
     for faceNumber in pentFaceNumbers:
         vertices = tico.getFaceVertices(faceNumber, closed=True)
         x, y, z = zip(*vertices)
-        ax.plot(x, y, z, 'g-')
+        ax.plot(x, y, z, '-', c=color)
 
-if True:
+def plotFaceCenters(color='blue'):
     for center, vertices in faceCenters:
         color = 'g-' if len(vertices) == 5 else 'r-'
         vs = np.append(vertices, np.array([vertices[0]]), axis=0)
         x, y, z = zip(*vs)
         ax.plot(x, y, z, color)
-        ax.scatter(center[0], center[1], center[2], c='b')
+        ax.scatter(center[0], center[1], center[2], c=color)
 
-if False:
+def plotFaceNormals(color='yellow'):
     for faceNumber in tico.getFaceNumbers():
         normal = tico.getFaceNormal(faceNumber)
         vertices = tico.getFaceVertices(faceNumber)
@@ -84,23 +85,33 @@ if False:
         '''
         ax.quiver(center[0], center[1], center[2],  # starting point
                   normal[0], normal[1], normal[2],  # direction
-                  color='magenta', arrow_length_ratio=0.25,
+                  color=color, arrow_length_ratio=0.25,
                   linewidth=1)
 
-if True:
-    SCALE_FACTOR = 10.0
+def plotCenterVectors(scaleFactor = 10.0, color='cyan'):
     for faceNumber in tico.getFaceNumbers():
         normal, vertices, center = tico.getFaceInfo(faceNumber)
         startPt = np.array([0, 0, 0])
-        endPt = startPt + normal * SCALE_FACTOR
-        print(endPt)
+        endPt = startPt + normal * scaleFactor
         ax.plot([startPt[0], endPt[0]],
                 [startPt[1], endPt[1]],
                 [startPt[2], endPt[2]],
-                color='cyan', linewidth=1)
+                color=color, linewidth=1)
 
+def plotRotatedFaces(rx=0, ry=0, rz=0, color='magenta'):
+    tico.rotate(rx, ry, rz)
+    for faceNumber in tico.getHexagonalFaceNumbers():
+        vertices = tico.getFaceVertices(faceNumber, closed=True)
+        x, y, z = zip(*vertices)
+        ax.plot(x, y, z, '-', color=color)
 
-ax.set_title("Truncated Icosahedron Vertices", fontsize=14)
-plt.tight_layout()
-ax.set_aspect('equal')
-plt.show()
+#plotLabeledVertices()
+#plotPentFaces()
+plotRotatedFaces(-30, 0, 0)
+#plotHexFaces()
+
+if True:
+    ax.set_title("Truncated Icosahedron Vertices", fontsize=14)
+    plt.tight_layout()
+    ax.set_aspect('equal')
+    plt.show()
