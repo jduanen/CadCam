@@ -152,3 +152,10 @@ class TruncatedIcosahedron():
     def getVertices(self):
         return self.vertices
 
+    def getFaceInfo(self, faceNumber):
+        normal = self.getFaceNormal(faceNumber)
+        vertices = self.getFaceVertices(faceNumber)
+        center = self.getFaceCenter(faceNumber)
+        return normal, vertices, center
+
+    #### TODO add rotate(self, rotMat)
