@@ -25,6 +25,7 @@ def run(options):
         ax = fig.add_subplot(111, projection='3d')
 
     tico = TruncatedIcosahedron()
+    tico.rotate(-30, 0, 0)  # adjust to have hexagonal faces aligned with axis
 
     detPtsInfo = []
     for faceNumber in tico.getFaceNumbers():
@@ -39,6 +40,7 @@ def run(options):
                     [startPt[1], endPt[1]],
                     [startPt[2], endPt[2]],
                     color='cyan', linewidth=1)
+            ax.scatter(endPt[0], endPt[1], endPt[2], c="blue")
 
     if options['plot']:
         ax.set_title("Detonator Points", fontsize=14)
