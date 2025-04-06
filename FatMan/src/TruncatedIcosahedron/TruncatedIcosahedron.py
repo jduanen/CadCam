@@ -95,7 +95,7 @@ class TruncatedIcosahedron():
                                 [3, 39, 15, 19, 43],
                                 [6, 58, 34, 22, 46],
                                 [10, 54, 30, 28, 52],
-                                [52, 29, 31, 55, 11]  #31: Pentagon
+                                [53, 29, 31, 55, 11]  #31: Pentagon
                                 ]
         self.pentCount = len(self.pentagonalFaces)
         self.faces = [*self.hexagonalFaces, *self.pentagonalFaces]
@@ -159,3 +159,22 @@ class TruncatedIcosahedron():
         return normal, vertices, center
 
     #### TODO add rotate(self, rotMat)
+    @staticmethod
+    def _rotationMatrix(anglesInDegrees):
+        A, B, C = np.radians(anglesInDegrees)
+        print(anglesInDegrees)
+        print(A, B, C)
+        Rx = np.array([[1, 0, 0],
+                       [0, np.cos(A), -np.sin(A)],
+                       [0, np.sin(A), np.cos(A)]])
+        Ry = np.array([[np.cos(B), 0, np.sin(B)],
+                       [0, 1, 0],
+                       [-np.sin(B), 0, np.cos(B)]])
+        Rz = np.array([[np.cos(C), -np.sin(C), 0],
+                       [np.sin(C), np.cos(C), 0],
+                       [0, 0, 1]])
+        return Rx @ Ry @ Rx
+
+    def rotate(self, xDeg=0, yDeg=0, zDeg=0):
+        R = TruncatedIcosahedron._rotationMatrix(np.array([xDeg, yDeg, zDeg]))
+        vertices = (R @ self.vertices.T).T
