@@ -603,7 +603,7 @@ module makeGeometry(p) {
 //splitView() {
 //    color("red", 0.75)
 //        makePentFastLensFull();
-//    makeGeometry(SLOW_LENSES);
+//    makeGeometry(SLOW_LENSES)
 //}
 
 if (0) {
@@ -655,5 +655,12 @@ for (pyramidNum = [1:1]) {
 //PENT:[2, 3, 8, 9, 16, 17, 18, 19, 22, 26, 28, 29]
 //HEX: [0, 1, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 20, 21, 23, 24, 25, 27, 30, 31]
 
+//makePentSlowLens(3);
 //makeHexSlowLens(0);
-makePentSlowLens(3);
+
+//$fn=512;
+//makeGeometry(SLOW_LENSES);
+
+////echo(len(FACES));     32
+////echo(len(VERTICES));  60
+////echo(len(NORMALS));   32
