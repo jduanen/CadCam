@@ -32,9 +32,9 @@ for pentFaceNumber in pentFaceNumbers:
         print(f"Error: {pentFaceNumber}")
 
 faceCenters = []
-for faceNum in bothFaceNumbers:
-    faceVertices = tico.getFaceVertices(faceNum)
-    faceCenter = tico.getFaceCenter(faceNum)
+for faceNumber in bothFaceNumbers:
+    faceVertices = tico.getFaceVertices(faceNumber)
+    faceCenter = tico.getFaceCenter(faceNumber)
     faceCenters.append((faceCenter, faceVertices))
 
 # plot stuff
@@ -45,7 +45,7 @@ ax.scatter(vertices[:, 0], vertices[:, 1], vertices[:, 2], s=50, alpha=0.8)
 for i, (xi, yi, zi) in enumerate(vertices):
     ax.text(xi, yi, zi, f"#{i}", size=8, color='black') # ha='center', va='top')
 
-if False:
+if True:
     hexFaceNumbers = tico.getHexagonalFaceNumbers()
     print(f"hexFaceNumbers: {hexFaceNumbers}")
     for faceNumber in hexFaceNumbers:
@@ -62,15 +62,30 @@ if False:
         ax.plot(x, y, z, 'g-')
 
 if True:
-    for center, vertices in faceCenters[0:1]:
+    for center, vertices in faceCenters:
         color = 'g-' if len(vertices) == 5 else 'r-'
-        x, y, z = zip(*vertices)
+        vs = np.append(vertices, np.array([vertices[0]]), axis=0)
+        x, y, z = zip(*vs)
         ax.plot(x, y, z, color)
         ax.scatter(center[0], center[1], center[2], c='b')
-        for v in vertices:
-            d = np.linalg.norm(v - center)
-            print(d)
-        print("")
+
+if True:
+    for faceNumber in tico.getFaceNumbers():
+        normal = tico.getFaceNormal(faceNumber)
+        vertices = tico.getFaceVertices(faceNumber)
+        center = tico.getFaceCenter(faceNumber)
+        testVec = vertices[2] - center
+        dotProd = np.dot(normal, testVec)
+        '''
+        if dotProd > 0:
+            print(f"Right: {faceNumber}")
+        else:
+            print(f"Wrong: {faceNumber}, {dotProd}")
+        '''
+        ax.quiver(center[0], center[1], center[2],  # starting point
+                  normal[0], normal[1], normal[2],  # direction
+                  color='magenta', arrow_length_ratio=0.25,
+                  linewidth=1)
 
 ax.set_title("Truncated Icosahedron Vertices", fontsize=14)
 plt.tight_layout()
