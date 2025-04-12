@@ -16,7 +16,8 @@ from TruncatedIcosahedron.TruncatedIcosahedron import TruncatedIcosahedron
 
 
 #### FIXME use a common file derived from the spreadsheet
-LENS_OUTER_RADIUS = 690.56
+SHELL_OUTER_RADIUS = 727.075    # 55.25"
+LENS_OUTER_RADIUS = 690.56      # 54.375"
 
 
 def run(options):
@@ -53,7 +54,7 @@ def run(options):
 
 def getOps():
     #### FIXME make CLI
-    opts = {"radius": LENS_OUTER_RADIUS, "plot": True, "verbose": True}
+    opts = {"radius": SHELL_OUTER_RADIUS, "plot": True, "verbose": True}
     return opts
 
 if __name__ == '__main__':
